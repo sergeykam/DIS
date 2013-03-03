@@ -15,3 +15,9 @@
 *.exe
 *.out
 *.app
+
+#IAR Files
+_IAR/settings/*
+test/_IAR/settings/*
+test/_IAR/Debug/*
+*.dep
