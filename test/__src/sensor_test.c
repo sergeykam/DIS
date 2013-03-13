@@ -8,7 +8,7 @@
 * property of TeaMiX. The user, copying, transfer or
 * disclosure of	such information is	prohibited except
 * by express written agreement with	TeaMiX.
-*
+*ø
 * First	written	on ______ by ______
 *
 * Module Description: realization of SPI_API functions for ATmega
@@ -53,8 +53,8 @@ union write_packet_union
   U8 frame[7];
 	
 } packet;
-static U8 read_buf[6];
-static U8 flag;
+static U8 read_buf[1];
+static U8 read2_buf[6];
 /**************************************************
 * Function name	: 
 * Created by	: 
@@ -67,20 +67,16 @@ void main (void)
   SS_DDR = HIGH;
   SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 64);
   packet.pos.start_byte = 0xAA;
-  packet.pos.cmd_number = 0x00;
+  packet.pos.cmd_number = 0x05;
   packet.pos.CRC = Crc8(packet.frame, 6);
   
   __enable_interrupt();
   SS_PORT = LOW;
+  __delay_cycles(10);
   SPI_transfer (packet.frame, read_buf, 7, read_callback);
   while(1)
   {
-    if(flag)
-    {
-      flag = 0x00;
-      SS_PORT = LOW;
-      SPI_transfer (0, read_buf, 6, analysis_callback);
-    }
+
   };
 }
 /**************************************************
@@ -92,7 +88,9 @@ void main (void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
+  __delay_cycles(300);
   SS_PORT = LOW;
+  __delay_cycles(10);
   SPI_transfer (0, read_buf, 1, control_callback);
 }
 /**************************************************
@@ -104,6 +102,7 @@ void read_callback(U8 *Rx_buffer, U8 length)
 ***************************************************/
 void control_callback(U8 *Rx_buffer, U8 length)
 {
+  __delay_cycles(10);
   SS_PORT = HIGH;
   if(read_buf[0] == 0x00)
   {
@@ -113,7 +112,17 @@ void control_callback(U8 *Rx_buffer, U8 length)
   {
     if(read_buf[0] == 0xA5)
     {
-      flag = 0x01;
+      SS_PORT = HIGH;
+      __delay_cycles(100);
+      SS_PORT = LOW;
+      __delay_cycles(10);
+      SPI_transfer (0, read2_buf, 6, analysis_callback);
+    }
+    else
+    {
+       SS_PORT = LOW;
+      __delay_cycles(10);
+      SPI_transfer (packet.frame, read_buf, 7, read_callback);
     }
   }
   
@@ -127,17 +136,26 @@ void control_callback(U8 *Rx_buffer, U8 length)
 ***************************************************/
 void analysis_callback(U8 *Rx_buffer, U8 length)
 {
-  SS_PORT = HIGH;
-  __delay_cycles(30);
-U8 read_CRC = Crc8(read_buf, 5);
-  if(read_CRC == read_buf[5])
-  {
-    
-  }
-  else
-  {
-    
-  }
+//  __delay_cycles(10);
+//  SS_PORT = HIGH;
+//  if(read2_buf[1] == 0x00)
+//  {
+//     SS_PORT = LOW;
+//      __delay_cycles(10);
+      SPI_transfer (0, read2_buf, 6, analysis_callback);
+//  }
+//  else
+//  {
+//  U8 read_CRC = Crc8(read_buf, 5);
+//    if(read_CRC == read_buf[5])
+//    {
+//      
+//    }
+//    else
+//    {
+//      
+//    }
+//  }
 }
 /**************************************************
 * Function name	: 

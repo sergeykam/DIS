@@ -4,6 +4,9 @@
   <project>
     <path>$WS_DIR$\..\test\_IAR\DIS_SPI_test.ewp</path>
   </project>
+  <project>
+    <path>$WS_DIR$\..\test_wifi\_IAR\test_wifi.ewp</path>
+  </project>
   <batchBuild/>
 </workspace>
 
