@@ -54,7 +54,7 @@ union write_packet_union
 	
 } packet;
 static U8 read_buf[1];
-static U8 read2_buf[6];
+static U8 read2_buf[7];
 /**************************************************
 * Function name	: 
 * Created by	: 
@@ -67,7 +67,7 @@ void main (void)
   SS_DDR = HIGH;
   SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 64);
   packet.pos.start_byte = 0xAA;
-  packet.pos.cmd_number = 0x05;
+  packet.pos.cmd_number = 0x03;
   packet.pos.CRC = Crc8(packet.frame, 6);
   
   __enable_interrupt();
@@ -88,10 +88,10 @@ void main (void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
-  __delay_cycles(300);
-  SS_PORT = LOW;
+  __delay_cycles(100);
+  SS_DDR = HIGH;
   __delay_cycles(10);
-  SPI_transfer (0, read_buf, 1, control_callback);
+  SPI_transfer (0, read2_buf, 7, control_callback);
 }
 /**************************************************
 * Function name	: 
@@ -102,28 +102,29 @@ void read_callback(U8 *Rx_buffer, U8 length)
 ***************************************************/
 void control_callback(U8 *Rx_buffer, U8 length)
 {
-  __delay_cycles(10);
-  SS_PORT = HIGH;
-  if(read_buf[0] == 0x00)
+ 
+//  SS_PORT = HIGH;
+//   __delay_cycles(10);
+  if(read2_buf[0] == 0x00)
   {
-    SPI_transfer (0, read_buf, 1, control_callback);
+    SPI_transfer (0, read2_buf, 7, control_callback);
   }
   else
   {
-    if(read_buf[0] == 0xA5)
-    {
-      SS_PORT = HIGH;
-      __delay_cycles(100);
-      SS_PORT = LOW;
-      __delay_cycles(10);
-      SPI_transfer (0, read2_buf, 6, analysis_callback);
-    }
-    else
-    {
-       SS_PORT = LOW;
-      __delay_cycles(10);
-      SPI_transfer (packet.frame, read_buf, 7, read_callback);
-    }
+	U8 read_CRC = Crc8(read2_buf, 6);
+//    if(read2_buf[0] == 0xA5)
+//    {
+//      __delay_cycles(100);
+//      SS_PORT = LOW;
+//      __delay_cycles(10);
+//      SPI_transfer (0, read2_buf, 6, analysis_callback);
+//    }
+//    else
+//    {
+//       SS_PORT = LOW;
+//      __delay_cycles(10);
+//      SPI_transfer (packet.frame, read_buf, 7, read_callback);
+//    }
   }
   
 }
@@ -142,6 +143,9 @@ void analysis_callback(U8 *Rx_buffer, U8 length)
 //  {
 //     SS_PORT = LOW;
 //      __delay_cycles(10);
+//  __delay_cycles(300);
+//  SS_PORT = LOW;
+//  __delay_cycles(10);
       SPI_transfer (0, read2_buf, 6, analysis_callback);
 //  }
 //  else
