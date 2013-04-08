@@ -27,16 +27,36 @@ enum ss_level
   HIGH,
 };
 
-#define SS_DDR  DDRB_Bit4
-#define SS_PORT PORTB_Bit4
+#define SS_DDR_1  DDRB_Bit4
+#define SS_PORT_1 PORTB_Bit4
 
+#define SS_DDR_2  DDRB_Bit5
+#define SS_PORT_2 PORTB_Bit5
+
+#define SS_DDR_3  DDRB_Bit6
+#define SS_PORT_3 PORTB_Bit6
+
+#define SS_DDR_4  DDRB_Bit7
+#define SS_PORT_4 PORTB_Bit7
+
+#define OK					0x01
+#define ERROR_CONTROL_BYTE	0x02
+
+
+#define CONFIGURATION		0x01
+#define DATA				0x03
+
+#define ERROR_CNT			10
 /***************************************************
 *	Function Prototype Section
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length);
-void analysis_callback(U8 *Rx_buffer, U8 length);
 void control_callback(U8 *Rx_buffer, U8 length);
 U8 Crc8(U8 *pcBlock, U8 len);
+void sensor_read (U8 command);
+void sensor_cb (void);
+void ss_low(void);
+void ss_high(void);
 /***************************************************
 *	Static Variables Section
 ***************************************************/
@@ -48,13 +68,45 @@ union write_packet_union
     U8 cmd_number;
     U8 data[4];
     U8 CRC;	
-  }pos;
+  }write_pos;
   
-  U8 frame[7];
+  U8 write_frame[7];
 	
-} packet;
-static U8 read_buf[1];
-static U8 read2_buf[7];
+} write_packet;
+
+union read_packet_union
+{
+  struct
+  {
+    U8 control_byte;
+    U8 status_byte;
+    U8 data[4];
+    U8 CRC;	
+  }read_pos;
+  
+  U8 read_frame[7];
+	
+} read_packet;
+
+union
+{
+	struct 
+	{
+	  U8 sort_gas;
+	  U8 sort_sensor;
+	  U8 unit;
+	  U8 voltage;
+	  U16 data;
+	  U8 status;
+	}sensor_data;
+	
+	U8 data_buffer[7];
+	
+}sensor_union[4];
+
+
+static U8 DIS_command;
+static U8 DIS_number = 0x01;
 /**************************************************
 * Function name	: 
 * Created by	: 
@@ -64,16 +116,16 @@ static U8 read2_buf[7];
 ***************************************************/
 void main (void)
 {
-  SS_DDR = HIGH;
+  SS_DDR_1 = HIGH;
+  SS_DDR_2 = HIGH;
+  SS_DDR_3 = HIGH;
+  SS_DDR_4 = HIGH;
   SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 64);
-  packet.pos.start_byte = 0xAA;
-  packet.pos.cmd_number = 0x03;
-  packet.pos.CRC = Crc8(packet.frame, 6);
   
+
+  sensor_read (CONFIGURATION);
   __enable_interrupt();
-  SS_PORT = LOW;
-  __delay_cycles(10);
-  SPI_transfer (packet.frame, read_buf, 7, read_callback);
+ 
   while(1)
   {
 
@@ -86,12 +138,77 @@ void main (void)
 * Description	:
 * Notes		: 
 ***************************************************/
+void timer_cb(void)
+{
+  
+}
+/**************************************************
+* Function name	: 
+* Created by	: 
+* Date created	: 
+* Description	:
+* Notes		: 
+***************************************************/
+void sensor_read (U8 command)
+{
+  DIS_command = command;
+  
+  write_packet.write_pos.start_byte = 0xAA;
+  write_packet.write_pos.cmd_number = command;
+  write_packet.write_pos.CRC = Crc8(write_packet.write_frame, 6);
+  ss_low();
+  __delay_cycles(10);
+  SPI_transfer (write_packet.write_frame, 0, 7, read_callback);
+}
+/**************************************************
+* Function name	: 
+* Created by	: 
+* Date created	: 
+* Description	:
+* Notes		: 
+***************************************************/
+void ss_low(void)
+{
+  if(DIS_number == 0x01)
+	SS_PORT_1 = LOW;
+  if(DIS_number == 0x02)
+	SS_PORT_2 = LOW;
+  if(DIS_number == 0x03)
+	SS_PORT_3 = LOW;
+  if(DIS_number == 0x04)
+	SS_PORT_4 = LOW;
+}
+/**************************************************
+* Function name	: 
+* Created by	: 
+* Date created	: 
+* Description	:
+* Notes		: 
+***************************************************/
+void ss_high(void)
+{
+  if(DIS_number == 0x01)
+	SS_PORT_1 = HIGH;
+  if(DIS_number == 0x02)
+	SS_PORT_2 = HIGH;
+  if(DIS_number == 0x03)
+	SS_PORT_3 = HIGH;
+  if(DIS_number == 0x04)
+	SS_PORT_4 = HIGH;
+}
+/**************************************************
+* Function name	: 
+* Created by	: 
+* Date created	: 
+* Description	:
+* Notes		: 
+***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
   __delay_cycles(100);
-  SS_DDR = HIGH;
+//  SS_PORT_1 = HIGH;
   __delay_cycles(10);
-  SPI_transfer (0, read2_buf, 7, control_callback);
+  SPI_transfer (0, read_packet.read_frame, 7, control_callback);
 }
 /**************************************************
 * Function name	: 
@@ -102,30 +219,36 @@ void read_callback(U8 *Rx_buffer, U8 length)
 ***************************************************/
 void control_callback(U8 *Rx_buffer, U8 length)
 {
- 
-//  SS_PORT = HIGH;
-//   __delay_cycles(10);
-  if(read2_buf[0] == 0x00)
-  {
-    SPI_transfer (0, read2_buf, 7, control_callback);
-  }
-  else
-  {
-	U8 read_CRC = Crc8(read2_buf, 6);
-//    if(read2_buf[0] == 0xA5)
-//    {
-//      __delay_cycles(100);
-//      SS_PORT = LOW;
-//      __delay_cycles(10);
-//      SPI_transfer (0, read2_buf, 6, analysis_callback);
-//    }
-//    else
-//    {
-//       SS_PORT = LOW;
-//      __delay_cycles(10);
-//      SPI_transfer (packet.frame, read_buf, 7, read_callback);
-//    }
-  }
+U8 error_cnt = 0x00;
+	if(read_packet.read_pos.control_byte == 0x00)
+	{
+		SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+	}
+	else
+	{
+		if(read_packet.read_pos.control_byte == 0xA5)
+		{
+		  	ss_high();
+			sensor_union[DIS_number].sensor_data.status = OK;
+			sensor_cb();
+		}
+		else
+		{
+			error_cnt++;
+			if(error_cnt < ERROR_CNT)
+			{
+				ss_low();
+				__delay_cycles(10);
+				SPI_transfer (write_packet.write_frame, 0, 7, read_callback);
+			}
+			else
+			{
+			  	ss_high();
+				sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
+				sensor_cb();
+			}
+		}
+	}
   
 }
 /**************************************************
@@ -135,31 +258,36 @@ void control_callback(U8 *Rx_buffer, U8 length)
 * Description	:
 * Notes		: 
 ***************************************************/
-void analysis_callback(U8 *Rx_buffer, U8 length)
+void sensor_cb (void)
 {
-//  __delay_cycles(10);
-//  SS_PORT = HIGH;
-//  if(read2_buf[1] == 0x00)
-//  {
-//     SS_PORT = LOW;
-//      __delay_cycles(10);
-//  __delay_cycles(300);
-//  SS_PORT = LOW;
-//  __delay_cycles(10);
-      SPI_transfer (0, read2_buf, 6, analysis_callback);
-//  }
-//  else
-//  {
-//  U8 read_CRC = Crc8(read_buf, 5);
-//    if(read_CRC == read_buf[5])
-//    {
-//      
-//    }
-//    else
-//    {
-//      
-//    }
-//  }
+  if(sensor_union[DIS_number].sensor_data.status == OK)
+  {
+	  if(DIS_command == CONFIGURATION)
+	  {
+		sensor_union[DIS_number].sensor_data.sort_sensor = read_packet.read_pos.data[0];
+		sensor_union[DIS_number].sensor_data.sort_gas = read_packet.read_pos.data[1];
+		sensor_union[DIS_number].sensor_data.unit = read_packet.read_pos.data[2];
+		sensor_union[DIS_number].sensor_data.voltage = read_packet.read_pos.data[3];
+	  }
+	  if(DIS_command == DATA)
+	  {
+		sensor_union[DIS_number].sensor_data.data = ((U16)read_packet.read_pos.data[1] << 8)|read_packet.read_pos.data[0];
+	  }
+	  if(DIS_number < 4)
+	  {
+		DIS_number++;
+		sensor_read(DIS_command);
+	  }
+	  else
+		DIS_number = 0x01;
+  }
+  if(sensor_union[DIS_number].sensor_data.status == ERROR_CONTROL_BYTE)
+  {
+	for(U8 i = 0x00; i < 7; i++)
+	{
+	  sensor_union[DIS_number].data_buffer[i] = 0x00;
+	}
+  }
 }
 /**************************************************
 * Function name	: 

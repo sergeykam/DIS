@@ -1994,9 +1994,6 @@
     <file>
       <name>$PROJ_DIR$\..\..\__API\SPI_API.c</name>
     </file>
-    <file>
-      <name>$PROJ_DIR$\..\..\__API\TIMER0_HW_API.c</name>
-    </file>
   </group>
   <file>
     <name>$PROJ_DIR$\..\__src\sensor_test.c</name>
