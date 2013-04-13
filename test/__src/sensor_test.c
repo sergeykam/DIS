@@ -18,6 +18,7 @@
 ***************************************************/
 #include <device.h>
 #include <SPI_API.h>
+#include <TIMER0_HW_API.h>
 /***************************************************
 *	Defines Section
 ***************************************************/
@@ -30,14 +31,14 @@ enum ss_level
 #define SS_DDR_1  DDRB_Bit4
 #define SS_PORT_1 PORTB_Bit4
 
-#define SS_DDR_2  DDRB_Bit5
-#define SS_PORT_2 PORTB_Bit5
+#define SS_DDR_2  DDRA_Bit0
+#define SS_PORT_2 PORTA_Bit0
 
-#define SS_DDR_3  DDRB_Bit6
-#define SS_PORT_3 PORTB_Bit6
+#define SS_DDR_3  DDRA_Bit1
+#define SS_PORT_3 PORTA_Bit1
 
-#define SS_DDR_4  DDRB_Bit7
-#define SS_PORT_4 PORTB_Bit7
+#define SS_DDR_4  DDRA_Bit2
+#define SS_PORT_4 PORTA_Bit2
 
 #define OK					0x01
 #define ERROR_CONTROL_BYTE	0x02
@@ -57,6 +58,8 @@ void sensor_read (U8 command);
 void sensor_cb (void);
 void ss_low(void);
 void ss_high(void);
+void timer_cb(void);
+void check_number(void);
 /***************************************************
 *	Static Variables Section
 ***************************************************/
@@ -106,7 +109,9 @@ union
 
 
 static U8 DIS_command;
-static U8 DIS_number = 0x01;
+static U8 DIS_number = 0x00;
+static U8 error_cnt = 0x00;
+static U8 configuration_flag;
 /**************************************************
 * Function name	: 
 * Created by	: 
@@ -121,7 +126,7 @@ void main (void)
   SS_DDR_3 = HIGH;
   SS_DDR_4 = HIGH;
   SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 64);
-  
+  TIMER0_HW_API_init (timer_cb);
 
   sensor_read (CONFIGURATION);
   __enable_interrupt();
@@ -140,7 +145,8 @@ void main (void)
 ***************************************************/
 void timer_cb(void)
 {
-  
+  if(configuration_flag == 0x01)
+  	sensor_read (DATA);
 }
 /**************************************************
 * Function name	: 
@@ -158,7 +164,7 @@ void sensor_read (U8 command)
   write_packet.write_pos.CRC = Crc8(write_packet.write_frame, 6);
   ss_low();
   __delay_cycles(10);
-  SPI_transfer (write_packet.write_frame, 0, 7, read_callback);
+  SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
 }
 /**************************************************
 * Function name	: 
@@ -169,13 +175,13 @@ void sensor_read (U8 command)
 ***************************************************/
 void ss_low(void)
 {
-  if(DIS_number == 0x01)
+  if(DIS_number == 0x00)
 	SS_PORT_1 = LOW;
-  if(DIS_number == 0x02)
+  if(DIS_number == 0x01)
 	SS_PORT_2 = LOW;
-  if(DIS_number == 0x03)
+  if(DIS_number == 0x02)
 	SS_PORT_3 = LOW;
-  if(DIS_number == 0x04)
+  if(DIS_number == 0x03)
 	SS_PORT_4 = LOW;
 }
 /**************************************************
@@ -187,13 +193,13 @@ void ss_low(void)
 ***************************************************/
 void ss_high(void)
 {
-  if(DIS_number == 0x01)
+  if(DIS_number == 0x00)
 	SS_PORT_1 = HIGH;
-  if(DIS_number == 0x02)
+  if(DIS_number == 0x01)
 	SS_PORT_2 = HIGH;
-  if(DIS_number == 0x03)
+  if(DIS_number == 0x02)
 	SS_PORT_3 = HIGH;
-  if(DIS_number == 0x04)
+  if(DIS_number == 0x03)
 	SS_PORT_4 = HIGH;
 }
 /**************************************************
@@ -206,8 +212,6 @@ void ss_high(void)
 void read_callback(U8 *Rx_buffer, U8 length)
 {
   __delay_cycles(100);
- 	ss_high();
-  __delay_cycles(10);
   SPI_transfer (0, read_packet.read_frame, 7, control_callback);
 }
 /**************************************************
@@ -219,15 +223,26 @@ void read_callback(U8 *Rx_buffer, U8 length)
 ***************************************************/
 void control_callback(U8 *Rx_buffer, U8 length)
 {
-U8 error_cnt = 0x00;
 	if(read_packet.read_pos.control_byte == 0x00)
 	{
-		SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+		error_cnt++;
+		if(error_cnt < ERROR_CNT)
+		{
+			SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+		}
+		else
+		{
+		  	error_cnt = 0x00;
+			ss_high();
+			sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
+			sensor_cb();
+		}
 	}
 	else
 	{
 		if(read_packet.read_pos.control_byte == 0xA5)
 		{
+		  	error_cnt = 0x00;
 		  	ss_high();
 			sensor_union[DIS_number].sensor_data.status = OK;
 			sensor_cb();
@@ -237,12 +252,15 @@ U8 error_cnt = 0x00;
 			error_cnt++;
 			if(error_cnt < ERROR_CNT)
 			{
-				ss_low();
+			  	ss_high();
 				__delay_cycles(10);
-				SPI_transfer (write_packet.write_frame, 0, 7, read_callback);
+				ss_low();
+  				__delay_cycles(10);
+  				SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
 			}
 			else
 			{
+			  	error_cnt = 0x00;
 			  	ss_high();
 				sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
 				sensor_cb();
@@ -273,21 +291,38 @@ void sensor_cb (void)
 	  {
 		sensor_union[DIS_number].sensor_data.data = ((U16)read_packet.read_pos.data[1] << 8)|read_packet.read_pos.data[0];
 	  }
-	  if(DIS_number < 4)
+	  check_number();
+	  
+	  
+  }
+  if(sensor_union[DIS_number].sensor_data.status == ERROR_CONTROL_BYTE)
+  {
+	for(U8 i = 0x00; i < 6; i++)
+	{
+	  sensor_union[DIS_number].data_buffer[i] = 0x00;
+	}
+	check_number();
+  }
+}
+/**************************************************
+* Function name	: 
+* Created by	: 
+* Date created	: 
+* Description	:
+* Notes		: 
+***************************************************/
+void check_number(void)
+{
+	if(DIS_number < 3)
 	  {
 		DIS_number++;
 		sensor_read(DIS_command);
 	  }
 	  else
-		DIS_number = 0x01;
-  }
-  if(sensor_union[DIS_number].sensor_data.status == ERROR_CONTROL_BYTE)
-  {
-	for(U8 i = 0x00; i < 7; i++)
-	{
-	  sensor_union[DIS_number].data_buffer[i] = 0x00;
-	}
-  }
+	  {
+		DIS_number = 0x00;
+	  	configuration_flag = 0x01;
+	  }
 }
 /**************************************************
 * Function name	: 
