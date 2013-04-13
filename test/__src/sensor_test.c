@@ -206,7 +206,7 @@ void ss_high(void)
 void read_callback(U8 *Rx_buffer, U8 length)
 {
   __delay_cycles(100);
-//  SS_PORT_1 = HIGH;
+ 	ss_high();
   __delay_cycles(10);
   SPI_transfer (0, read_packet.read_frame, 7, control_callback);
 }
