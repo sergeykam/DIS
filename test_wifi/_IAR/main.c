@@ -18,24 +18,44 @@
 ***************************************************/
 #include <device.h>
 #include <UART_API.h>
-
+#include "string.h"
 /***************************************************
 *   Function Prototype Section
 ***************************************************/
 void Tx_cb (void);
 void Rx_cb (U8*, U8);
+//void getIP_cb (U8*, U8);
 void error_cb (U8*, U8, U8);
 void timeout_cb (U8*, U8);
+void closeRoutine_cb (U8 *, U8);
+/***************************************************
+* CONSTS
+***************************************************/
+//const __flash U8 cmd = "$$$";
+//const __flash U8 close = "close\r";
+//const __flash U8 exit = "exit\r";
+
+enum{
+  CMD = 0,
+  CLOSE = 1,
+  EXIT = 2
+};
 
 /***************************************************
 * Static Variables Section
 ***************************************************/
 
-U8 Set_cmd_mode[] = "$$$\r";
-U8 Rx_buffer[10];
+U8 cmd[] = "$$$";
+U8 close[] = "close\n";
+U8 ex[] = "exit\n";
+
+U8 wifi_status = 0;
+
 U8 callback_msg[] = "-under_ISR";
 U8 waiting_msg[] = "-background_process";
-U8 Rx_buffer[10];
+U8 Rx_buffer[16];
+U8 Rx_get[] = "GET / HTTP";
+U8 Tx_buffer[] = "<html><head><title>DIS</title></head><body>1111</body></html>";
 U8 error_msg[] = "-error";
 U8 timeout_msg[] = "-nothing received";
 
@@ -47,7 +67,7 @@ void main(void)
 	__enable_interrupt();
 	UART_set_Rx_tout_cb (timeout_cb);
 	UART_set_Rx_error_cb (error_cb);
-	UART_transmit (Set_cmd_mode, 5, Tx_cb);
+	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
     while(1){
 		
     }
@@ -62,7 +82,7 @@ void main(void)
 **************************************************/
 void Tx_cb (void)
 {
-	UART_receive (Rx_buffer, 10, 10000, Rx_cb);
+	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
 }
 
 /**************************************************
@@ -76,8 +96,59 @@ void Tx_cb (void)
 **************************************************/
 void Rx_cb (U8 *buffer, U8 length)
 {
-	UART_transmit (buffer, length, Tx_cb);
+    if(0 == memcmp(Rx_buffer,Rx_get,10)){
+	    Rx_buffer[0] = 0;
+	  	UART_transmit (Tx_buffer, 61, (void(*)(void))closeRoutine_cb);
+    } else {
+	  	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
+	}
 }
+/**************************************************
+* Function name	: void Tx_cb (void)
+* Created by		: halfin
+* Date created		: 03.03.04
+* Description		: UART callback function
+* Notes:	called under ISR
+**************************************************/
+void closeRoutine_cb (U8 *buffer, U8 length)
+{
+  switch (wifi_status)
+  {
+  case CMD:
+	wifi_status = CLOSE;
+	UART_transmit (cmd, 3, (void(*)(void))closeRoutine_cb);
+	break;
+  case CLOSE:
+	wifi_status = EXIT;
+	__delay_cycles(1000);
+	UART_transmit (close, 8, (void(*)(void))closeRoutine_cb);
+	break;
+  case EXIT:
+    wifi_status = CMD;
+	__delay_cycles(1000);
+    UART_transmit (ex, 6, (void(*)(void))Rx_cb);
+	break;
+  }
+}
+/**************************************************
+* Function name	: void Tx_cb (void)
+* Created by		: halfin
+* Date created		: 03.03.04
+* Description		: UART callback function
+* Notes:	called under ISR
+**************************************************/
+void exitRoutine_cb (void)
+{
+	UART_transmit (ex, sizeof(ex), Tx_cb);
+	__delay_cycles(500);
+}
+
+
+
+
+
+
+
 
 /**************************************************
 * Function name		: void error_cb	(I8 *buffer, U8 length, U8 error)
@@ -91,7 +162,7 @@ void Rx_cb (U8 *buffer, U8 length)
 **************************************************/
 void error_cb (U8 *buffer, U8 length, U8 error)
 {
-	UART_transmit (error_msg, 6, Tx_cb);
+	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
 }
 
 /**************************************************
@@ -105,8 +176,5 @@ void error_cb (U8 *buffer, U8 length, U8 error)
 **************************************************/
 void timeout_cb (U8 *buffer, U8 length)
 {
-    if (length == 0)
-    	UART_transmit (timeout_msg, 17, Tx_cb);
-    else
-    	UART_transmit (buffer, length, Tx_cb);
+	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
 }

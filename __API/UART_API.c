@@ -328,7 +328,7 @@ U8 UART_Tx_query (void)
 * Description	: UART transmit	complete ISR
 * Notes			: after transmitting last byte, callback function is called under ISR
 *************************************************************************************/
-#pragma	vector = USART_TXC_vect
+#pragma	vector = USART_TX_vect
 			__interrupt	void UART_Tx_TXC_ISR (void)
 {
 	UART_Tx_cnt	= 0;
@@ -376,7 +376,7 @@ U8 UART_receive	(U8	*buffer, U8	length,	U16	timeout, void (*callback)(U8*, U8))
 * Notes				: if receive complete callback function	called under this ISR
 *	if error occured corresponding callback	function called	under this ISR
 ********************************************************************************/
-#pragma	vector = USART_RXC_vect
+#pragma	vector = USART_RX_vect
 			__interrupt	void UART_Rx_ISR (void)
 {
 	if (UCSRA &	((1<<FE)|(1<<DOR)|(1<<PE)))

@@ -213,7 +213,7 @@
         </option>
         <option>
           <name>GenDeviceSelectMenu</name>
-          <state>m16	ATmega16</state>
+          <state>m168pa	ATmega168PA</state>
         </option>
       </data>
     </settings>
@@ -731,7 +731,7 @@
         </option>
         <option>
           <name>SecondaryOutputFile</name>
-          <state></state>
+          <state>(None for the selected format)</state>
         </option>
         <option>
           <name>XDefines</name>
@@ -771,7 +771,7 @@
         </option>
         <option>
           <name>XIncludes</name>
-          <state>###Uninitialized###</state>
+          <state>$TOOLKIT_DIR$\LIB\</state>
         </option>
         <option>
           <name>ModuleStatus</name>
@@ -783,7 +783,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>lnk0t.xcl</state>
+          <state>$TOOLKIT_DIR$\src\template\cfgm16.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
@@ -899,7 +899,7 @@
         </option>
         <option>
           <name>ExtraOutputFile</name>
-          <state></state>
+          <state>test_wifi.a90</state>
         </option>
         <option>
           <name>ExtraOutputFormat</name>

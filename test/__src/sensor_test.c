@@ -28,23 +28,23 @@ enum ss_level
   HIGH,
 };
 
-#define SS_DDR_1  DDRB_Bit4
-#define SS_PORT_1 PORTB_Bit4
+#define SS_DDR_1  DDRB_Bit2
+#define SS_PORT_1 PORTB_Bit2
 
-#define SS_DDR_2  DDRA_Bit0
-#define SS_PORT_2 PORTA_Bit0
+#define SS_DDR_2  DDRC_Bit0
+#define SS_PORT_2 PORTC_Bit0
 
-#define SS_DDR_3  DDRA_Bit1
-#define SS_PORT_3 PORTA_Bit1
+#define SS_DDR_3  DDRC_Bit1
+#define SS_PORT_3 PORTC_Bit1
 
-#define SS_DDR_4  DDRA_Bit2
-#define SS_PORT_4 PORTA_Bit2
+#define SS_DDR_4  DDRC_Bit2
+#define SS_PORT_4 PORTC_Bit2
 
 #define OK					0x01
 #define ERROR_CONTROL_BYTE	0x02
 
 
-#define CONFIGURATION		0x01
+#define CONFIGURATION		0x03
 #define DATA				0x03
 
 #define ERROR_CNT			10
@@ -163,8 +163,7 @@ void sensor_read (U8 command)
   write_packet.write_pos.cmd_number = command;
   write_packet.write_pos.CRC = Crc8(write_packet.write_frame, 6);
   ss_low();
-  __delay_cycles(10);
-  SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
+  SPI_transfer (write_packet.write_frame, 0, 7, read_callback);
 }
 /**************************************************
 * Function name	: 
@@ -183,6 +182,7 @@ void ss_low(void)
 	SS_PORT_3 = LOW;
   if(DIS_number == 0x03)
 	SS_PORT_4 = LOW;
+  __delay_cycles(10);
 }
 /**************************************************
 * Function name	: 
@@ -201,6 +201,7 @@ void ss_high(void)
 	SS_PORT_3 = HIGH;
   if(DIS_number == 0x03)
 	SS_PORT_4 = HIGH;
+  __delay_cycles(10);
 }
 /**************************************************
 * Function name	: 
@@ -211,7 +212,6 @@ void ss_high(void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
-  __delay_cycles(100);
   SPI_transfer (0, read_packet.read_frame, 7, control_callback);
 }
 /**************************************************
@@ -253,9 +253,7 @@ void control_callback(U8 *Rx_buffer, U8 length)
 			if(error_cnt < ERROR_CNT)
 			{
 			  	ss_high();
-				__delay_cycles(10);
 				ss_low();
-  				__delay_cycles(10);
   				SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
 			}
 			else

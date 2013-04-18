@@ -10,6 +10,6 @@
 @REM 
 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\common\bin\cspybat" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrproc.dll" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrJtagIce-mkII.dll"  %1 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrlibsupportbat.dll" --backend -B "--cpu=m16" "--enhanced_core" "-p" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\Config\iom16.ddf" "--eeprom_size" "512" "-d" "jtagIceMkII" "--drv_dragon" "--jtagice_clock=100000" "--jtagice_leave_timers_running" "--drv_set_putchar_breakpoint" "--drv_set_getchar_breakpoint" "--drv_communication=USB" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\common\bin\cspybat" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrproc.dll" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrJtagIce-mkII.dll"  %1 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\bin\avrlibsupportbat.dll" --backend -B "--cpu=m168pa" "--enhanced_core" "-p" "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\Config\iom168pa.ddf" "--eeprom_size" "512" "-d" "jtagIceMkII" "--drv_dragon" "--jtagice_leave_timers_running" "--drv_set_putchar_breakpoint" "--drv_set_getchar_breakpoint" "--drv_communication=USB" 
 
 

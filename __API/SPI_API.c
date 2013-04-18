@@ -219,12 +219,10 @@ U8 SPI_transfer (U8 *Tx_buffer, U8 *Rx_buffer, U8 length, void (*callback)(U8 *R
 	{
 		*SPI_Rx_buffer = SPDR;			//write received byte in receive-data buffer
 		SPI_Rx_buffer++;
-		__delay_cycles(200);
 	}
 
 	if (--SPI_transfer_cnt)				//if received/transmitted byte is not last
-	{		
-	  __delay_cycles(200);
+	{	
 		if (SPI_Tx_buffer)				//if transmission is enabled
 			SPDR = *++SPI_Tx_buffer;	//transfer next bytes (data transmission)
 		else							//if transmission is disabled

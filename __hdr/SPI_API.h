@@ -28,7 +28,7 @@
 #elif   defined (__ATmega1281__)
     #define SPI_PORT	PORTB
 	#define	SPI_DD_SS	PINB0		//Slave Select pin
-#elif   defined (__ATmega88PA__)
+#elif   defined (__ATmega88PA__)||defined (__ATmega168PA__)
     #define SPI_PORT	PORTB
 	#define	SPI_DD_SS	PINB2		//Slave Select pin
 #else
