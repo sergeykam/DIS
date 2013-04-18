@@ -43,9 +43,9 @@ enum ss_level
 #define OK					0x01
 #define ERROR_CONTROL_BYTE	0x02
 
+#define CONFIGURATION		0x01
+#define DATA				0x02
 
-#define CONFIGURATION		0x03
-#define DATA				0x03
 
 #define ERROR_CNT			10
 /***************************************************
@@ -63,6 +63,11 @@ void check_number(void);
 /***************************************************
 *	Static Variables Section
 ***************************************************/
+union
+{
+  float x;
+  U8 buffer[4];
+}float_x;
 union write_packet_union
 {
   struct
@@ -99,11 +104,15 @@ union
 	  U8 sort_sensor;
 	  U8 unit;
 	  U8 voltage;
-	  U16 data;
+	  union
+	  {
+	  	float data_var;
+		U8 data_buf[4];
+	  } data;
 	  U8 status;
 	}sensor_data;
 	
-	U8 data_buffer[7];
+	U8 data_buffer[9];
 	
 }sensor_union[4];
 
@@ -120,7 +129,7 @@ static U8 configuration_flag;
 * Notes		: 
 ***************************************************/
 void main (void)
-{
+{	
   SS_DDR_1 = HIGH;
   SS_DDR_2 = HIGH;
   SS_DDR_3 = HIGH;
@@ -163,7 +172,9 @@ void sensor_read (U8 command)
   write_packet.write_pos.cmd_number = command;
   write_packet.write_pos.CRC = Crc8(write_packet.write_frame, 6);
   ss_low();
-  SPI_transfer (write_packet.write_frame, 0, 7, read_callback);
+
+  SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
+
 }
 /**************************************************
 * Function name	: 
@@ -212,6 +223,9 @@ void ss_high(void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
+
+  __delay_cycles(300);
+
   SPI_transfer (0, read_packet.read_frame, 7, control_callback);
 }
 /**************************************************
@@ -249,6 +263,19 @@ void control_callback(U8 *Rx_buffer, U8 length)
 		}
 		else
 		{
+		  if(read_packet.read_pos.status_byte == 0xA5)
+		  {
+			error_cnt = 0x00;
+			ss_high();
+			for(U8 i=0; i <7; i++)
+			{
+			  read_packet.read_frame[i] = read_packet.read_frame[i + 1];
+			}
+			sensor_union[DIS_number].sensor_data.status = OK;
+			sensor_cb();
+		  }
+		  else
+		  {
 			error_cnt++;
 			if(error_cnt < ERROR_CNT)
 			{
@@ -263,6 +290,7 @@ void control_callback(U8 *Rx_buffer, U8 length)
 				sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
 				sensor_cb();
 			}
+		  }
 		}
 	}
   
@@ -287,7 +315,10 @@ void sensor_cb (void)
 	  }
 	  if(DIS_command == DATA)
 	  {
-		sensor_union[DIS_number].sensor_data.data = ((U16)read_packet.read_pos.data[1] << 8)|read_packet.read_pos.data[0];
+		for(U8 i=0; i<4; i++)
+		{
+		  sensor_union[DIS_number].sensor_data.data.data_buf[i] = read_packet.read_pos.data[i];
+		}
 	  }
 	  check_number();
 	  
