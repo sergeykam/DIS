@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Матрица ИГС</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			body{
+				font-family:Arial;
+				font-size:14px;
+			}
+			canvas{
+				float:right;
+				border-left:2px solid;
+				border-bottom:2px solid;
+			}
+			li{
+				list-style-type: none;
+			}
+			.active{
+				color: green;
+			}
+			.graph{
+				float: left;
+				margin: 5px 10px;
+				position: relative;
+				height: 320px;
+			}
+			.descr{
+				float: left;
+				width: 80px;
+			}
+			.cl{
+				clear:both;
+			}
+			.x{
+				width: 20px;
+				height: 18px;
+				/*background: #ccc;*/
+				position: absolute;
+				right: 0px;
+				bottom: 0px;
+			}
+			.y{
+				float: left;
+				width: 50px;
+				height: 300px;
+			}
+			.ylvl{
+				margin: 11px 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="graph">
+			<div class="descr">
+				<ul>
+					<li>H<sub>2</sub>S</li>
+					<li>5 Вольт</li>
+					<li>Дата</li>
+					<li>Серия</li>
+					<li class="active">Активен</li>
+				</ul>
+			</div>
+			<div class="y">
+				<span id="max0"></span>
+				<ul>
+					<li id="y08" class="ylvl"></li>
+					<li id="y07" class="ylvl"></li>
+					<li id="y06" class="ylvl"></li>
+					<li id="y05" class="ylvl"></li>
+					<li id="y04" class="ylvl"></li>
+					<li id="y03" class="ylvl"></li>
+					<li id="y02" class="ylvl"></li>
+					<li id="y01" class="ylvl"></li>
+					<li id="y00" class="ylvl"></li>
+					<li class="ylvl">0</li>
+				</ul>
+			</div>
+			<canvas id="c1" width="500" height="300">Ваш браузер не поддерживается</canvas>
+			<div class="x">t, с</div>
+			<div class="cl"></div>
+		</div>
+		<div class="graph">
+			<div class="descr">
+				<ul>
+					<li>H<sub>2</sub>S</li>
+					<li>5 Вольт</li>
+					<li>Дата</li>
+					<li>Серия</li>
+					<li class="active">Активен</li>
+				</ul>
+			</div>
+			<div class="y">
+				<span id="max1"></span>
+				<ul>
+					<li id="y18" class="ylvl"></li>
+					<li id="y17" class="ylvl"></li>
+					<li id="y16" class="ylvl"></li>
+					<li id="y15" class="ylvl"></li>
+					<li id="y14" class="ylvl"></li>
+					<li id="y13" class="ylvl"></li>
+					<li id="y12" class="ylvl"></li>
+					<li id="y11" class="ylvl"></li>
+					<li id="y10" class="ylvl"></li>
+					<li class="ylvl">0</li>
+				</ul>
+			</div>
+			<canvas id="c2" width="500" height="300"></canvas>
+			<div class="x">t, с</div>
+			<div class="cl"></div>
+		</div>
+		<div class="cl"></div>
+		<div class="graph">
+			<div class="descr">
+				<ul>
+					<li>H<sub>2</sub>S</li>
+					<li>5 Вольт</li>
+					<li>Дата</li>
+					<li>Серия</li>
+					<li class="active">Активен</li>
+				</ul>
+			</div>
+			<div class="y">
+				<span id="max2"></span>
+				<ul>
+					<li id="y28" class="ylvl"></li>
+					<li id="y27" class="ylvl"></li>
+					<li id="y26" class="ylvl"></li>
+					<li id="y25" class="ylvl"></li>
+					<li id="y24" class="ylvl"></li>
+					<li id="y23" class="ylvl"></li>
+					<li id="y22" class="ylvl"></li>
+					<li id="y21" class="ylvl"></li>
+					<li id="y20" class="ylvl"></li>
+					<li class="ylvl">0</li>
+				</ul>
+			</div>
+			<canvas id="c3" width="500" height="300"></canvas>
+			<div class="x">t, с</div>
+			<div class="cl"></div>
+		</div>
+		<div class="graph">
+			<div class="descr">
+				<ul>
+					<li>H<sub>2</sub>S</li>
+					<li>5 Вольт</li>
+					<li>Дата</li>
+					<li>Серия</li>
+					<li class="active">Активен</li>
+				</ul>
+			</div>
+			<div class="y">
+				<span id="max3"></span>
+				<ul>
+					<li id="y38" class="ylvl"></li>
+					<li id="y37" class="ylvl"></li>
+					<li id="y36" class="ylvl"></li>
+					<li id="y35" class="ylvl"></li>
+					<li id="y34" class="ylvl"></li>
+					<li id="y33" class="ylvl"></li>
+					<li id="y32" class="ylvl"></li>
+					<li id="y31" class="ylvl"></li>
+					<li id="y30" class="ylvl"></li>
+					<li class="ylvl">0</li>
+				</ul>
+			</div>
+			<canvas id="c4" width="500" height="300"></canvas>
+			<div class="x">t, с</div>
+			<div class="cl"></div>
+		</div>
+
+		<script>
+			window.onload = function() {
+				var xPts = 50, // точек по горизонтали
+						yPts = 10, // точек по вертикали
+						ch = 300,
+						cw = 500,
+						descr = {}, // описание датчиков
+						data = [[], [], [], []], // объект с массивами данных с датчиков
+						c1 = document.getElementById("c1").getContext("2d"), // canvas
+						c2 = document.getElementById("c2").getContext("2d"),
+						c3 = document.getElementById("c3").getContext("2d"),
+						c4 = document.getElementById("c4").getContext("2d");
+
+				setInterval(get,1000);
+
+				function get() { // делает запрос на страницу
+					var xmlhttp;
+					try {
+						xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						try {
+							xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch (E) {
+							xmlhttp = false;
+						}
+					}
+					if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+						xmlhttp = new XMLHttpRequest();
+					}
+
+					xmlhttp.open('GET', 'mc.php?a=1', true);
+					xmlhttp.onreadystatechange = function() {
+						if (xmlhttp.readyState == 4) {
+							if (xmlhttp.status == 200) {
+								console.log(JSON.parse(xmlhttp.responseText));
+								parseAns(JSON.parse(xmlhttp.responseText));
+								newScale();
+								newGraph();
+							}
+						}
+					};
+					xmlhttp.send(null);
+				};
+
+				function parseAns(o) {	// распихивает объект по внутренним переменным
+					descr = o.s;
+					for (var i = 0; i < 4; i++) {
+						if(data[i].length >= xPts) {
+							for (var j = 0; j < xPts; j++) {
+								data[i][j] = data[i][j + 1];
+							}
+							data[i][data[i].length-1] = o[i];
+						}else{
+							data[i][data[i].length] = o[i];
+						}
+						
+					}
+				};
+
+				function maximum(arr) {		// находим максимум
+					var res = 0;
+					for (var i = 0; i < arr.length + 1; i++) {
+						if (arr[i] > res) {
+							res = arr[i];
+						}
+					}
+					return res;
+				};
+
+				function newScale() {	// рисуем новую шкалу
+					var max = 0,
+					lvl = 0,
+					curlvl = 0,
+					rest = 0;
+
+					for (var i = 0; i < 4; i++) {
+						max = maximum(data[i]);
+						rest = max % 1000;
+						max = max+(1000-rest);
+						lvl = max / yPts;
+						document.getElementById('max' + i).innerHTML = max;
+						for (var j = 0; j < yPts - 1; j++) {
+							curlvl += lvl;
+							document.getElementById('y' + i + j).innerHTML = curlvl;
+						}
+						curlvl = 0;
+					}
+				};
+
+				function newGraph() {  // отрисовываем сами графики
+					var max = 0;
+					for (var i = 0; i < 4; i++) {
+						clr(i);
+						for (var j = 0; j < xPts; j++) {
+							max = document.getElementById("max" + i).innerHTML;
+							drawRect(i, j*9, (ch*data[i][j]/max));
+						}
+					}
+				};
+
+				function drawRect(num, x, y) {		// рисуем точку на графике
+					var t = getG(num);
+					t.fillRect(x, ch-y, 5, 2);
+				};
+				
+				function clr(num){
+					var t = getG(num);
+					t.fillStyle="#fff";
+					t.fillRect(0, 0, cw, ch);
+					t.fillStyle="#f00";
+				};
+				
+				function getG(n){switch (n){case 0:return c1;case 1:return c2;case 2:return c3;case 3:return c4;}};
+			};
+		</script>
+	</body>
+</html>
