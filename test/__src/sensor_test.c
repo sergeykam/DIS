@@ -121,6 +121,7 @@ static U8 DIS_command;
 static U8 DIS_number = 0x00;
 static U8 error_cnt = 0x00;
 static U8 configuration_flag;
+static U8 read_data_flag;
 /**************************************************
 * Function name	: 
 * Created by	: 
@@ -142,7 +143,7 @@ void main (void)
  
   while(1)
   {
-
+	
   };
 }
 /**************************************************
@@ -154,8 +155,17 @@ void main (void)
 ***************************************************/
 void timer_cb(void)
 {
-  if(configuration_flag == 0x01)
-  	sensor_read (DATA);
+//  if(configuration_flag == 0x01)
+//  {
+//		configuration_flag = 0x00;
+//  		sensor_read (DATA);
+//  }
+  if(read_data_flag)
+  {
+	read_data_flag = 0;
+	SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+  }
+  
 }
 /**************************************************
 * Function name	: 
@@ -223,10 +233,7 @@ void ss_high(void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
-
-  __delay_cycles(300);
-
-  SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+  read_data_flag = 1;
 }
 /**************************************************
 * Function name	: 
