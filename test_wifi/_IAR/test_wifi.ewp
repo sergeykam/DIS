@@ -1996,7 +1996,7 @@
     </file>
   </group>
   <file>
-    <name>$PROJ_DIR$\main.c</name>
+    <name>$PROJ_DIR$\..\__src\main.c</name>
   </file>
 </project>
 

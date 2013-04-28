@@ -32,8 +32,8 @@ void closeRoutine_cb (U8 *, U8);
 * CONSTS
 ***************************************************/
 //const __flash U8 cmd = "$$$";
-//const __flash U8 close = "close\n";
-//const __flash U8 ex = "exit\n";
+//const __flash U8 close = "close\r";
+//const __flash U8 exit = "exit\r";
 
 enum{
   CMD = 0,
@@ -67,7 +67,7 @@ void main(void)
 	__enable_interrupt();
 	UART_set_Rx_tout_cb (timeout_cb);
 	UART_set_Rx_error_cb (error_cb);
-	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
+	UART_receive (Rx_buffer, sizeof(Rx_buffer), 1000, Rx_cb);
     while(1){
 		
     }
@@ -97,8 +97,9 @@ void Tx_cb (void)
 void Rx_cb (U8 *buffer, U8 length)
 {
     if(0 == memcmp(Rx_buffer,Rx_get,10)){
+	  	__delay_cycles(100000);
 	    Rx_buffer[0] = 0;
-	  	UART_transmit (Tx_buffer, 61, (void(*)(void))closeRoutine_cb);
+	  	UART_transmit (Tx_buffer, sizeof(Tx_buffer), (void(*)(void))closeRoutine_cb);
     } else {
 	  	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
 	}
@@ -116,17 +117,17 @@ void closeRoutine_cb (U8 *buffer, U8 length)
   {
   case CMD:
 	wifi_status = CLOSE;
-	__delay_cycles(10000);
+	__delay_cycles(100000);
 	UART_transmit (cmd, 3, (void(*)(void))closeRoutine_cb);
 	break;
   case CLOSE:
 	wifi_status = EXIT;
-	__delay_cycles(10000);
+	__delay_cycles(100000);
 	UART_transmit (close, 7, (void(*)(void))closeRoutine_cb);
 	break;
   case EXIT:
     wifi_status = CMD;
-	__delay_cycles(10000);
+	__delay_cycles(100000);
     UART_transmit (ex, 6, (void(*)(void))Rx_cb);
 	break;
   }
