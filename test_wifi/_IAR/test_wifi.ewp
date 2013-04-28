@@ -783,7 +783,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>$TOOLKIT_DIR$\src\template\cfgm16.xcl</state>
+          <state>$TOOLKIT_DIR$\src\template\cfgm168pa.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
@@ -1991,6 +1991,9 @@
   </configuration>
   <group>
     <name>API</name>
+    <file>
+      <name>$PROJ_DIR$\..\..\__API\TIMER0_HW_API.c</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\..\..\__API\UART_API.c</name>
     </file>

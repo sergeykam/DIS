@@ -18,16 +18,18 @@
 ***************************************************/
 #include <device.h>
 #include <UART_API.h>
+#include <TIMER0_HW_API.h>
 #include "string.h"
+#include "pgmspace.h"
 /***************************************************
 *   Function Prototype Section
 ***************************************************/
 void Tx_cb (void);
 void Rx_cb (U8*, U8);
-//void getIP_cb (U8*, U8);
 void error_cb (U8*, U8, U8);
 void timeout_cb (U8*, U8);
-void closeRoutine_cb (U8 *, U8);
+void timer_cb (U8 *, U8);
+void exit_cb(void);
 /***************************************************
 * CONSTS
 ***************************************************/
@@ -35,35 +37,46 @@ void closeRoutine_cb (U8 *, U8);
 //const __flash U8 close = "close\r";
 //const __flash U8 exit = "exit\r";
 
+#define WAITING_TIME  2;
+
 enum{
-  CMD = 0,
-  CLOSE = 1,
-  EXIT = 2
+  IDLE = 0,
+  WAIT,
+  SEND_SITE,
+  SEND_DATA,
+  CMD,
+  CLOSE,
+  EXIT,
+  BUSY
 };
 
 /***************************************************
 * Static Variables Section
 ***************************************************/
-
+// CMDs
 U8 cmd[] = "$$$";
 U8 close[] = "close\n";
 U8 ex[] = "exit\n";
-
-U8 wifi_status = 0;
-
-U8 callback_msg[] = "-under_ISR";
-U8 waiting_msg[] = "-background_process";
+// statuses
+U8 wifi_status = IDLE;  // текуща€ работа с вай фай
+U8 wifi_timer_cnt = WAITING_TIME; 
+U8 wifi_task = WAIT; // задание дл€ вай вай
+U8 wifi_task_after_tx = IDLE; // задание дл€ вай вай
+// task pointer
+void (*task_ptr)(void) = 0;
+// HTML
 U8 Rx_buffer[16];
-U8 Rx_get[] = "GET / HTTP";
-U8 Tx_buffer[] = "<html><head><title>DIS</title></head><body>“ест</body></html>";
-U8 error_msg[] = "-error";
-U8 timeout_msg[] = "-nothing received";
+U8 Rx_get_site[] = "GET / HTTP";
+U8 Rx_get_data[] = "GET /?a=1 HTTP";
+U8 site[] = "HTTP/1.1$200$OK\n\n\r<html><head><title>DIS</title></head><body>“ест</body></html>\n\r";
+//U8 site[] = "<html><head><title>DIS</title></head><body>“ест</body></html>\n\r";
 
 void main(void)
 {
   	DDRD = 0xFF;
 	PORTD = 0xFF;
     UART_init (9600, DATABIT8 + STOPBIT1 + NOPARITY);
+	TIMER0_HW_API_init ((void(*)(void))timer_cb);
 	__enable_interrupt();
 	UART_set_Rx_tout_cb (timeout_cb);
 	UART_set_Rx_error_cb (error_cb);
@@ -71,18 +84,6 @@ void main(void)
     while(1){
 		
     }
-}
-
-/**************************************************
-* Function name	: void Tx_cb (void)
-* Created by		: halfin
-* Date created		: 03.03.04
-* Description		: UART callback function
-* Notes:	called under ISR
-**************************************************/
-void Tx_cb (void)
-{
-	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
 }
 
 /**************************************************
@@ -96,11 +97,20 @@ void Tx_cb (void)
 **************************************************/
 void Rx_cb (U8 *buffer, U8 length)
 {
-    if(0 == memcmp(Rx_buffer,Rx_get,10)){
-	    Rx_buffer[0] = 0;
-	  	UART_transmit (Tx_buffer, sizeof(Tx_buffer), (void(*)(void))closeRoutine_cb);
-    } else {
-	  	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
+	if(IDLE == wifi_status){	// если не в режиме ожидани€ то забиваем на все пакеты
+		if(0 == memcmp(Rx_buffer,Rx_get_site,10)){ // запрос на сайт
+			Rx_buffer[0] = 0;	// портим буффер Rx
+			// ставим на ожидание, а потом передачу
+			wifi_status = WAIT; 
+			wifi_task = SEND_SITE;
+		} else {
+			if(0 == memcmp(Rx_buffer,Rx_get_data,10)){
+				Rx_buffer[0] = 0;
+				// тут передаем данные
+			} else {
+				UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
+			}
+		}
 	}
 }
 /**************************************************
@@ -110,26 +120,48 @@ void Rx_cb (U8 *buffer, U8 length)
 * Description		: UART callback function
 * Notes:	called under ISR
 **************************************************/
-void closeRoutine_cb (U8 *buffer, U8 length)
+void timer_cb (U8 *buffer, U8 length)
 {
-  switch (wifi_status)
-  {
-  case CMD:
-	wifi_status = CLOSE;
-	__delay_cycles(100000);
-	UART_transmit (cmd, 3, (void(*)(void))closeRoutine_cb);
-	break;
-  case CLOSE:
-	wifi_status = EXIT;
-	__delay_cycles(100000);
-	UART_transmit (close, 7, (void(*)(void))closeRoutine_cb);
-	break;
-  case EXIT:
-    wifi_status = CMD;
-	__delay_cycles(100000);
-    UART_transmit (ex, 6, (void(*)(void))Rx_cb);
-	break;
-  }
+	switch (wifi_status)
+	{
+  		case IDLE:
+			break;
+  		case WAIT:
+			if(wifi_timer_cnt){
+				wifi_timer_cnt--;
+			} else {
+				wifi_timer_cnt = WAITING_TIME; 
+				wifi_status = wifi_task;
+			}
+			break;
+		case SEND_SITE:
+			wifi_status = BUSY;
+			wifi_task = CMD;
+			wifi_task_after_tx = WAIT;
+			UART_transmit (site, sizeof(site), Tx_cb);
+			break;
+  		case CMD:
+			wifi_status = BUSY;
+			wifi_task = CLOSE;
+			wifi_task_after_tx = WAIT;
+			UART_transmit (cmd, 3, Tx_cb);
+			break;
+  		case CLOSE:
+			wifi_status = BUSY;
+			wifi_task = EXIT;
+			wifi_task_after_tx = WAIT;
+			UART_transmit (close, 7, Tx_cb);
+			break;
+  		case EXIT:
+			wifi_status = IDLE;
+    		UART_transmit (ex, 6, exit_cb);
+			break;
+		case BUSY:
+			break;
+		default:
+			wifi_status = IDLE;
+			break;
+	}
 }
 /**************************************************
 * Function name	: void Tx_cb (void)
@@ -138,19 +170,19 @@ void closeRoutine_cb (U8 *buffer, U8 length)
 * Description		: UART callback function
 * Notes:	called under ISR
 **************************************************/
-void exitRoutine_cb (void)
-{
-	UART_transmit (ex, sizeof(ex), Tx_cb);
-	__delay_cycles(500);
+void Tx_cb(void){
+	wifi_status = wifi_task_after_tx;
 }
-
-
-
-
-
-
-
-
+/**************************************************
+* Function name	: void Tx_cb (void)
+* Created by		: halfin
+* Date created		: 03.03.04
+* Description		: UART callback function
+* Notes:	called under ISR
+**************************************************/
+void exit_cb(void){
+	UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
+}
 /**************************************************
 * Function name		: void error_cb	(I8 *buffer, U8 length, U8 error)
 *		I8*	buffer	: pointer to receive buffer
