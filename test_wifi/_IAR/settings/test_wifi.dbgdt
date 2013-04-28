@@ -19,8 +19,8 @@
           
           
           
-        <Column0>148</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
-      </Workspace>
+        <Column0>381</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      <PreferedWindows><Position>1</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></Workspace>
       <Disassembly>
         <PreferedWindows>
           
@@ -44,7 +44,7 @@
         <expressions>
           
           
-        <item>Rx_buffer</item><item>Rx_buffer</item><item/></expressions>
+        <item>Rx_buffer</item><item>Rx_buffer</item><item></item></expressions>
         <col-names>
           
           
@@ -56,7 +56,7 @@
           
           
           
-        <item>129</item><item>150</item><item>100</item><item>223</item></col-widths>
+        <item>114</item><item>150</item><item>100</item><item>223</item></col-widths>
       <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></WATCH_1>
     </Static>
     <Windows>
@@ -79,32 +79,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
-        <Tabs>
-          <Tab>
-            <Identity>TabID-25159-20918</Identity>
-            <TabName>Workspace</TabName>
-            <Factory>Workspace</Factory>
-            <Session>
-              
-            <NodeDict><ExpandedNode>&lt;ws&gt;</ExpandedNode><ExpandedNode>test_wifi</ExpandedNode></NodeDict></Session>
-          </Tab>
-        </Tabs>
-        
-      <SelectedTab>0</SelectedTab></Wnd1><Wnd2><Tabs><Tab><Identity>TabID-14606-2206</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd2></Windows>
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1><Tabs><Tab><Identity>TabID-8004-29728</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd1></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test\__src\sensor_test.c</Filename><XPos>0</XPos><YPos>118</YPos><SelStart>2554</SelStart><SelEnd>2555</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\device.h</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>975</SelStart><SelEnd>975</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\UART_API.h</Filename><XPos>0</XPos><YPos>36</YPos><SelStart>1228</SelStart><SelEnd>1228</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\UART_API.c</Filename><XPos>0</XPos><YPos>353</YPos><SelStart>9112</SelStart><SelEnd>9112</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\SPI_API.h</Filename><XPos>0</XPos><YPos>5</YPos><SelStart>1096</SelStart><SelEnd>1096</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\inc\iom168pa.h</Filename><XPos>0</XPos><YPos>36</YPos><SelStart>2674</SelStart><SelEnd>2687</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\SPI_API.c</Filename><XPos>0</XPos><YPos>211</YPos><SelStart>7962</SelStart><SelEnd>7962</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\_IAR\main.c</Filename><XPos>0</XPos><YPos>115</YPos><SelStart>3377</SelStart><SelEnd>3377</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>111</YPos><SelStart>3684</SelStart><SelEnd>3684</SelEnd></Tab><ActiveTab>8</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\device.h</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>900</SelStart><SelEnd>900</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\UART_API.c</Filename><XPos>0</XPos><YPos>371</YPos><SelStart>13220</SelStart><SelEnd>13220</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\TIMER0_HW_API.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>2804</SelStart><SelEnd>2804</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\TIMER0_HW_API.h</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>1187</SelStart><SelEnd>1187</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\inc\clib\pgmspace.h</Filename><XPos>0</XPos><YPos>30</YPos><SelStart>1569</SelStart><SelEnd>1593</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>92</YPos><SelStart>5957</SelStart><SelEnd>5957</SelEnd></Tab><ActiveTab>5</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-00e62978><key>iaridepm.enu1</key></Toolbar-00e62978></Sizes></Row0><Row1><Sizes><Toolbar-06b682e0><key>debuggergui.enu1</key></Toolbar-06b682e0></Sizes></Row1></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>585</Bottom><Right>222</Right><x>-2</x><y>-2</y><xscreen>120</xscreen><yscreen>160</yscreen><sizeHorzCX>153061</sizeHorzCX><sizeHorzCY>197044</sizeHorzCY><sizeVertCX>285714</sizeVertCX><sizeVertCY>722906</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>585</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>255102</sizeHorzCX><sizeHorzCY>246305</sizeHorzCY><sizeVertCX>255102</sizeVertCX><sizeVertCY>722906</sizeVertCY></Rect></Wnd2></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>158</Bottom><Right>786</Right><x>-2</x><y>-2</y><xscreen>788</xscreen><yscreen>160</yscreen><sizeHorzCX>1005102</sizeHorzCX><sizeHorzCY>197044</sizeHorzCY><sizeVertCX>153061</sizeVertCX><sizeVertCY>197044</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-03d82978><key>iaridepm.enu1</key></Toolbar-03d82978></Sizes></Row0><Row1><Sizes><Toolbar-02e97ab0><key>debuggergui.enu1</key></Toolbar-02e97ab0></Sizes></Row1></Top><Left><Row0><Sizes/></Row0></Left><Right><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>589</Bottom><Right>409</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>125000</sizeHorzCX><sizeHorzCY>241546</sizeHorzCY><sizeVertCX>256875</sizeVertCX><sizeVertCY>713768</sizeVertCY></Rect></Wnd1></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>170</Bottom><Right>1602</Right><x>-2</x><y>-2</y><xscreen>1604</xscreen><yscreen>172</yscreen><sizeHorzCX>1002500</sizeHorzCX><sizeHorzCY>207729</sizeHorzCY><sizeVertCX>1310000</sizeVertCX><sizeVertCY>207729</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

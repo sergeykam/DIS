@@ -1,0 +1,2019 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>XLINK Map File for "D:\diplom\SW\test_wifi\_IAR\Debug\Exe\test_wifi"</title>
+</head>
+<body bgcolor="#dde2a0" text=black>
+<h2 align=center>XLINK Map File for "D:\diplom\SW\test_wifi\_IAR\Debug\Exe\test_wifi"</h2>
+<h3 align=center>IAR Universal Linker V5.2.3.14</h3>
+<h4 align=center>Copyright (C) 1987-2011 IAR Systems AB.</h4>
+
+<p align=center>
+<a href="#Invocation Map">Invocation</a>
+&nbsp;&nbsp;<a href="#Program Entry">Program Entry</a>
+&nbsp;&nbsp;<a href="#Module Map">Module Map</a>
+&nbsp;&nbsp;<a href="#Module Summary">Module Summary</a>
+&nbsp;&nbsp;<a href="#Call Graph">Call Graph</a>
+&nbsp;&nbsp;<a href="#Segments in Address Order">Segment Map</a>
+&nbsp;&nbsp;<a href="#Memory Summary">Memory Summary</a>
+<p><hr>
+<p><a name="Invocation Map"></a><table>
+<tr valign=top>
+  <td><font size=2><b>Link&nbsp;time</font></b>
+  <td><font size=2>28/Apr/2013  23:34:13</font>
+<tr valign=top>
+  <td><font size=2><b>Target&nbsp;CPU</font></b>
+  <td><font size=2>A90</font>
+<tr valign=top>
+  <td><font size=2><b>List&nbsp;file</font></b>
+  <td><font size=2>D:\diplom\SW\test_wifi\_IAR\Debug\List\test_wifi.html</font>
+<tr valign=top>
+  <td><font size=2><b>Output&nbsp;file&nbsp;1</font></b>
+  <td><font size=2>D:\diplom\SW\test_wifi\_IAR\Debug\Exe\test_wifi.d90</font>
+<tr valign=top>
+  <td><font size=2><b></font></b>
+  <td><font size=2>Format: debug</font>
+<tr valign=top>
+  <td><font size=2><b></font></b>
+  <td><font size=2>UBROF version 10.0.6</font>
+<tr valign=top>
+  <td><font size=2><b></font></b>
+  <td><font size=2>Using library modules for C-SPY (-rt)</font>
+<tr valign=top>
+  <td><font size=2><b>Command&nbsp;line</font></b>
+  <td><font size=2></font>
+<code>D:\diplom\SW\test_wifi\_IAR\Debug\Obj\TIMER0_HW_API.r90
+D:\diplom\SW\test_wifi\_IAR\Debug\Obj\UART_API.r90
+D:\diplom\SW\test_wifi\_IAR\Debug\Obj\main.r90
+<b>-o</b>
+D:\diplom\SW\test_wifi\_IAR\Debug\Exe\test_wifi.d90
+<b>-l</b>
+D:\diplom\SW\test_wifi\_IAR\Debug\List\test_wifi.html
+<b>-x</b>msnioh
+<b>"-</b>"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\LIB\"
+<b>-f</b>
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\src\template\cfgm168pa.xcl"
+( <b>-D</b>_..X_INTVEC_SIZE=68
+<b>-D</b>_..X_FLASH_NEND=3FFF
+<b>-D</b>_..X_FLASH_END=3FFF
+<b>-D</b>_..X_SRAM_BASE=100
+<b>-D</b>_..X_SRAM_TBASE=0
+<b>-D</b>_..X_SRAM_TSIZE=0
+<b>-D</b>_..X_SRAM_END=4FF
+<b>-D</b>_..X_EXT_SRAM_BASE=_..X_SRAM_END
+<b>-D</b>_..X_EXT_SRAM_SIZE=0
+<b>-D</b>_..X_EXT_ROM_BASE=_..X_SRAM_END
+<b>-D</b>_..X_EXT_ROM_SIZE=0
+<b>-D</b>_..X_EXT_NV_BASE=_..X_SRAM_END
+<b>-D</b>_..X_EXT_NV_SIZE=0
+<b>-D</b>_..X_EEPROM_END=1FF
+<b>-D</b>_..X_EEPROM_START=0
+) <b>-D</b>_..X_HEAP_SIZE=0
+<b>-D</b>_..X_TINY_HEAP_SIZE=0
+<b>-D</b>_..X_NEAR_HEAP_SIZE=0
+<b>-D</b>_..X_FAR_HEAP_SIZE=0
+<b>-D</b>_..X_HUGE_HEAP_SIZE=0
+<b>-D</b>_..X_CSTACK_SIZE=20
+<b>-D</b>_..X_RSTACK_SIZE=20
+<b>-D</b>_..X_FLASH_CODE_END=_..X_FLASH_END
+<b>-f</b>
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\src\template\cfg3soim.xcl"
+( <b>-c</b>a90
+<b>-w</b>29
+<b>-Z</b>(CODE)INTVEC=0-(_..X_INTVEC_SIZE-1)
+<b>-Z</b>(CODE)TINY_F=_..X_FLASH_BASE-FF
+<b>-Z</b>(CODE)NEAR_F=_..X_FLASH_BASE-_..X_FLASH_NEND
+<b>-Z</b>(CODE)SWITCH=_..X_FLASH_BASE-_..X_FLASH_NEND
+<b>-Z</b>(CODE)DIFUNCT=_..X_FLASH_BASE-_..X_FLASH_NEND
+<b>-Z</b>(CODE)CODE=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-P</b>(CODE)FAR_F=[_..X_FLASH_BASE-_..X_FLASH_END]/10000
+<b>-Z</b>(CODE)INITTAB=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)HUGE_F=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)TINY_ID=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)NEAR_ID=_..X_FLASH_BASE-_..X_FLASH_END
+<b>-Z</b>(CODE)CHECKSUM#_..X_FLASH_END
+<b>-Z</b>(DATA)TINY_I,TINY_Z,TINY_N=_..X_SRAM_TBASE:+_..X_SRAM_TSIZE
+<b>-Z</b>(DATA)CSTACK+_..X_CSTACK_SIZE=_..X_CSTACK_BASE-_..X_CSTACK_END
+<b>-Z</b>(DATA)HEAP+_..X_HEAP_SIZE=_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(DATA)IOSTREAM_N#_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(DATA)NEAR_HEAP+_..X_NEAR_HEAP_SIZE=_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(DATA)RSTACK+_..X_RSTACK_SIZE=_..X_RSTACK_BASE-_..X_RSTACK_END
+<b>-Z</b>(DATA)NEAR_I,NEAR_Z,NEAR_N=_..X_SRAM_BASE-_..X_SRAM_END
+<b>-Z</b>(XDATA)EEPROM_I,EEPROM_N=_..X_EEPROM_START-_..X_EEPROM_END
+) <b>-D</b>_..X_FLASH_BASE=_..X_INTVEC_SIZE
+<b>-H</b>1895
+<b>-h</b>(CODE)0-(_..X_INTVEC_SIZE-1)
+<b>-D</b>_..X_CSTACK_BASE=_..X_SRAM_BASE
+<b>-D</b>_..X_CSTACK_END=_..X_SRAM_END
+<b>-D</b>_..X_RSTACK_BASE=_..X_SRAM_BASE
+<b>-D</b>_..X_RSTACK_END=_..X_SRAM_END
+<b>-r</b>t
+<b>-s</b>
+__program_start
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\LIB\CLIB\cl3s-ec_mul-sf.r90"
+<b>-e</b>_small_write=_formatted_write
+</code>
+</table>
+
+
+
+<p><hr><a name="Program Entry"></a><p>
+       Program entry at : CODE      00000000  Relocatable, from module : ?RESET
+
+
+<p><hr><p>
+<a name="Runtime Model"></a>
+<table bgcolor="#c0c0" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=2><font size=4><B>Runtime Model</B>
+</font>
+<tr>
+  <th><font size=2>Attribute</font>
+  <th><font size=2>Value</font>
+<tr valign=top>
+  <td><font size=2>__64bit_doubles</font>
+  <td><font size=2>disabled</font>
+<tr valign=top>
+  <td><font size=2>__SystemLibrary</font>
+  <td><font size=2>CLib</font>
+<tr valign=top>
+  <td><font size=2>__cpu</font>
+  <td><font size=2>3</font>
+<tr valign=top>
+  <td><font size=2>__cpu_name</font>
+  <td><font size=2>ATmega168PA</font>
+<tr valign=top>
+  <td><font size=2>__enhanced_core</font>
+  <td><font size=2>enabled</font>
+<tr valign=top>
+  <td><font size=2>__has_elpm</font>
+  <td><font size=2>false</font>
+<tr valign=top>
+  <td><font size=2>__memory_model</font>
+  <td><font size=2>2</font>
+<tr valign=top>
+  <td><font size=2>__rt_version</font>
+  <td><font size=2>3</font>
+<tr valign=top>
+  <td><font size=2>__tiny_avr</font>
+  <td><font size=2>false</font>
+</table>
+<p><hr><p>
+<h2><a name="Automatic Symbol Redirections">Automatic Symbol Redirections</a></h2>
+
+
+                  There are no automatic symbol redirections.
+
+<p><hr><p>
+<a name="Module Map"></a>
+<table bgcolor="#c0c0c0" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=6><font size=4><B>Module Map</B>
+</font>
+<tr>
+  <th><font size=2>File</font>
+  <th><font size=2>Module</font>
+  <th><font size=2>Segment</font>
+  <th><font size=2>Symbol</font>
+  <th><font size=2>Address</font>
+  <th><font size=2>Ref by</font>
+<tr valign=top>
+  <td rowspan=28 ><font size=2><b></b></font>
+  <td rowspan=28><font size=2><a name="MM\?ABS_ENTRY_MOD"><b>?ABS_ENTRY_MOD</b></a><br>Program module</font>
+  <td rowspan=28 ><font size=2><i>Absolute parts</i></font>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_RSTACK_END"><b>_..X_RSTACK_END</b></a>
+</font>
+  <td><font size=2>000004FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_RSTACK_BASE"><b>_..X_RSTACK_BASE</b></a>
+</font>
+  <td><font size=2>00000100 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_CSTACK_END"><b>_..X_CSTACK_END</b></a>
+</font>
+  <td><font size=2>000004FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_CSTACK_BASE"><b>_..X_CSTACK_BASE</b></a>
+</font>
+  <td><font size=2>00000100 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FLASH_BASE"><b>_..X_FLASH_BASE</b></a>
+</font>
+  <td><font size=2>00000068 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FLASH_CODE_END"><b>_..X_FLASH_CODE_END</b></a>
+</font>
+  <td><font size=2>00003FFF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_RSTACK_SIZE"><b>_..X_RSTACK_SIZE</b></a>
+</font>
+  <td><font size=2>00000020 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_CSTACK_SIZE"><b>_..X_CSTACK_SIZE</b></a>
+</font>
+  <td><font size=2>00000020 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_HUGE_HEAP_SIZE"><b>_..X_HUGE_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FAR_HEAP_SIZE"><b>_..X_FAR_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_NEAR_HEAP_SIZE"><b>_..X_NEAR_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_TINY_HEAP_SIZE"><b>_..X_TINY_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_HEAP_SIZE"><b>_..X_HEAP_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EEPROM_START"><b>_..X_EEPROM_START</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EEPROM_END"><b>_..X_EEPROM_END</b></a>
+</font>
+  <td><font size=2>000001FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EXT_NV_SIZE"><b>_..X_EXT_NV_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EXT_NV_BASE"><b>_..X_EXT_NV_BASE</b></a>
+</font>
+  <td><font size=2>000004FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EXT_ROM_SIZE"><b>_..X_EXT_ROM_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EXT_ROM_BASE"><b>_..X_EXT_ROM_BASE</b></a>
+</font>
+  <td><font size=2>000004FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EXT_SRAM_SIZE"><b>_..X_EXT_SRAM_SIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_EXT_SRAM_BASE"><b>_..X_EXT_SRAM_BASE</b></a>
+</font>
+  <td><font size=2>000004FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_SRAM_END"><b>_..X_SRAM_END</b></a>
+</font>
+  <td><font size=2>000004FF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_SRAM_TSIZE"><b>_..X_SRAM_TSIZE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_SRAM_TBASE"><b>_..X_SRAM_TBASE</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_SRAM_BASE"><b>_..X_SRAM_BASE</b></a>
+</font>
+  <td><font size=2>00000100 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FLASH_END"><b>_..X_FLASH_END</b></a>
+</font>
+  <td><font size=2>00003FFF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_FLASH_NEND"><b>_..X_FLASH_NEND</b></a>
+</font>
+  <td><font size=2>00003FFF </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?ABS_ENTRY_MOD\_..X_INTVEC_SIZE"><b>_..X_INTVEC_SIZE</b></a>
+</font>
+  <td><font size=2>00000068 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=26 ><font size=2><b>D:\diplom\SW\test_wifi\_IAR\Debug\Obj\TIMER0_HW_API.r90</b></font>
+  <td rowspan=26><font size=2><a name="MM\TIMER0_HW_API"><b>TIMER0_HW_API</b></a><br>Program module</font>
+  <td rowspan=3 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_1"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000006E - 0000006E<br>Segment part 1. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\TIMER0_HW_API\Segpart_14">TIMER0_HW_API_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\_A_TIMSK0"><b>_A_TIMSK0</b></a>
+</font>
+  <td><font size=2>0000006E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TIMSK0"><b>TIMSK0</b></a>
+</font>
+  <td><font size=2>0000006E </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_2"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000046 - 00000046<br>Segment part 2. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\TIMER0_HW_API\Segpart_14">TIMER0_HW_API_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\_A_TCNT0"><b>_A_TCNT0</b></a>
+</font>
+  <td><font size=2>00000046 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TCNT0"><b>TCNT0</b></a>
+</font>
+  <td><font size=2>00000046 </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_3"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000045 - 00000045<br>Segment part 3. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\TIMER0_HW_API\Segpart_14">TIMER0_HW_API_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\_A_TCCR0B"><b>_A_TCCR0B</b></a>
+</font>
+  <td><font size=2>00000045 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TCCR0B"><b>TCCR0B</b></a>
+</font>
+  <td><font size=2>00000045 </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_4"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000035 - 00000035<br>Segment part 4. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\TIMER0_HW_API\Segpart_14">TIMER0_HW_API_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\_A_TIFR0"><b>_A_TIFR0</b></a>
+</font>
+  <td><font size=2>00000035 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TIFR0"><b>TIFR0</b></a>
+</font>
+  <td><font size=2>00000035 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_12"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001BF - 000001C0<br>Segment part 12.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\TIMER0_HW_API\Segpart_14">TIMER0_HW_API_init</a>
+<br><a href="#MM\TIMER0_HW_API\Segpart_15">TIMER0_HW_OVF_ISR</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TIMER0_HW_API_OVF_cb"><b>TIMER0_HW_API_OVF_cb</b></a>
+</font>
+  <td><font size=2>000001BF </font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_14"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000068 - 00000099<br>Segment part 14.</font>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TIMER0_HW_API_init"><b>TIMER0_HW_API_init</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000068 </font>
+  <td><font size=2><a href="#MM\main\Segpart_33">main (main)</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_15"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000009A - 000000F7<br>Segment part 15.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\TIMER0_HW_API\Segpart_9">TIMER0_HW_OVF_ISR::??INTVEC 64</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TIMER0_HW_OVF_ISR"><b>TIMER0_HW_OVF_ISR</b></a>
+<br>               interrupt function
+<br>               calls indirect
+<br>               CSTACK = 00000000 ( 0000000F )
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>0000009A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_5"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000001F <br>Segment part 5. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\__?EECR"><b>__?EECR</b></a>
+</font>
+  <td><font size=2>0000001F </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_6"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000020 <br>Segment part 6. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\__?EEDR"><b>__?EEDR</b></a>
+</font>
+  <td><font size=2>00000020 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_7"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000021 <br>Segment part 7. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\__?EEARL"><b>__?EEARL</b></a>
+</font>
+  <td><font size=2>00000021 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_8"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 00000022 <br>Segment part 8. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\__?EEARH"><b>__?EEARH</b></a>
+</font>
+  <td><font size=2>00000022 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_9"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 00000043<br>Segment part 9. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\TIMER0_HW_OVF_ISR::??INTVEC 64"><b>TIMER0_HW_OVF_ISR::??INTVEC 64</b></a>
+</font>
+  <td><font size=2>00000040 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_10"><b>CSTACK</b></a></b><br>Segment part 10.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_11"><b>RSTACK</b></a></b><br>Segment part 11.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\TIMER0_HW_API\Segpart_13"><b>INITTAB</b></a></b><br>Relative segment<br>CODE 000006CA - 000006CF<br>Segment part 13.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_26">Rx_buffer (main)</a>
+<br><a href="#MM\TIMER0_HW_API\Segpart_12">TIMER0_HW_API_OVF_cb</a>
+<br><a href="#MM\UART_API\Segpart_21">UART_Rx_buffer (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_23">UART_Rx_cb_ptr (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_25">UART_Rx_cnt (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_18">UART_Rx_done_cb (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_19">UART_Rx_error_cb (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_20">UART_Rx_tout_cb (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_22">UART_Tx_buffer (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_16">UART_Tx_cb (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_24">UART_Tx_cnt (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_26">UART_cb_cnt (UART_API)</a>
+<br><a href="#MM\UART_API\Segpart_27">UART_timeout_cnt (UART_API)</a>
+<br><a href="#MM\main\Segpart_16">wifi_status (main)</a>
+<br><a href="#MM\main\Segpart_22">wifi_task_after_tx (main)</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\TIMER0_HW_API\?&lt;Segment init: NEAR_Z&gt;"><b>?&lt;Segment init: NEAR_Z&gt;</b></a>
+</font>
+  <td><font size=2>000006CA </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=66 ><font size=2><b>D:\diplom\SW\test_wifi\_IAR\Debug\Obj\UART_API.r90</b></font>
+  <td rowspan=66><font size=2><a name="MM\UART_API"><b>UART_API</b></a><br>Program module</font>
+  <td rowspan=3 ><font size=2><b><a name="MM\UART_API\Segpart_1"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 000000C6 - 000000C6<br>Segment part 1. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_31">UART_Tx_UDRE_ISR</a>
+<br><a href="#MM\UART_API\Segpart_29">UART_transmit</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\_A_UDR0"><b>_A_UDR0</b></a>
+</font>
+  <td><font size=2>000000C6 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UDR0"><b>UDR0</b></a>
+</font>
+  <td><font size=2>000000C6 </font>
+<tr valign=top>
+  <td rowspan=5 ><font size=2><b><a name="MM\UART_API\Segpart_2"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 000000C4 - 000000C5<br>Segment part 2. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_28">UART_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\_A_UBRR0"><b>_A_UBRR0</b></a>
+</font>
+  <td><font size=2>000000C4 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UBRR0"><b>UBRR0</b></a>
+</font>
+  <td><font size=2>000000C4 </font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UBRR0H"><b>UBRR0H</b></a>
+</font>
+  <td><font size=2>000000C5 </font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UBRR0L"><b>UBRR0L</b></a>
+</font>
+  <td><font size=2>000000C4 </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\UART_API\Segpart_3"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 000000C2 - 000000C2<br>Segment part 3. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_28">UART_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\_A_UCSR0C"><b>_A_UCSR0C</b></a>
+</font>
+  <td><font size=2>000000C2 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UCSR0C"><b>UCSR0C</b></a>
+</font>
+  <td><font size=2>000000C2 </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\UART_API\Segpart_4"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 000000C1 - 000000C1<br>Segment part 4. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_32">UART_Tx_TXC_ISR</a>
+<br><a href="#MM\UART_API\Segpart_31">UART_Tx_UDRE_ISR</a>
+<br><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<br><a href="#MM\UART_API\Segpart_29">UART_transmit</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\_A_UCSR0B"><b>_A_UCSR0B</b></a>
+</font>
+  <td><font size=2>000000C1 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UCSR0B"><b>UCSR0B</b></a>
+</font>
+  <td><font size=2>000000C1 </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\UART_API\Segpart_5"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 000000C0 - 000000C0<br>Segment part 5. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_31">UART_Tx_UDRE_ISR</a>
+<br><a href="#MM\UART_API\Segpart_28">UART_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\_A_UCSR0A"><b>_A_UCSR0A</b></a>
+</font>
+  <td><font size=2>000000C0 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UCSR0A"><b>UCSR0A</b></a>
+</font>
+  <td><font size=2>000000C0 </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\UART_API\Segpart_6"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000005F - 0000005F<br>Segment part 6. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<br><a href="#MM\UART_API\Segpart_29">UART_transmit</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\_A_SREG"><b>_A_SREG</b></a>
+</font>
+  <td><font size=2>0000005F </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\SREG"><b>SREG</b></a>
+</font>
+  <td><font size=2>0000005F </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_16"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001C1 - 000001C2<br>Segment part 16.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_32">UART_Tx_TXC_ISR</a>
+<br><a href="#MM\UART_API\Segpart_29">UART_transmit</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_cb"><b>UART_Tx_cb</b></a>
+</font>
+  <td><font size=2>000001C1 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_18"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001C3 - 000001C4<br>Segment part 18.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_done_cb"><b>UART_Rx_done_cb</b></a>
+</font>
+  <td><font size=2>000001C3 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_19"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001C5 - 000001C6<br>Segment part 19.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_35">UART_set_Rx_error_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_error_cb"><b>UART_Rx_error_cb</b></a>
+</font>
+  <td><font size=2>000001C5 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_20"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001C7 - 000001C8<br>Segment part 20.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_36">UART_set_Rx_tout_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_tout_cb"><b>UART_Rx_tout_cb</b></a>
+</font>
+  <td><font size=2>000001C7 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_21"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001C9 - 000001CA<br>Segment part 21.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_buffer"><b>UART_Rx_buffer</b></a>
+</font>
+  <td><font size=2>000001C9 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_22"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001CB - 000001CC<br>Segment part 22.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_31">UART_Tx_UDRE_ISR</a>
+<br><a href="#MM\UART_API\Segpart_29">UART_transmit</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_buffer"><b>UART_Tx_buffer</b></a>
+</font>
+  <td><font size=2>000001CB </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_23"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001CD - 000001CE<br>Segment part 23.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_cb_ptr"><b>UART_Rx_cb_ptr</b></a>
+</font>
+  <td><font size=2>000001CD </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_24"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001CF - 000001CF<br>Segment part 24.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_32">UART_Tx_TXC_ISR</a>
+<br><a href="#MM\UART_API\Segpart_31">UART_Tx_UDRE_ISR</a>
+<br><a href="#MM\UART_API\Segpart_29">UART_transmit</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_cnt"><b>UART_Tx_cnt</b></a>
+</font>
+  <td><font size=2>000001CF </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_25"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001D0 - 000001D0<br>Segment part 25.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_cnt"><b>UART_Rx_cnt</b></a>
+</font>
+  <td><font size=2>000001D0 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_26"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001D1 - 000001D1<br>Segment part 26.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_cb_cnt"><b>UART_cb_cnt</b></a>
+</font>
+  <td><font size=2>000001D1 </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_27"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001D2 - 000001D3<br>Segment part 27.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_34">UART_Rx_ISR</a>
+<br><a href="#MM\UART_API\Segpart_33">UART_receive</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_timeout_cnt"><b>UART_timeout_cnt</b></a>
+</font>
+  <td><font size=2>000001D2 </font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_28"><b>CODE</b></a></b><br>Relative segment<br>CODE 000000F8 - 00000115<br>Segment part 28.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_init"><b>UART_init</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000000F8 </font>
+  <td><font size=2><a href="#MM\main\Segpart_33">main (main)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_29"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000116 - 00000225<br>Segment part 29.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_transmit"><b>UART_transmit</b></a>
+<br>               calls indirect
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000116 </font>
+  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb (main)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_30"><b>CODE</b></a></b><br>Segment part 30.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_query"><b>UART_Tx_query</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_31"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000226 - 00000293<br>Segment part 31.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_12">UART_Tx_UDRE_ISR::??INTVEC 76</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_UDRE_ISR"><b>UART_Tx_UDRE_ISR</b></a>
+<br>               interrupt function
+<br>               CSTACK = 00000000 ( 00000006 )
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000226 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_32"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000294 - 000002EF<br>Segment part 32.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_13">UART_Tx_TXC_ISR::??INTVEC 80</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_TXC_ISR"><b>UART_Tx_TXC_ISR</b></a>
+<br>               interrupt function
+<br>               calls indirect
+<br>               CSTACK = 00000000 ( 0000000F )
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000294 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_33"><b>CODE</b></a></b><br>Relative segment<br>CODE 000002F0 - 00000351<br>Segment part 33.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_receive"><b>UART_receive</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000002F0 </font>
+  <td><font size=2><a href="#MM\main\Segpart_34">Rx_cb (main)</a>
+<br><a href="#MM\main\Segpart_38">error_cb (main)</a>
+<br><a href="#MM\main\Segpart_37">exit_cb (main)</a>
+<br><a href="#MM\main\Segpart_33">main (main)</a>
+<br><a href="#MM\main\Segpart_39">timeout_cb (main)</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\UART_API\Segpart_34"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000352 - 0000042D<br>Segment part 34.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\UART_API\Segpart_11">UART_Rx_ISR::??INTVEC 72</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_ISR"><b>UART_Rx_ISR</b></a>
+<br>               interrupt function
+<br>               calls indirect
+<br>               CSTACK = 00000000 ( 0000000F )
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000352 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_35"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000042E - 00000437<br>Segment part 35.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_set_Rx_error_cb"><b>UART_set_Rx_error_cb</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>0000042E </font>
+  <td><font size=2><a href="#MM\main\Segpart_33">main (main)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_36"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000438 - 00000441<br>Segment part 36.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_set_Rx_tout_cb"><b>UART_set_Rx_tout_cb</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000438 </font>
+  <td><font size=2><a href="#MM\main\Segpart_33">main (main)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_37"><b>CODE</b></a></b><br>Segment part 37.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_timer_cout"><b>UART_timer_cout</b></a>
+<br>               calls direct and indirect
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_38"><b>CODE</b></a></b><br>Segment part 38.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_break_receive"><b>UART_break_receive</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_7"><b>ABSOLUTE</b></a></b><br>Segment part 7.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_5">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\UART_API\__?EECR"><b>__?EECR</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_8"><b>ABSOLUTE</b></a></b><br>Segment part 8.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_6">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\UART_API\__?EEDR"><b>__?EEDR</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_9"><b>ABSOLUTE</b></a></b><br>Segment part 9.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_7">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\UART_API\__?EEARL"><b>__?EEARL</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_10"><b>ABSOLUTE</b></a></b><br>Segment part 10.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_8">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\UART_API\__?EEARH"><b>__?EEARH</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_11"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 0000004B<br>Segment part 11. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Rx_ISR::??INTVEC 72"><b>UART_Rx_ISR::??INTVEC 72</b></a>
+</font>
+  <td><font size=2>00000048 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_12"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 0000004F<br>Segment part 12. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_UDRE_ISR::??INTVEC 76"><b>UART_Tx_UDRE_ISR::??INTVEC 76</b></a>
+</font>
+  <td><font size=2>0000004C </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_13"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 00000053<br>Segment part 13. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\UART_API\UART_Tx_TXC_ISR::??INTVEC 80"><b>UART_Tx_TXC_ISR::??INTVEC 80</b></a>
+</font>
+  <td><font size=2>00000050 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_14"><b>CSTACK</b></a></b><br>Segment part 14.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_15"><b>RSTACK</b></a></b><br>Segment part 15.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\UART_API\Segpart_17"><b>INITTAB</b></a></b><br>Segment part 17.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_13">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\UART_API\?&lt;Segment init: NEAR_Z&gt;"><b>?&lt;Segment init: NEAR_Z&gt;</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=61 ><font size=2><b>D:\diplom\SW\test_wifi\_IAR\Debug\Obj\main.r90</b></font>
+  <td rowspan=61><font size=2><a name="MM\main"><b>main</b></a><br>Program module</font>
+  <td rowspan=3 ><font size=2><b><a name="MM\main\Segpart_1"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000002B - 0000002B<br>Segment part 1. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_PORTD"><b>_A_PORTD</b></a>
+</font>
+  <td><font size=2>0000002B </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\PORTD"><b>PORTD</b></a>
+</font>
+  <td><font size=2>0000002B </font>
+<tr valign=top>
+  <td rowspan=3 ><font size=2><b><a name="MM\main\Segpart_2"><b>ABSOLUTE</b></a></b><br>Relative segment<br>DATA 0000002A - 0000002A<br>Segment part 2. ROOT.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\_A_DDRD"><b>_A_DDRD</b></a>
+</font>
+  <td><font size=2>0000002A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\DDRD"><b>DDRD</b></a>
+</font>
+  <td><font size=2>0000002A </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_9"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 00000140 - 00000143<br>Segment part 9.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\cmd"><b>cmd</b></a>
+</font>
+  <td><font size=2>00000140 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_12"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 00000144 - 0000014A<br>Segment part 12.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\close"><b>close</b></a>
+</font>
+  <td><font size=2>00000144 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_14"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 0000014B - 00000150<br>Segment part 14.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\ex"><b>ex</b></a>
+</font>
+  <td><font size=2>0000014B </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_16"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001D4 - 000001D4<br>Segment part 16.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_34">Rx_cb</a>
+<br><a href="#MM\main\Segpart_36">Tx_cb</a>
+<br><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\wifi_status"><b>wifi_status</b></a>
+</font>
+  <td><font size=2>000001D4 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_18"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 00000151 - 00000151<br>Segment part 18.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\wifi_timer_cnt"><b>wifi_timer_cnt</b></a>
+</font>
+  <td><font size=2>00000151 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_20"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 00000152 - 00000152<br>Segment part 20.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_34">Rx_cb</a>
+<br><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\wifi_task"><b>wifi_task</b></a>
+</font>
+  <td><font size=2>00000152 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_22"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001D5 - 000001D5<br>Segment part 22.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_36">Tx_cb</a>
+<br><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\wifi_task_after_tx"><b>wifi_task_after_tx</b></a>
+</font>
+  <td><font size=2>000001D5 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_23"><b>NEAR_Z</b></a></b><br>Segment part 23.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\main\site_part_to_tx"><b>site_part_to_tx</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_24"><b>NEAR_Z</b></a></b><br>Segment part 24.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\main\task_ptr"><b>task_ptr</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_25"><b>NEAR_Z</b></a></b><br>Segment part 25.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\main\Tx_buffer"><b>Tx_buffer</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_26"><b>NEAR_Z</b></a></b><br>Relative segment<br>DATA 000001D6 - 000001E5<br>Segment part 26.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_34">Rx_cb</a>
+<br><a href="#MM\main\Segpart_38">error_cb</a>
+<br><a href="#MM\main\Segpart_37">exit_cb</a>
+<br><a href="#MM\main\Segpart_33">main</a>
+<br><a href="#MM\main\Segpart_39">timeout_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\Rx_buffer"><b>Rx_buffer</b></a>
+</font>
+  <td><font size=2>000001D6 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_27"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 00000153 - 0000015D<br>Segment part 27.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_34">Rx_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\Rx_get_site"><b>Rx_get_site</b></a>
+</font>
+  <td><font size=2>00000153 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_29"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 0000015E - 0000016C<br>Segment part 29.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_34">Rx_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\Rx_get_data"><b>Rx_get_data</b></a>
+</font>
+  <td><font size=2>0000015E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_31"><b>NEAR_I</b></a></b><br>Relative segment<br>DATA 0000016D - 000001BE<br>Segment part 31.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\site"><b>site</b></a>
+</font>
+  <td><font size=2>0000016D </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_33"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000442 - 00000485<br>Segment part 33.</font>
+  <td nowrap><font size=2><a name="MM\main\main"><b>main</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000442 </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_9">?cstartup_call_main (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_34"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000486 - 000004F9<br>Segment part 34.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_38">error_cb</a>
+<br><a href="#MM\main\Segpart_37">exit_cb</a>
+<br><a href="#MM\main\Segpart_33">main</a>
+<br><a href="#MM\main\Segpart_39">timeout_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\Rx_cb"><b>Rx_cb</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000486 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_35"><b>CODE</b></a></b><br>Relative segment<br>CODE 000004FA - 000005D5<br>Segment part 35.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\timer_cb"><b>timer_cb</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000004FA </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_36"><b>CODE</b></a></b><br>Relative segment<br>CODE 000005D6 - 000005DF<br>Segment part 36.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\Tx_cb"><b>Tx_cb</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000005D6 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_37"><b>CODE</b></a></b><br>Relative segment<br>CODE 000005E0 - 000005F3<br>Segment part 37.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_35">timer_cb</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\exit_cb"><b>exit_cb</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000005E0 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_38"><b>CODE</b></a></b><br>Relative segment<br>CODE 000005F4 - 00000607<br>Segment part 38.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\error_cb"><b>error_cb</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>000005F4 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_39"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000608 - 0000061B<br>Segment part 39.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_33">main</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\timeout_cb"><b>timeout_cb</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000608 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_3"><b>ABSOLUTE</b></a></b><br>Segment part 3.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_5">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\main\__?EECR"><b>__?EECR</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_4"><b>ABSOLUTE</b></a></b><br>Segment part 4.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_6">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\main\__?EEDR"><b>__?EEDR</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_5"><b>ABSOLUTE</b></a></b><br>Segment part 5.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_7">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\main\__?EEARL"><b>__?EEARL</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_6"><b>ABSOLUTE</b></a></b><br>Segment part 6.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_8">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\main\__?EEARH"><b>__?EEARH</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_7"><b>CSTACK</b></a></b><br>Segment part 7.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_8"><b>RSTACK</b></a></b><br>Segment part 8.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_10"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 000006D6 - 000006D9<br>Segment part 10.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_9">cmd</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\main\Segpart_11"><b>INITTAB</b></a></b><br>Relative segment<br>CODE 000006D0 - 000006D5<br>Segment part 11.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_29">Rx_get_data</a>
+<br><a href="#MM\main\Segpart_27">Rx_get_site</a>
+<br><a href="#MM\main\Segpart_12">close</a>
+<br><a href="#MM\main\Segpart_9">cmd</a>
+<br><a href="#MM\main\Segpart_14">ex</a>
+<br><a href="#MM\main\Segpart_31">site</a>
+<br><a href="#MM\main\Segpart_20">wifi_task</a>
+<br><a href="#MM\main\Segpart_18">wifi_timer_cnt</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\main\?&lt;Segment init: NEAR_I&gt;"><b>?&lt;Segment init: NEAR_I&gt;</b></a>
+</font>
+  <td><font size=2>000006D0 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_13"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 000006DA - 000006E0<br>Segment part 13.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_12">close</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_15"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 000006E1 - 000006E6<br>Segment part 15.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_14">ex</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_17"><b>INITTAB</b></a></b><br>Segment part 17.<br> TENTATIVE. Used definition from <a href="#MM\TIMER0_HW_API\Segpart_13">TIMER0_HW_API</a></font>
+  <td nowrap><font size=2><a name="MM\main\?&lt;Segment init: NEAR_Z&gt;"><b>?&lt;Segment init: NEAR_Z&gt;</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_19"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 000006E7 - 000006E7<br>Segment part 19.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_18">wifi_timer_cnt</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_21"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 000006E8 - 000006E8<br>Segment part 21.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_20">wifi_task</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_28"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 000006E9 - 000006F3<br>Segment part 28.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_27">Rx_get_site</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_30"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 000006F4 - 00000702<br>Segment part 30.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_29">Rx_get_data</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\main\Segpart_32"><b>NEAR_ID</b></a></b><br>Relative segment<br>CODE 00000703 - 00000754<br>Segment part 32.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\main\Segpart_31">site</a>
+<tr valign=top>
+  <td rowspan=35 ><font size=2><b>C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\LIB\CLIB\cl3s-ec_mul-sf.r90</b></font>
+  <td rowspan=5><font size=2><a name="MM\?__exit"><b>?__exit</b></a><br>Library module</font>
+  <td rowspan=5 ><font size=2><b><a name="MM\?__exit\Segpart_0"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000061C - 00000621<br>Segment part 0.</font>
+  <td nowrap><font size=2><a name="MM\?__exit\__exit"><b>__exit</b></a>
+</font>
+  <td><font size=2>0000061E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\?C_EXIT"><b>?C_EXIT</b></a>
+</font>
+  <td><font size=2>0000061E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\?C_FUNCALL"><b>?C_FUNCALL</b></a>
+</font>
+  <td><font size=2>0000061C </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\_exit"><b>_exit</b></a>
+</font>
+  <td><font size=2>0000061C </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_9">?cstartup_call_main (?C_STARTUP)</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?__exit\exit"><b>exit</b></a>
+</font>
+  <td><font size=2>0000061C </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_9">?cstartup_call_main (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=2><font size=2><a name="MM\?RESET"><b>?RESET</b></a><br>Library module</font>
+  <td rowspan=2 ><font size=2><b><a name="MM\?RESET\Segpart_0"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 00000003<br>Segment part 0. ROOT.</font>
+  <td nowrap><font size=2><a name="MM\?RESET\__program_start"><b>__program_start</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td><font size=2><a href="#MM\?ABS_ENTRY_MOD\Absparts">Absolute parts (?ABS_ENTRY_MOD)</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?RESET\?RESET"><b>?RESET</b></a>
+</font>
+  <td><font size=2>00000000 </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_2">Segment part 2 (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=13><font size=2><a name="MM\?C_STARTUP"><b>?C_STARTUP</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_0"><b>CSTACK</b></a></b><br>Segment part 0.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_1"><b>RSTACK</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_2"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000622 <br>Segment part 2.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?C_STARTUP"><b>?C_STARTUP</b></a>
+</font>
+  <td><font size=2>00000622 </font>
+  <td><font size=2><a href="#MM\?RESET\Segpart_0">Segment part 0 (?RESET)</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\__RESTART"><b>__RESTART</b></a>
+</font>
+  <td><font size=2>00000622 </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_3"><b>CODE</b></a></b><br>Segment part 3.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\__RSTACK_in_external_ram"><b>__RSTACK_in_external_ram</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_4"><b>CODE</b></a></b><br>Segment part 4.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\__RSTACK_in_external_ram_new_way"><b>__RSTACK_in_external_ram_new_way</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_5"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000622 - 0000062D<br>Segment part 5.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_2">Segment part 2</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_6"><b>CODE</b></a></b><br>Segment part 6.<br> NOT NEEDED.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?zero_reg_initialization"><b>?zero_reg_initialization</b></a>
+</font>
+  <td><font size=2></font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_7"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000062E - 00000631<br>Segment part 7.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_5">Segment part 5</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?call_low_level_init"><b>?call_low_level_init</b></a>
+</font>
+  <td><font size=2>0000062E </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_8"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000632 - 00000639<br>Segment part 8.</font>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?need_segment_init"><b>?need_segment_init</b></a>
+</font>
+  <td><font size=2>00000632 </font>
+  <td><font size=2><a href="#MM\main\Segpart_11">?&lt;Segment init: NEAR_I&gt; (main)</a>
+<br><a href="#MM\TIMER0_HW_API\Segpart_13">?&lt;Segment init: NEAR_Z&gt; (TIMER0_HW_API)</a>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?C_STARTUP\Segpart_9"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000063A - 00000645<br>Segment part 9.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_7">?call_low_level_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?C_STARTUP\?cstartup_call_main"><b>?cstartup_call_main</b></a>
+</font>
+  <td><font size=2>0000063A </font>
+  <td align=center><font size=2>-</font>
+<tr valign=top>
+  <td rowspan=3><font size=2><a name="MM\?low_level_init"><b>?low_level_init</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?low_level_init\Segpart_3"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000646 - 00000649<br>Segment part 3.</font>
+  <td nowrap><font size=2><a name="MM\?low_level_init\__low_level_init"><b>__low_level_init</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000646 </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_7">?call_low_level_init (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?low_level_init\Segpart_1"><b>CSTACK</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?low_level_init\Segpart_2"><b>RSTACK</b></a></b><br>Segment part 2.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=3><font size=2><a name="MM\?memcmp"><b>?memcmp</b></a><br>Library module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?memcmp\Segpart_3"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000064A - 00000679<br>Segment part 3.</font>
+  <td nowrap><font size=2><a name="MM\?memcmp\memcmp"><b>memcmp</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>0000064A </font>
+  <td><font size=2><a href="#MM\main\Segpart_34">Rx_cb (main)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?memcmp\Segpart_1"><b>CSTACK</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?memcmp\Segpart_2"><b>RSTACK</b></a></b><br>Segment part 2.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=9><font size=2><a name="MM\?segment_init"><b>?segment_init</b></a><br>Library module</font>
+  <td rowspan=2 ><font size=2><b><a name="MM\?segment_init\Segpart_3"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000067A - 00000681<br>Segment part 3.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?segment_init\Segpart_6">__segment_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?segment_init\__memclr"><b>__memclr</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>0000067A </font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b><a name="MM\?segment_init\Segpart_4"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000682 - 00000689<br>Segment part 4.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?segment_init\Segpart_6">__segment_init</a>
+<tr valign=top>
+  <td nowrap><font size=2><a name="MM\?segment_init\__flashcpy"><b>__flashcpy</b></a>
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000682 </font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_5"><b>CODE</b></a></b><br>Relative segment<br>CODE 0000068A - 00000695<br>Segment part 5.</font>
+  <td><font size=2>  <i><font size=2>Intra module refs</font>
+  <td><font size=2>&nbsp;  <td><font size=2><a href="#MM\?segment_init\Segpart_4">__flashcpy</a>
+<br><a href="#MM\?segment_init\Segpart_3">__memclr</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_6"><b>CODE</b></a></b><br>Relative segment<br>CODE 00000696 - 000006C9<br>Segment part 6.</font>
+  <td nowrap><font size=2><a name="MM\?segment_init\__segment_init"><b>__segment_init</b></a>
+<br>               calls direct
+<br>               RSTACK = 00000000 ( 00000002 )
+</font>
+  <td><font size=2>00000696 </font>
+  <td><font size=2><a href="#MM\?C_STARTUP\Segpart_8">?need_segment_init (?C_STARTUP)</a>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_1"><b>CSTACK</b></a></b><br>Segment part 1.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_2"><b>RSTACK</b></a></b><br>Segment part 2.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?segment_init\Segpart_7"><b>INITTAB</b></a></b><br>Segment part 7.<br> NOT NEEDED.</font>
+<tr valign=top>
+  <td rowspan=2 ><font size=2><b></b></font>
+  <td rowspan=2><font size=2><a name="MM\?FILLER_BYTES"><b>?FILLER_BYTES</b></a><br>Program module</font>
+  <td rowspan=1 ><font size=2><b><a name="MM\?FILLER_BYTES\Segpart_1"><b>INTVEC</b></a></b><br>Common segment<br>CODE 00000000 - 00000053<br>Segment part 1.</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2><b><a name="MM\?FILLER_BYTES\Segpart_0"><b>?FILL1</b></a></b><br>Relative segment<br>CODE 00000054 - 00000067<br>Segment part 0.</font>
+</table>
+
+
+<p><hr><p>
+<h2><a name="Module Summary">Module Summary</a></h2>
+
+
+<table bgcolor="#d0d0d0" border=1 cellpadding=2>
+<tr>
+<th align=left valign=top><font size=2>Module</font></th>
+<th align=right valign=top><font size=2>CODE</font></th>
+<th colspan=2 valign=top><font size=2>DATA</font></th>
+</tr>
+<tr>
+<td valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>(Rel)</font></td>
+<td align=right valign=top><font size=2>(Rel)</font></td>
+<td align=right valign=top><font size=2>(Abs)</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?C_STARTUP</font></td>
+<td align=right valign=top><font size=2>36</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?FILLER_BYTES<br>&nbsp;&nbsp;+&nbsp;common</font></td>
+<td align=right valign=top><font size=2>20<br>84</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?RESET<br>&nbsp;&nbsp;+&nbsp;common</font></td>
+<td align=right valign=top><font size=2><br>4</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?__exit</font></td>
+<td align=right valign=top><font size=2>6</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?low_level_init</font></td>
+<td align=right valign=top><font size=2>4</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?memcmp</font></td>
+<td align=right valign=top><font size=2>48</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>?segment_init</font></td>
+<td align=right valign=top><font size=2>80</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>TIMER0_HW_API<br>&nbsp;&nbsp;+&nbsp;shared<br>&nbsp;&nbsp;+&nbsp;common</font></td>
+<td align=right valign=top><font size=2>144<br>6<br>68</font></td>
+<td align=right valign=top><font size=2>2</font></td>
+<td align=right valign=top><font size=2>4</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>UART_API<br>&nbsp;&nbsp;+&nbsp;common</font></td>
+<td align=right valign=top><font size=2>842<br>84</font></td>
+<td align=right valign=top><font size=2>19</font></td>
+<td align=right valign=top><font size=2>7</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>main</font></td>
+<td align=right valign=top><font size=2>607</font></td>
+<td align=right valign=top><font size=2>145</font></td>
+<td align=right valign=top><font size=2>2</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>N/A&nbsp;(command&nbsp;line)</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>64</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<td valign=top><font size=2>N/A&nbsp;(alignment)</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+<td align=right valign=top><font size=2>&nbsp;</font></td>
+</tr>
+<tr>
+<th align=left valign=top><font size=2>Total:<br>&nbsp;&nbsp;+&nbsp;common</font></th>
+<th align=right valign=top><font size=2>1&nbsp;793<br>84</font></th>
+<th align=right valign=top><font size=2>230</font></th>
+<th align=right valign=top><font size=2>13</font></th>
+</tr>
+</table>
+<p><hr><p>
+<a name="Call Graph"></a>
+<table bgcolor="#9fd975" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=8><font size=4><B>Call Graph</B>
+</font>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Interrupt function tree that does not make<br>indirect calls</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\UART_API\UART_Tx_UDRE_ISR">UART_Tx_UDRE_ISR</a> <a name="CG\00106E34"><b>*</b></a></font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Indirectly called function tree that does not make<br>indirect calls (Is not an interrupt and is not flagged<br>as not overlayable)</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\?memcmp\memcmp">memcmp</a> <a name="CG\002972CC"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_receive">UART_receive</a> <a name="CG\001070E4"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\Rx_cb">Rx_cb</a> <a name="CG\001081CC"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>6</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Indirectly called function tree that does not make<br>indirect calls (Is not an interrupt and is not flagged<br>as not overlayable)</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_transmit">UART_transmit</a> <a name="CG\00107394"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\timer_cb">timer_cb</a> <a name="CG\001085D4"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>6</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Indirectly called function tree that does not make<br>indirect calls (Is not an interrupt and is not flagged<br>as not overlayable)</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\Tx_cb">Tx_cb</a> <a name="CG\00108278"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>4</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Indirectly called function tree that does not make<br>indirect calls (Is not an interrupt and is not flagged<br>as not overlayable)</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_receive">UART_receive</a> (<a href="#CG\001070E4">to first</a>)</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\exit_cb">exit_cb</a> <a name="CG\001083D0"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>6</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Indirectly called function tree that does not make<br>indirect calls (Is not an interrupt and is not flagged<br>as not overlayable)</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_receive">UART_receive</a> (<a href="#CG\001070E4">to first</a>)</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\error_cb">error_cb</a> <a name="CG\00108324"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>6</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Indirectly called function tree that does not make<br>indirect calls (Is not an interrupt and is not flagged<br>as not overlayable)</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_receive">UART_receive</a> (<a href="#CG\001070E4">to first</a>)</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\timeout_cb">timeout_cb</a> <a name="CG\00108528"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>4</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>6</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Interrupt function tree that makes indirect calls<br></font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>6</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\TIMER0_HW_API\TIMER0_HW_OVF_ISR">TIMER0_HW_OVF_ISR</a> <a name="CG\00105388"><b>*</b></a></font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>F</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>15</font>
+  <td align=right><font size=2>8</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Interrupt function tree that makes indirect calls<br></font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>15</font>
+  <td align=right><font size=2>8</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\UART_API\UART_Tx_TXC_ISR">UART_Tx_TXC_ISR</a> <a name="CG\00106D88"><b>*</b></a></font>
+  <td align=right><font size=2>15</font>
+  <td align=right><font size=2>8</font>
+  <td align=right><font size=2>F</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>24</font>
+  <td align=right><font size=2>A</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Interrupt function tree that makes indirect calls<br></font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>24</font>
+  <td align=right><font size=2>A</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\UART_API\UART_Rx_ISR">UART_Rx_ISR</a> <a name="CG\00106CDC"><b>*</b></a></font>
+  <td align=right><font size=2>24</font>
+  <td align=right><font size=2>A</font>
+  <td align=right><font size=2>F</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>C</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Function tree</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>C</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_set_Rx_tout_cb">UART_set_Rx_tout_cb</a> <a name="CG\0010723C"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>C</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_set_Rx_error_cb">UART_set_Rx_error_cb</a> <a name="CG\00107190"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>C</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_receive">UART_receive</a> (<a href="#CG\001070E4">to first</a>)</font>
+  <td align=right><font size=2>6</font>
+  <td align=right><font size=2>2</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\UART_API\UART_init">UART_init</a> <a name="CG\00107038"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>C</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\TIMER0_HW_API\TIMER0_HW_API_init">TIMER0_HW_API_init</a> <a name="CG\00104ED8"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>C</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\main\main">main</a> <a name="CG\0010847C"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>E</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>10</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Function tree</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>10</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\?low_level_init\__low_level_init">__low_level_init</a> <a name="CG\00296334"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>10</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>12</font>
+  <td>
+  <td>
+<tr>
+  <th colspan=6><font size=3>Sub-tree of type: Function tree</font>
+<tr>
+  <th rowspan=2 valign=top><font size=2>Level</font>
+  <th rowspan=2 valign=top><font size=2>Function</font>
+  <th colspan=2><font size=2>Stack prev</font>
+  <th colspan=2><font size=2>Stack locally</font>
+<tr>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+  <th><font size=2>CSTACK</font>
+  <th><font size=2>RSTACK</font>
+<tr>
+  <th colspan=2><font size=2>Before</font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>12</font>
+  <td>
+  <td>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\?segment_init\__flashcpy">__flashcpy</a> <a name="CG\000F0288"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>12</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>2</font>
+  <td><font size=2>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#MM\?segment_init\__memclr">__memclr</a> <a name="CG\000F0334"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>12</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <td align=right><font size=2>1</font>
+  <td><font size=2>&nbsp;&nbsp;<a href="#MM\?segment_init\__segment_init">__segment_init</a> <a name="CG\000F03E0"><b>*</b></a></font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>14</font>
+  <td align=right><font size=2>0</font>
+  <td align=right><font size=2>2</font>
+<tr>
+  <th colspan=2><font size=2>After</font>
+  <td align=right><font size=2>33</font>
+  <td align=right><font size=2>16</font>
+  <td>
+  <td>
+</table>
+<p><hr><p>
+<a name="Segments in Address Order"></a>
+<table bgcolor="#bbbb00" border=1 cellpadding=2>
+<tr>
+  <th align=center colspan=7><font size=4><B>Segments in Address Order</B>
+</font>
+<tr>
+  <th><font size=2>Segment</font>
+  <th><font size=2>Space</font>
+  <th><font size=2>Start</font>
+  <th><font size=2>End</font>
+  <th><font size=2>Size</font>
+  <th><font size=2>Kind</font>
+  <th><font size=2>Align</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>INTVEC</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>00000000 - 00000053</font>
+  <td align=right><font size=2>54</font>
+  <td rowspan=1 ><font size=2>Common</font>
+  <td align=center><font size=2>1</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>?FILL1</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>00000054 - 00000067</font>
+  <td align=right><font size=2>14</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>00000068 - 000006C9</font>
+  <td align=right><font size=2>662</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>1</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>INITTAB</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>000006CA - 000006D5</font>
+  <td align=right><font size=2>C</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>NEAR_ID</font>
+  <td rowspan=1 ><font size=2>CODE</font>
+  <td align=center colspan=2><font size=2>000006D6 - 00000754</font>
+  <td align=right><font size=2>7F</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=11 ><font size=2>ABSOLUTE</font>
+  <td rowspan=11 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>0000001F </font>
+  <td align=right><font size=2></font>
+  <td rowspan=11 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000020 </font>
+  <td align=right><font size=2></font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000021 </font>
+  <td align=right><font size=2></font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000022 </font>
+  <td align=right><font size=2></font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>0000002A - 0000002B</font>
+  <td align=right><font size=2>2</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000035 - 00000035</font>
+  <td align=right><font size=2>1</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>00000045 - 00000046</font>
+  <td align=right><font size=2>2</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>0000005F - 0000005F</font>
+  <td align=right><font size=2>1</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>0000006E - 0000006E</font>
+  <td align=right><font size=2>1</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>000000C0 - 000000C2</font>
+  <td align=right><font size=2>3</font>
+<tr valign=top>
+  <td align=center colspan=2><font size=2>000000C4 - 000000C6</font>
+  <td align=right><font size=2>3</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>CSTACK</font>
+  <td rowspan=1 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>00000100 - 0000011F</font>
+  <td align=right><font size=2>20</font>
+  <td rowspan=1 ><font size=2>Predefined</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>RSTACK</font>
+  <td rowspan=1 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>00000120 - 0000013F</font>
+  <td align=right><font size=2>20</font>
+  <td rowspan=1 ><font size=2>Predefined</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>NEAR_I</font>
+  <td rowspan=1 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>00000140 - 000001BE</font>
+  <td align=right><font size=2>7F</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+<tr valign=top>
+  <td rowspan=1 ><font size=2>NEAR_Z</font>
+  <td rowspan=1 ><font size=2>DATA</font>
+  <td align=center colspan=2><font size=2>000001BF - 000001E5</font>
+  <td align=right><font size=2>27</font>
+  <td rowspan=1 ><font size=2>Relative</font>
+  <td align=center><font size=2>0</font>
+</table>
+
+<hr>
+
+<p><a name="Memory Summary"></a><table>
+
+<table >
+<tr>
+<td align=right valign=top>1&nbsp;857</td>
+<td valign=top>bytes</td>
+<td valign=top>of</td>
+<td valign=top>CODE</td>
+<td valign=top>memory</td>
+<td valign=top>(+</td>
+<td valign=top>&nbsp;</td>
+<td valign=top>&nbsp;</td>
+<td align=right valign=top>20</td>
+<td valign=top>range&nbsp;fill</td>
+<td valign=top>)</td>
+</tr>
+<tr>
+<td align=right valign=top>230</td>
+<td valign=top>bytes</td>
+<td valign=top>of</td>
+<td valign=top>DATA</td>
+<td valign=top>memory</td>
+<td valign=top>(+</td>
+<td align=right valign=top>13</td>
+<td valign=top>absolute</td>
+<td valign=top>)</td>
+</tr>
+</table>
+
+Errors: none
+Warnings: none
+
