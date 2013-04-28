@@ -97,7 +97,6 @@ void Tx_cb (void)
 void Rx_cb (U8 *buffer, U8 length)
 {
     if(0 == memcmp(Rx_buffer,Rx_get,10)){
-	  	__delay_cycles(100000);
 	    Rx_buffer[0] = 0;
 	  	UART_transmit (Tx_buffer, sizeof(Tx_buffer), (void(*)(void))closeRoutine_cb);
     } else {
