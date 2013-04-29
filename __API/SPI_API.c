@@ -234,7 +234,7 @@ U8 SPI_transfer (U8 *Tx_buffer, U8 *Rx_buffer, U8 length, void (*callback)(U8 *R
 		SPCR &= ~((1 << SPE) | (1 << SPIE));								//disable SPI & SPI_STC interrupt
 		SPI_transfer_cb(SPI_transfer_cb_Rx_buffer, SPI_transfer_cb_length);	//call callback function
 #if (SPI_SLEEP_MODE == SPI_AUTO_SLEEP)
-		SPI_sleep();
+//		SPI_sleep();
 #endif
 	}
 	return;

@@ -44,7 +44,7 @@ enum ss_level
 #define ERROR_CONTROL_BYTE	0x02
 
 #define CONFIGURATION		0x01
-#define DATA				0x02
+#define DATA				0x03
 
 
 #define ERROR_CNT			10
@@ -122,6 +122,7 @@ static U8 DIS_number = 0x00;
 static U8 error_cnt = 0x00;
 static U8 configuration_flag;
 static U8 read_data_flag;
+U8 flag;
 /**************************************************
 * Function name	: 
 * Created by	: 
@@ -135,7 +136,7 @@ void main (void)
   SS_DDR_2 = HIGH;
   SS_DDR_3 = HIGH;
   SS_DDR_4 = HIGH;
-  SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 64);
+  SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 128);
   TIMER0_HW_API_init (timer_cb);
 
   sensor_read (CONFIGURATION);
@@ -143,7 +144,11 @@ void main (void)
  
   while(1)
   {
-	
+	 if(flag == 1)
+	 {
+		 flag = 0;
+		sensor_read (DATA); 
+	 }
   };
 }
 /**************************************************
@@ -157,10 +162,11 @@ void timer_cb(void)
 {
   if(configuration_flag == 0x01)
   {
+	  SPI_break();
 		configuration_flag = 0x00;
 		ss_high();
 		__delay_cycles(5000000);
-  		sensor_read (DATA);
+		flag = 1;
   }
 }
 /**************************************************
@@ -177,6 +183,10 @@ void sensor_read (U8 command)
   write_packet.write_pos.start_byte = 0xAA;
   write_packet.write_pos.cmd_number = command;
   write_packet.write_pos.CRC = Crc8(write_packet.write_frame, 6);
+  for(U8 i = 0; i < 8; i++)
+  {
+	  read_packet.read_frame[i] = 0x00;
+  }
   ss_low();
 
   SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
@@ -229,7 +239,9 @@ void ss_high(void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
+	ss_high();
   __delay_cycles(1000);
+  ss_low();
   SPI_transfer (0, read_packet.read_frame, 7, control_callback);
 }
 /**************************************************
@@ -243,6 +255,13 @@ void control_callback(U8 *Rx_buffer, U8 length)
 {
   	ss_high();
 	configuration_flag = 0x01;
+	if(read_packet.read_pos.control_byte != 0xA5)
+	{
+		ss_high();
+  		__delay_cycles(1000);
+ 	 	ss_low();
+		SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+	}
 //	if(read_packet.read_pos.control_byte == 0x00)
 //	{
 //		error_cnt++;
