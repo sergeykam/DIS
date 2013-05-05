@@ -155,17 +155,13 @@ void main (void)
 ***************************************************/
 void timer_cb(void)
 {
-//  if(configuration_flag == 0x01)
-//  {
-//		configuration_flag = 0x00;
-//  		sensor_read (DATA);
-//  }
-  if(read_data_flag)
+  if(configuration_flag == 0x01)
   {
-	read_data_flag = 0;
-	SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+		configuration_flag = 0x00;
+		ss_high();
+		__delay_cycles(5000000);
+  		sensor_read (DATA);
   }
-  
 }
 /**************************************************
 * Function name	: 
@@ -203,7 +199,7 @@ void ss_low(void)
 	SS_PORT_3 = LOW;
   if(DIS_number == 0x03)
 	SS_PORT_4 = LOW;
-  __delay_cycles(10);
+  __delay_cycles(100);
 }
 /**************************************************
 * Function name	: 
@@ -222,7 +218,7 @@ void ss_high(void)
 	SS_PORT_3 = HIGH;
   if(DIS_number == 0x03)
 	SS_PORT_4 = HIGH;
-  __delay_cycles(10);
+  __delay_cycles(100);
 }
 /**************************************************
 * Function name	: 
@@ -233,7 +229,8 @@ void ss_high(void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
-  read_data_flag = 1;
+  __delay_cycles(1000);
+  SPI_transfer (0, read_packet.read_frame, 7, control_callback);
 }
 /**************************************************
 * Function name	: 
@@ -244,62 +241,64 @@ void read_callback(U8 *Rx_buffer, U8 length)
 ***************************************************/
 void control_callback(U8 *Rx_buffer, U8 length)
 {
-	if(read_packet.read_pos.control_byte == 0x00)
-	{
-		error_cnt++;
-		if(error_cnt < ERROR_CNT)
-		{
-			SPI_transfer (0, read_packet.read_frame, 7, control_callback);
-		}
-		else
-		{
-		  	error_cnt = 0x00;
-			ss_high();
-			sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
-			sensor_cb();
-		}
-	}
-	else
-	{
-		if(read_packet.read_pos.control_byte == 0xA5)
-		{
-		  	error_cnt = 0x00;
-		  	ss_high();
-			sensor_union[DIS_number].sensor_data.status = OK;
-			sensor_cb();
-		}
-		else
-		{
-		  if(read_packet.read_pos.status_byte == 0xA5)
-		  {
-			error_cnt = 0x00;
-			ss_high();
-			for(U8 i=0; i <7; i++)
-			{
-			  read_packet.read_frame[i] = read_packet.read_frame[i + 1];
-			}
-			sensor_union[DIS_number].sensor_data.status = OK;
-			sensor_cb();
-		  }
-		  else
-		  {
-			error_cnt++;
-			if(error_cnt < ERROR_CNT)
-			{
-			  	ss_high();
-				ss_low();
-  				SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
-			}
-			else
-			{
-			  	error_cnt = 0x00;
-			  	ss_high();
-				sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
-				sensor_cb();
-			}
-		  }
-		}
-	}
+  	ss_high();
+	configuration_flag = 0x01;
+//	if(read_packet.read_pos.control_byte == 0x00)
+//	{
+//		error_cnt++;
+//		if(error_cnt < ERROR_CNT)
+//		{
+//			SPI_transfer (0, read_packet.read_frame, 7, control_callback);
+//		}
+//		else
+//		{
+//		  	error_cnt = 0x00;
+//			ss_high();
+//			sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
+//			sensor_cb();
+//		}
+//	}
+//	else
+//	{
+//		if(read_packet.read_pos.control_byte == 0xA5)
+//		{
+//		  	error_cnt = 0x00;
+//		  	ss_high();
+//			sensor_union[DIS_number].sensor_data.status = OK;
+//			sensor_cb();
+//		}
+//		else
+//		{
+//		  if(read_packet.read_pos.status_byte == 0xA5)
+//		  {
+//			error_cnt = 0x00;
+//			ss_high();
+//			for(U8 i=0; i <7; i++)
+//			{
+//			  read_packet.read_frame[i] = read_packet.read_frame[i + 1];
+//			}
+//			sensor_union[DIS_number].sensor_data.status = OK;
+//			sensor_cb();
+//		  }
+//		  else
+//		  {
+//			error_cnt++;
+//			if(error_cnt < ERROR_CNT)
+//			{
+//			  	ss_high();
+//				ss_low();
+//  				SPI_transfer (write_packet.write_frame, read_packet.read_frame, 7, read_callback);
+//			}
+//			else
+//			{
+//			  	error_cnt = 0x00;
+//			  	ss_high();
+//				sensor_union[DIS_number].sensor_data.status = ERROR_CONTROL_BYTE;
+//				sensor_cb();
+//			}
+//		  }
+//		}
+//	}
   
 }
 /**************************************************

@@ -59,7 +59,7 @@
         </option>
         <option>
           <name>LCHeapSize</name>
-          <state>0x10</state>
+          <state>0</state>
         </option>
         <option>
           <name>SCCStackSize</name>
@@ -751,7 +751,7 @@
         </option>
         <option>
           <name>XList</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>SegmentMap</name>
@@ -783,7 +783,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>$TOOLKIT_DIR$\src\template\cfgm16.xcl</state>
+          <state>$TOOLKIT_DIR$\src\template\cfgm168pa.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
@@ -863,11 +863,11 @@
         </option>
         <option>
           <name>IncludeSuppressed</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>ModuleSummary</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>xcProgramEntryLabel</name>
@@ -921,7 +921,7 @@
         </option>
         <option>
           <name>ListOutputFormat</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>BufferedTermOutput</name>
@@ -941,7 +941,7 @@
         </option>
         <option>
           <name>OverlaySystemMap</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>RawBinaryFile</name>
@@ -1991,6 +1991,9 @@
   </configuration>
   <group>
     <name>API</name>
+    <file>
+      <name>$PROJ_DIR$\..\..\__API\TIMER0_HW_API.c</name>
+    </file>
     <file>
       <name>$PROJ_DIR$\..\..\__API\UART_API.c</name>
     </file>
