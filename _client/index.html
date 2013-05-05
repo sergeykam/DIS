@@ -112,7 +112,7 @@
 						<li class="ylvl">0</li>
 					</ul>
 				</div>
-				<canvas id="c2" width="500" height="300">Ваш браузер не поддерживается</canvas>
+				<canvas id="c2" width="500" height="300"></canvas>
 				<div class="descr">
 					<ul>
 						<li>H<sub>2</sub>S</li>
@@ -141,7 +141,7 @@
 						<li class="ylvl">0</li>
 					</ul>
 				</div>
-				<canvas id="c3" width="500" height="300">Ваш браузер не поддерживается</canvas>
+				<canvas id="c3" width="500" height="300"></canvas>
 				<div class="descr">
 					<ul>
 						<li>H<sub>2</sub>S</li>
@@ -170,7 +170,7 @@
 						<li class="ylvl">0</li>
 					</ul>
 				</div>
-				<canvas id="c4" width="500" height="300">Ваш браузер не поддерживается</canvas>
+				<canvas id="c4" width="500" height="300"></canvas>
 				<div class="descr">
 					<ul>
 						<li>H<sub>2</sub>S</li>
@@ -185,31 +185,28 @@
 		</div>
 		<script>
 			window.onload = function() {
-				var xPts = 50, // точек по горизонтали
-						yPts = 10, // точек по вертикали
-						ch = 300,
-						cw = 500,
-						descr = {}, // описание датчиков
-						data = [[], [], [], []], // объект с массивами данных с датчиков
-						c1 = document.getElementById("c1").getContext("2d"), // canvas
-						c2 = document.getElementById("c2").getContext("2d"),
-						c3 = document.getElementById("c3").getContext("2d"),
-						c4 = document.getElementById("c4").getContext("2d");
-
-				setInterval(get, 1000);
-
-				function get() { // делает запрос на страницу
+				var xPts=50,
+						yPts=10,
+						ch=300,
+						cw=500,
+						descr={},
+						data=[[],[],[],[]],
+						c1=document.getElementById("c1").getContext("2d"),
+						c2=document.getElementById("c2").getContext("2d"),
+						c3=document.getElementById("c3").getContext("2d"),
+						c4=document.getElementById("c4").getContext("2d");
+				function get(){
 					var xmlhttp;
-					try {
+					try{
 						xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-					} catch (e) {
-						try {
+					}catch(e){
+						try{
 							xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-						} catch (E) {
+						}catch(E){
 							xmlhttp = false;
 						}
 					}
-					if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+					if(!xmlhttp && typeof XMLHttpRequest != 'undefined') {
 						xmlhttp = new XMLHttpRequest();
 					}
 
@@ -228,7 +225,7 @@
 				}
 				;
 
-				function parseAns(o) {	// распихивает объект по внутренним переменным
+				function parseAns(o) {
 					descr = o.s;
 					for (var i = 0; i < 4; i++) {
 						if (data[i].length >= xPts) {
@@ -244,7 +241,7 @@
 				}
 				;
 
-				function maximum(arr) {		// находим максимум
+				function maximum(arr) {
 					var res = 0;
 					for (var i = 0; i < arr.length + 1; i++) {
 						if (arr[i] > res) {
@@ -255,7 +252,7 @@
 				}
 				;
 
-				function newScale() {	// рисуем новую шкалу
+				function newScale() {
 					var max = 0,
 							lvl = 0,
 							curlvl = 0,
@@ -276,11 +273,11 @@
 				}
 				;
 
-				function newGraph() {  // отрисовываем сами графики
-					var max = 0;
-					for (var i = 0; i < 4; i++) {
+				function newGraph() {
+					var max=0;
+					for (var i=0;i<4;i++) {
 						clr(i);
-						for (var j = 0; j < xPts; j++) {
+						for (var j=0;j<xPts;j++) {
 							max = document.getElementById("max" + i).innerHTML;
 							drawRect(i, j * 9, (ch * data[i][j] / max));
 						}
@@ -288,9 +285,9 @@
 				}
 				;
 
-				function drawRect(num, x, y) {		// рисуем точку на графике
-					var t = getG(num);
-					t.fillRect(x, ch - y, 5, 2);
+				function drawRect(num,x,y) {
+					var t=getG(num);
+					t.fillRect(x,ch - y, 5, 2);
 				}
 				;
 
