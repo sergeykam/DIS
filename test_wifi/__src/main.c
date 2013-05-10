@@ -32,41 +32,65 @@ void timer_cb (U8 *, U8);
 void exit_cb(void);
 void site_tx_cb(void);
 /***************************************************
+* DEFINES
+***************************************************/
+#define WAITING_TIME  32
+#define TIME_BTW_CMDS 20
+
+
+#define SITE_PARTICLES 42
+#define SITE_PARTICLE_SIZE 128
+
+/***************************************************
 * CONSTS
 ***************************************************/
-//const __flash I8 site[][128] = {
-//"<!DOCTYPE html><html><head><title>Матрица ИГС</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style>*",
-//"{margin:0px;padding:0px;}body{font-family:Arial;font-size:14px;}canvas{float:left;border-left:2px solid;border-bottom:2px solid",
-//";margin-top:25px;}li{list-style-type:none;}#dim0,#dim1,#dim2,#dim3{margin-bottom:5px;}.c{margin:0 auto;width:1320px;}.active{co",
-//"lor:green;}.graph{float:left;position:relative;height:380px;}.descr{float:left;width:80px;}.descr ul li{border-bottom:1px solid",
-//" #ccc;padding:5px 0px;}.cl{clear:both;}.x{width:20px;height:18px;position:absolute;right:55px;bottom:32px;}.y{float:left;width:",
-//"58px;}.ylvl{margin:14px 9px;text-align:right;}</style></head><body><div class=\"c\"><div class=\"graph\"><div class=\"y\"><span",
-//" id=\"dim0\">C, ppm</span><ul><li id=\"max0\" class=\"ylvl\"></li><li id=\"y08\" class=\"ylvl\"></li><li id=\"y07\" class=\"ylvl\"></li><li i",
-//"\"y06\" class=\"ylvl\"></li><li id=\"y05\" class=\"ylvl\"></li><li id=\"y04\" class=\"ylvl\"></li><li id=\"y03\" c",
-//"lass=\"ylvl\"></li><li id=\"y02\" class=\"ylvl\"></li><li id=\"y01\" class=\"ylvl\"></li><li id=\"y00\" class=\"ylvl\"></li><li ",
-//"class=\"ylvl\">0</li></ul></div><canvas id=\"c1\" width=\"500\" height=\"300\">Ваш браузер не поддерживается</canvas><div class=",
-//"\"descr\"><ul><li>H<sub>2</sub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Серия</li><li class=\"active\">Активен</li></ul></di",
-//"v><div class=\"x\">t, с</div></div><div class=\"graph\"><div class=\"y\"><span id=\"dim1\">C, ppm</span><ul><li id=\"max1\" clas",
-//"s=\"ylvl\"></li><li id=\"y18\" class=\"ylvl\"></li><li id=\"y17\" class=\"ylvl\"></li><li id=\"y16\" class=\"ylvl\"></li><li id=",
-//"\"y15\" class=\"ylvl\"></li><li id=\"y14\" class=\"ylvl\"></li><li id=\"y13\" class=\"ylvl\"></li><li id=\"y12\" class=\"ylvl\">",
-//"</li><li id=\"y11\" class=\"ylvl\"></li><li id=\"y10\" class=\"ylvl\"></li><li class=\"ylvl\">0</li></ul></div><canvas id=\"c2\"",
-//" width=\"500\" height=\"300\"></canvas><div class=\"descr\"><ul><li>H<sub>2</sub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Се",
-//"рия</li><li class=\"active\">Активен</li></ul></div><div class=\"x\">t, с</div></div><div class=\"graph\"><div class=\"y\"><span",
-//" id=\"dim2\">C, ppm</span><ul><li id=\"max2\" class=\"ylvl\"></li><li id=\"y28\" class=\"ylvl\"></li><li id=\"y27\" class=\"ylvl",
-//"\"></li><li id=\"y26\" class=\"ylvl\"></li><li id=\"y25\" class=\"ylvl\"></li><li id=\"y24\" class=\"ylvl\"></li><li id=\"y23\" ",
-//"class=\"ylvl\"></li><li id=\"y22\" class=\"ylvl\"></li><li id=\"y21\" class=\"ylvl\"></li><li id=\"y20\" class=\"ylvl\"></li><li",
-//" class=\"ylvl\">0</li></ul></div><canvas id=\"c3\" width=\"500\" height=\"300\"></canvas><div class=\"descr\"><ul><li>H<sub>2</s",
-//"ub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Серия</li><li class=\"active\">Активен</li></ul></div><div class=\"x\">t, с</div",
-//"></div><div class=\"graph\"><div class=\"y\"><span id=\"dim3\">C, ppm</span><ul><li id=\"max3\" class=\"ylvl\"></li><li id=\"y38",
-//"\" class=\"ylvl\"></li><li id=\"y37\" class=\"ylvl\"></li><li id=\"y36\" class=\"ylvl\"></li><li id=\"y35\" class=\"ylvl\"></li>",
-//"<li id=\"y34\" class=\"ylvl\"></li><li id=\"y33\" class=\"ylvl\"></li><li id=\"y32\" class=\"ylvl\"></li><li id=\"y31\" class=\"",
-//"ylvl\"></li><li id=\"y30\" class=\"ylvl\"></li><li class=\"ylvl\">0</li></ul></div><canvas id=\"c4\" width=\"500\" height=\"300\"",
-//"\"></canvas><div class=\"descr\"><ul><li>H<sub>2</sub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Серия</li><li class=\"active\"",
-//">Активен</li></ul></div><div class=\"x\">t, с</div></div></div></body></html>\n\r"
-//};
 
-#define WAITING_TIME  32;
-#define TIME_BTW_CMDS 20;
+const __flash I8 site[SITE_PARTICLES][SITE_PARTICLE_SIZE] = {
+	"<!DOCTYPE html><html><head><title>Матрица ИГС</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=cp1251\"><styl",
+	"e>*{margin:0px;padding:0px;}body{font-family:Arial;font-size:14px;}canvas{float:left;border-left:2px solid;border-bottom:2px sol",
+	"id;margin-top: 25px;}li{list-style-type: none;}#dim0,#dim1,#dim2,#dim3{margin-bottom: 5px;}.c{margin: 0 auto;width: 1320px;}.act",
+	"ive{color:green;}.graph{float:left;position:relative;height:380px;}.descr{float:left;width:80px;}.descr ul li{border-bottom:1px ",
+	"solid #ccc;padding: 5px 0px;}.cl{clear:both;}.x{width: 20px;height: 18px;position: absolute;right: 55px;bottom: 32",
+	"px;}.y{float: left;width: 58px;}.ylvl{margin: 14px 9px;text-align: right;}</style></head><body><div class=\"c\"><div class=\"graph\"",
+	"><div class=\"y\"><span id=\"dim0\">C, ppm</span><ul><li id=\"max0\" class=\"ylvl\"></li><li id=\"y08\" class=\"ylvl\"></li><li id=\"y07\" cla",
+	"ss=\"ylvl\"></li><li id=\"y06\" class=\"ylvl\"></li><li id=\"y05\" class=\"ylvl\"></li><li id=\"y04\" class=\"ylvl\"></li><li id=\"y03\" class=\"",
+	"ylvl\"></li><li id=\"y02\" class=\"ylvl\"></li><li id=\"y01\" class=\"ylvl\"></li><li id=\"y00\" class=\"ylvl\"></li><li class=\"ylvl\">0</li><",
+	"/ul></div><canvas id=\"c1\" width=\"500\" height=\"300\">Ваш браузер не поддерживается</canvas><div class=\"d",
+	"escr\"><ul><li>H<sub>2</sub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Серия</li><li class=\"active\">Активен</l",
+	"i></ul></div><div class=\"x\">t, с</div></div><div class=\"graph\"><div class=\"y\"><span id=\"dim1\">C, ppm</span><ul><li id=\"max1\" cl",
+	"ass=\"ylvl\"></li><li id=\"y18\" class=\"ylvl\"></li><li id=\"y17\" class=\"ylvl\"></li><li id=\"y16\" class=\"ylvl\"></li><li id=\"y15\" class=",
+	"\"ylvl\"></li><li id=\"y14\" class=\"ylvl\"></li><li id=\"y13\" class=\"ylvl\"></li><li id=\"y12\" class=\"ylvl\"></li><li id=\"y11\" class=\"ylv",
+	"l\"></li><li id=\"y10\" class=\"ylvl\"></li><li class=\"ylvl\">0</li></ul></div><canvas id=\"c2\" width=\"500\" height=\"300\"></canvas><div ",
+	"class=\"descr\"><ul><li>H<sub>2</sub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Серия</li><li class=\"active\">Активен</li></",
+	"ul></div><div class=\"x\">t, с</div></div><div class=\"graph\"><div class=\"y\"><span id=\"dim2\">C, ppm</span><ul><li id=\"",
+	"max2\" class=\"ylvl\"></li><li id=\"y28\" class=\"ylvl\"></li><li id=\"y27\" class=\"ylvl\"></li><li id=\"y26\" class=\"ylvl\"></li><li id=\"y25",
+	"\" class=\"ylvl\"></li><li id=\"y24\" class=\"ylvl\"></li><li id=\"y23\" class=\"ylvl\"></li><li id=\"y22\" class=\"ylvl\"></li><li id=\"y21\" cl",
+	"ass=\"ylvl\"></li><li id=\"y20\" class=\"ylvl\"></li><li class=\"ylvl\">0</li></ul></div><canvas id=\"c3\" width=\"500\" height=\"300\"></canv",
+	"as><div class=\"descr\"><ul><li>H<sub>2</sub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Серия</li><li class=\"active\">Активе",
+	"н</li></ul></div><div class=\"x\">t, с</div></div><div class=\"graph\"><div class=\"y\"><span id=\"dim3\">C, ppm</span><ul>",
+	"<li id=\"max3\" class=\"ylvl\"></li><li id=\"y38\" class=\"ylvl\"></li><li id=\"y37\" class=\"ylvl\"></li><li id=\"y36\" class=\"ylvl\"></li><li",
+	" id=\"y35\" class=\"ylvl\"></li><li id=\"y34\" class=\"ylvl\"></li><li id=\"y33\" class=\"ylvl\"></li><li id=\"y32\" class=\"ylvl\"></li><li id=",
+	"\"y31\" class=\"ylvl\"></li><li id=\"y30\" class=\"ylvl\"></li><li class=\"ylvl\">0</li></ul></div><canvas id=\"c4\" width=\"500\" height=\"300",
+	"\"></canvas><div class=\"descr\"><ul><li>H<sub>2</sub>S</li><li>5 Вольт</li><li>01/04/2013</li><li>Серия</li><li class=\"a",
+	"ctive\">Активен</li></ul></div><div class=\"x\">t, с</div></div></div><script>window.onload = function() {var xPts=50,yPts=",
+	"10,ch=300,cw=500,descr={},data=[[],[],[],[]],c1=document.getElementById(\"c1\").getContext(\"2d\"),c2=document.getElementById(\"c2\").",
+	"getContext(\"2d\"),c3=document.getElementById(\"c3\").getContext(\"2d\"),c4=document.getElementById(\"c4\").getContext(\"2d\");function ge",
+	"t(){var xmlhttp;try{xmlhttp = new ActiveXObject(\"Msxml2.XMLHTTP\");}catch(e){try{xmlhttp = new ActiveXObject(\"Microsoft.XMLHTTP\")",
+	";}catch(E){xmlhttp = false;}}if(!xmlhttp && typeof XMLHttpRequest != \'undefined\') {xmlhttp = new XMLHttpRequest();}xmlhttp.open(",
+	"\'GET\', \'mc.php?a=1\', true);xmlhttp.onreadystatechange = function() {if (xmlhttp.readyState == 4) {if (xmlhttp.status == 200) {co",
+	"nsole.log(JSON.parse(xmlhttp.responseText));parseAns(JSON.parse(xmlhttp.responseText));newScale();newGraph();}}};xmlhttp.send(nu",
+	"ll);};function parseAns(o) {descr = o.s;for (var i = 0; i < 4; i++) {if (data[i].length >= xPts) {for (var j = 0; j < xPts; j++)",
+	" {data[i][j] = data[i][j + 1];}data[i][data[i].length - 1] = o[i];} else {data[i][data[i].length] = o[i];}}};function maximum(ar",
+	"r) {var res = 0;for (var i = 0; i < arr.length + 1; i++) {if (arr[i] > res) {res = arr[i];}}return res;};function newScale() {va",
+	"r max = 0,lvl = 0,curlvl = 0,rest = 0;for (var i = 0; i < 4; i++) {max = maximum(data[i]);rest = max % 1000;max = max + (1000 - ",
+	"rest);lvl = max / yPts;document.getElementById(\'max\' + i).innerHTML = max;for (var j = 0; j < yPts - 1; j++) {curlvl += lvl;docu",
+	"ment.getElementById(\'y\' + i + j).innerHTML = curlvl;}curlvl = 0;}};function newGraph() {var max=0;for (var i=0;i<4;i++) {clr(i);",
+	"for (var j=0;j<xPts;j++) {max = document.getElementById(\"max\" + i).innerHTML;drawRect(i, j * 9, (ch * data[i][j] / max));}}};fun",
+	"ction drawRect(num,x,y) {var t=getG(num);t.fillRect(x,ch - y, 5, 2);};function clr(num) {var t = getG(num);t.fillStyle = \"#fff\";",
+	"t.fillRect(0, 0, cw, ch);t.fillStyle = \"#f00\";};function getG(n) {switch (n) {case 0:return c1;case 1:return c2;case 2:return c3",
+};
+
+const __flash I8 site_end[] = ";case 3:return c4;}};};</script></body></html>\n";
 
 enum{
   IDLE = 0,
@@ -88,19 +112,19 @@ U8 close[] = "close\n";
 U8 ex[] = "exit\n";
 // statuses
 U8 wifi_status = IDLE;  // текущая работа с вай фай
-U8 wifi_timer_cnt = WAITING_TIME; 
+U8 wifi_timer_cnt = 1; 
 U8 wifi_task = WAIT; // задание для вай вай
 U8 wifi_task_after_tx = IDLE; // задание для вай вай
 U8 site_part_to_tx = 0;
 // task pointer
 void (*task_ptr)(void) = 0;
 // HTML
-U8 Tx_buffer[128];
+U8 Tx_buffer[SITE_PARTICLE_SIZE];
 U8 Rx_buffer[16];
 U8 Rx_get_site[] = "GET / HTTP";
 U8 Rx_get_data[] = "GET /?a=1 HTTP";
-//U8 http_headers[] = "HTTP/1.1$200$OK\nContent-type:$text/html;$charset=utf-8;\n\n\r";
-U8 site[] = "HTTP/1.1$200$OK\n\n\r<html><head><title>DIS</title></head><body>Тест</body></html>\n\r";
+U8 http_headers[] = "HTTP/1.1$200$OK\n\n";
+//U8 site[] = "HTTP/1.1$200$OK\n\n\r<html><head><title>DIS</title></head><body>Тест</body></html>\n\r";
 //U8 site[] = "<html><head><title>DIS</title></head><body>Тест</body></html>\n\r";
 
 void main(void)
@@ -170,7 +194,7 @@ void timer_cb (U8 *buffer, U8 length)
 			wifi_status = BUSY;
 			wifi_task = CMD;
 			wifi_task_after_tx = WAIT;
-			UART_transmit (site, sizeof(site), Tx_cb);
+			UART_transmit (http_headers, sizeof(http_headers)-1, site_tx_cb);
 			break;
   		case CMD:
 			wifi_status = BUSY;
@@ -224,17 +248,18 @@ void exit_cb(void){
 * Description		: UART callback function
 * Notes:	called under ISR
 **************************************************/
-//void site_tx_cb(void){
-//	memcpy_P((I8*)Tx_buffer, site[site_part_to_tx], 128);
-//	site_part_to_tx++;
-//	if(28 != site_part_to_tx){
-//		UART_transmit (Tx_buffer, sizeof(Tx_buffer), site_tx_cb);
-//	} else {
-//		site_part_to_tx = 0;
-//		UART_transmit (Tx_buffer, sizeof(Tx_buffer), Tx_cb);
-//	}
-//	
-//}
+void site_tx_cb(void){
+	if(site_part_to_tx < SITE_PARTICLES){
+		memcpy_P((I8*)Tx_buffer, site[site_part_to_tx], SITE_PARTICLE_SIZE);
+		site_part_to_tx++;
+		UART_transmit (Tx_buffer, sizeof(Tx_buffer), site_tx_cb);
+	} else {
+		site_part_to_tx = 0;
+		memcpy_P((I8*)Tx_buffer, site_end, sizeof(site_end));
+		UART_transmit (Tx_buffer, sizeof(site_end)-1, Tx_cb);
+	}
+	
+}
 /**************************************************
 * Function name		: void error_cb	(I8 *buffer, U8 length, U8 error)
 *		I8*	buffer	: pointer to receive buffer

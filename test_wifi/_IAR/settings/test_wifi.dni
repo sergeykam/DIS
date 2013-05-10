@@ -12,11 +12,13 @@ ByteLimit=50
 Enabled=0
 ShowSource=1
 [DebugChecksum]
-Checksum=-1024985730
+Checksum=450424551
 [CallStack]
 ShowArgs=0
 [Disassembly]
 MixedMode=1
+[Breakpoints]
+Count=0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -24,8 +26,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Breakpoints]
-Count=0
 [Aliases]
 Count=0
 SuppressDialog=0
