@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Матрица ИГС</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style>
+            *{
+                margin:0px;
+                padding:0px;
+            }
+            body{
+                font-family:Arial;
+                font-size:14px;
+            }
+            canvas{
+                float:left;
+                border-left:2px solid;
+                border-bottom:2px solid;
+                margin-top: 25px;
+            }
+            li{
+                list-style-type: none;
+            }
+            #dim0,#dim1,#dim2,#dim3{
+                margin-bottom: 5px;
+            }
+            .c{
+                margin: 0 auto;
+                width: 1320px;
+            }
+            .active{
+                color: green;
+            }
+            .graph{
+                float: left;
+                position: relative;
+                height: 380px;
+            }
+            .descr{
+                float: left;
+                width: 80px;
+            }
+            .descr ul li{
+                border-bottom: 1px solid #ccc;
+                padding: 5px 0px;
+            }
+            .cl{
+                clear:both;
+            }
+            .x{
+                width: 20px;
+                height: 18px;
+                position: absolute;
+                right: 55px;
+                bottom: 32px;
+            }
+            .y{
+                float: left;
+                width: 58px;
+            }
+            .ylvl{
+                margin: 14px 9px;
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="c">
+            <div class="graph">
+                <div class="y">
+                    <span id="dim0">C, ppm</span>
+                    <ul>
+                        <li id="max0" class="ylvl"></li>
+                        <li id="y08" class="ylvl"></li>
+                        <li id="y07" class="ylvl"></li>
+                        <li id="y06" class="ylvl"></li>
+                        <li id="y05" class="ylvl"></li>
+                        <li id="y04" class="ylvl"></li>
+                        <li id="y03" class="ylvl"></li>
+                        <li id="y02" class="ylvl"></li>
+                        <li id="y01" class="ylvl"></li>
+                        <li id="y00" class="ylvl"></li>
+                        <li class="ylvl">0</li>
+                    </ul>
+                </div>
+                <canvas id="c1" width="500" height="300">Ваш браузер не поддерживается</canvas>
+                <div class="descr">
+                    <ul>
+                        <li>H<sub>2</sub>S</li>
+                        <li>3 В</li>
+                        <li>14/11/2012</li>
+                        <li>10078</li>
+                        <li class="active">Активен</li>
+                    </ul>
+                </div>
+                <div class="x">t, с</div>
+            </div>
+            <div class="graph">
+                <div class="y">
+                    <span id="dim1">C, ppm</span>
+                    <ul>
+                        <li id="max1" class="ylvl"></li>
+                        <li id="y18" class="ylvl"></li>
+                        <li id="y17" class="ylvl"></li>
+                        <li id="y16" class="ylvl"></li>
+                        <li id="y15" class="ylvl"></li>
+                        <li id="y14" class="ylvl"></li>
+                        <li id="y13" class="ylvl"></li>
+                        <li id="y12" class="ylvl"></li>
+                        <li id="y11" class="ylvl"></li>
+                        <li id="y10" class="ylvl"></li>
+                        <li class="ylvl">0</li>
+                    </ul>
+                </div>
+                <canvas id="c2" width="500" height="300"></canvas>
+                <div class="descr">
+                    <ul>
+                        <li>N<sub>2</sub>O</li>
+                        <li>3 В</li>
+                        <li>12/10/2012</li>
+                        <li>10054</li>
+                        <li class="active">Активен</li>
+                    </ul>
+                </div>
+                <div class="x">t, с</div>
+            </div>
+            <div class="graph">
+                <div class="y">
+                    <span id="dim2">C, ppm</span>
+                    <ul>
+                        <li id="max2" class="ylvl"></li>
+                        <li id="y28" class="ylvl"></li>
+                        <li id="y27" class="ylvl"></li>
+                        <li id="y26" class="ylvl"></li>
+                        <li id="y25" class="ylvl"></li>
+                        <li id="y24" class="ylvl"></li>
+                        <li id="y23" class="ylvl"></li>
+                        <li id="y22" class="ylvl"></li>
+                        <li id="y21" class="ylvl"></li>
+                        <li id="y20" class="ylvl"></li>
+                        <li class="ylvl">0</li>
+                    </ul>
+                </div>
+                <canvas id="c3" width="500" height="300"></canvas>
+                <div class="descr">
+                    <ul>
+                        <li>NO<sub>6</sub></li>
+                        <li>3 В</li>
+                        <li>01/04/2013</li>
+                        <li>10104</li>
+                        <li class="active">Данные готовятся</li>
+                    </ul>
+                </div>
+                <div class="x">t, с</div>
+            </div>
+            <div class="graph">
+                <div class="y">
+                    <span id="dim3">C, ppm</span>
+                    <ul>
+                        <li id="max3" class="ylvl"></li>
+                        <li id="y38" class="ylvl"></li>
+                        <li id="y37" class="ylvl"></li>
+                        <li id="y36" class="ylvl"></li>
+                        <li id="y35" class="ylvl"></li>
+                        <li id="y34" class="ylvl"></li>
+                        <li id="y33" class="ylvl"></li>
+                        <li id="y32" class="ylvl"></li>
+                        <li id="y31" class="ylvl"></li>
+                        <li id="y30" class="ylvl"></li>
+                        <li class="ylvl">0</li>
+                    </ul>
+                </div>
+                <canvas id="c4" width="500" height="300"></canvas>
+                <div class="descr">
+                    <ul>
+                        <li>O<sub>2</sub></li>
+                        <li>3 В</li>
+                        <li>04/04/2013</li>
+                        <li>10143</li>
+                        <li class="active">Активен</li>
+                    </ul>
+                </div>
+                <div class="x">t, с</div>
+            </div>
+        </div>
+        <script>
+            window.onload = function() {
+                var xPts = 50,
+                        yPts = 10,
+                        ch = 300,
+                        cw = 500,
+                        descr = {},
+                        data = [[
+                        0, 30, 70, 200, 450,
+                        900, 2000, 5000, 12000, 30000,
+                        30100, 30200, 30051, 30243, 30342,
+                        30702, 31200, 30539, 30542, 30243,
+                        30920, 30928, 30173, 30481, 30284,
+                        30481, 30282, 30181, 30841, 30184,
+                        30481, 30485, 30284, 30581, 30581,
+                        30591, 30193, 30481, 30348, 30123,
+                        27000, 21593, 18048, 16942, 14982,
+                        14418, 14000, 13752, 13400
+                    ],
+                    [
+                        30,80,250,900,1500,
+                        3200,7000,15000,31000,72000,
+                        72341,72984,72941,72674,72941,
+                        72941,72941,72645,72851,72841,
+                        72345,72475,72421,72641,72674
+                    ],
+                    [
+                    ],
+                    [
+                        205000,205433,205752,205472,205421,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,205423,
+                        205413,205952,205452,205125,
+                        
+                    ]],
+                        lcor = {
+                            0: [0], 1: [0], 2: [0], 3: [0]
+                        };
+                        c1 = document.getElementById("c1").getContext("2d"),
+                        c2 = document.getElementById("c2").getContext("2d"),
+                        c3 = document.getElementById("c3").getContext("2d"),
+                        c4 = document.getElementById("c4").getContext("2d");
+
+                get();
+
+                function get() {
+                    var xmlhttp;
+                    try {
+                        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (E) {
+                            xmlhttp = false;
+                        }
+                    }
+                    if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+                        xmlhttp = new XMLHttpRequest();
+                    }
+
+                    xmlhttp.open('GET', 'server.php?a=1', true);
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState == 4) {
+                            if (xmlhttp.status == 200) {
+                                console.log(JSON.parse(xmlhttp.responseText));
+                                parseAns(JSON.parse(xmlhttp.responseText));
+                                newScale();
+                                newGraph();
+                            }
+                        }
+                    };
+                    xmlhttp.send(null);
+                }
+                ;
+
+                function parseAns(o) {
+                    descr = o.s;
+                    for (var i = 0; i < 4; i++) {
+                        if (data[i].length >= xPts) {
+                            for (var j = 0; j < xPts; j++) {
+                                data[i][j] = data[i][j + 1];
+                            }
+                            data[i][data[i].length - 1] = o[i];
+                        } else {
+                            data[i][data[i].length] = o[i];
+                        }
+
+                    }
+                }
+                ;
+
+                function maximum(arr) {
+                    var res = 0;
+                    for (var i = 0; i < arr.length + 1; i++) {
+                        if (arr[i] > res) {
+                            res = arr[i];
+                        }
+                    }
+                    return res;
+                }
+                ;
+
+                function newScale() {
+                    var max = 0,
+                            lvl = 0,
+                            curlvl = 0,
+                            rest = 0;
+
+                    for (var i = 0; i < 4; i++) {
+                        max = maximum(data[i]);
+                        rest = max % 1000;
+                        max = max + (1000 - rest);
+                        lvl = max / yPts;
+                        document.getElementById('max' + i).innerHTML = max;
+                        for (var j = 0; j < yPts - 1; j++) {
+                            curlvl += lvl;
+                            document.getElementById('y' + i + j).innerHTML = curlvl;
+                        }
+                        curlvl = 0;
+                    }
+                }
+                ;
+
+                function newGraph() {
+                    var max = 0;
+                    for (var i = 0; i < 4; i++) {
+                        clr(i);
+                        for (var j = 0; j < data[i].length; j++) {
+                            max = document.getElementById("max" + i).innerHTML;
+                            drawRect(i, j * 9, (ch * data[i][j] / max));
+                        }
+                    }
+                }
+                ;
+
+                function drawRect(num, x, y) {
+                    var t = getG(num);
+                    t.beginPath();
+                    t.lineWidth = "2";
+                    t.strokeStyle = "red";
+                    t.fillRect(x,ch - y, 6, 5);
+                    t.moveTo(lcor[num][0]+2,ch - lcor[num][1]+1);
+                    t.lineTo(x+2,ch - y+1);
+                    t.stroke();
+                    lcor[num][0] = x;
+                    lcor[num][1] = y;
+                }
+                ;
+
+                function clr(num) {
+                    var t = getG(num);
+                    t.fillStyle = "#fff";
+                    t.fillRect(0, 0, cw, ch);
+                    t.fillStyle = "#bb3337";
+                }
+                ;
+
+                function getG(n) {
+                    switch (n) {
+                        case 0:
+                            return c1;
+                        case 1:
+                            return c2;
+                        case 2:
+                            return c3;
+                        case 3:
+                            return c4;
+                    }
+                }
+                ;
+            };
+        </script>
+    </body>
+</html>
