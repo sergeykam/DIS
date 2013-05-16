@@ -44,7 +44,7 @@
         <expressions>
           
           
-        <item>Rx_buffer</item><item>Rx_buffer</item><item/></expressions>
+        <item>Rx_buffer</item><item></item></expressions>
         <col-names>
           
           
@@ -63,7 +63,7 @@
       
       
       
-    <Wnd0>
+    <Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-14411-20915</Identity>
@@ -79,20 +79,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1><Tabs><Tab><Identity>TabID-8004-29728</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd1></Windows>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-8004-29728</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\device.h</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>900</SelStart><SelEnd>900</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\UART_API.c</Filename><XPos>0</XPos><YPos>371</YPos><SelStart>13220</SelStart><SelEnd>13220</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\TIMER0_HW_API.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>2804</SelStart><SelEnd>2804</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\TIMER0_HW_API.h</Filename><XPos>0</XPos><YPos>18</YPos><SelStart>1187</SelStart><SelEnd>1187</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.0\avr\inc\clib\pgmspace.h</Filename><XPos>0</XPos><YPos>30</YPos><SelStart>1569</SelStart><SelEnd>1593</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>92</YPos><SelStart>5957</SelStart><SelEnd>5957</SelEnd></Tab><ActiveTab>5</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>117</YPos><SelStart>7936</SelStart><SelEnd>7936</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\TIMER0_HW_API.h</Filename><XPos>0</XPos><YPos>6</YPos><SelStart>1187</SelStart><SelEnd>1187</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-03d82978><key>iaridepm.enu1</key></Toolbar-03d82978></Sizes></Row0><Row1><Sizes><Toolbar-02e97ab0><key>debuggergui.enu1</key></Toolbar-02e97ab0></Sizes></Row1></Top><Left><Row0><Sizes/></Row0></Left><Right><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>589</Bottom><Right>409</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>125000</sizeHorzCX><sizeHorzCY>241546</sizeHorzCY><sizeVertCX>256875</sizeVertCX><sizeVertCY>713768</sizeVertCY></Rect></Wnd1></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>170</Bottom><Right>1602</Right><x>-2</x><y>-2</y><xscreen>1604</xscreen><yscreen>172</yscreen><sizeHorzCX>1002500</sizeHorzCX><sizeHorzCY>207729</sizeHorzCY><sizeVertCX>1310000</sizeVertCX><sizeVertCY>207729</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-00ac2978><key>iaridepm.enu1</key></Toolbar-00ac2978></Sizes></Row0><Row1><Sizes><Toolbar-09355eb0><key>debuggergui.enu1</key></Toolbar-09355eb0></Sizes></Row1></Top><Left><Row0><Sizes/></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>583</Bottom><Right>412</Right><x>-2</x><y>-2</y><xscreen>833</xscreen><yscreen>208</yscreen><sizeHorzCX>520625</sizeHorzCX><sizeHorzCY>251208</sizeHorzCY><sizeVertCX>258750</sizeVertCX><sizeVertCY>706522</sizeVertCY></Rect></Wnd3></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>176</Bottom><Right>1602</Right><x>-2</x><y>-2</y><xscreen>1604</xscreen><yscreen>178</yscreen><sizeHorzCX>1002500</sizeHorzCX><sizeHorzCY>214976</sizeHorzCY><sizeVertCX>5456875</sizeVertCX><sizeVertCY>214976</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 
