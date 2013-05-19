@@ -44,7 +44,7 @@
         <expressions>
           
           
-        <item>Rx_buffer</item><item/></expressions>
+        <item>Rx_buffer</item><item>wifi_status</item><item></item></expressions>
         <col-names>
           
           
@@ -85,14 +85,14 @@
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>117</YPos><SelStart>7936</SelStart><SelEnd>7936</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\TIMER0_HW_API.h</Filename><XPos>0</XPos><YPos>6</YPos><SelStart>1187</SelStart><SelEnd>1187</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>125</YPos><SelStart>8594</SelStart><SelEnd>8594</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\UART_API.c</Filename><XPos>0</XPos><YPos>94</YPos><SelStart>3781</SelStart><SelEnd>3781</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\UART_API.h</Filename><XPos>0</XPos><YPos>9</YPos><SelStart>794</SelStart><SelEnd>794</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\TIMER0_HW_API.c</Filename><XPos>0</XPos><YPos>78</YPos><SelStart>3038</SelStart><SelEnd>3038</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-00ac2978><key>iaridepm.enu1</key></Toolbar-00ac2978></Sizes></Row0><Row1><Sizes><Toolbar-09355eb0><key>debuggergui.enu1</key></Toolbar-09355eb0></Sizes></Row1></Top><Left><Row0><Sizes/></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>583</Bottom><Right>412</Right><x>-2</x><y>-2</y><xscreen>833</xscreen><yscreen>208</yscreen><sizeHorzCX>520625</sizeHorzCX><sizeHorzCY>251208</sizeHorzCY><sizeVertCX>258750</sizeVertCX><sizeVertCY>706522</sizeVertCY></Rect></Wnd3></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>176</Bottom><Right>1602</Right><x>-2</x><y>-2</y><xscreen>1604</xscreen><yscreen>178</yscreen><sizeHorzCX>1002500</sizeHorzCX><sizeHorzCY>214976</sizeHorzCY><sizeVertCX>5456875</sizeVertCX><sizeVertCY>214976</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-00f01c58><key>iaridepm.enu1</key></Toolbar-00f01c58></Sizes></Row0><Row1><Sizes><Toolbar-039e4e90><key>debuggergui.enu1</key></Toolbar-039e4e90></Sizes></Row1></Top><Left><Row0><Sizes/></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>559</Bottom><Right>158</Right><x>-2</x><y>-2</y><xscreen>3469</xscreen><yscreen>216</yscreen><sizeHorzCX>4424745</sizeHorzCX><sizeHorzCY>266010</sizeHorzCY><sizeVertCX>204082</sizeVertCX><sizeVertCY>690887</sizeVertCY></Rect></Wnd3></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>184</Bottom><Right>786</Right><x>-2</x><y>-2</y><xscreen>788</xscreen><yscreen>186</yscreen><sizeHorzCX>1005102</sizeHorzCX><sizeHorzCY>229064</sizeHorzCY><sizeVertCX>46381378</sizeVertCX><sizeVertCY>229064</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

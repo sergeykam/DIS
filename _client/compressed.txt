@@ -1,4 +1,4 @@
-"<!DOCTYPE html><html><head><title>Матрица ИГС</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><style>*",
+﻿"<!DOCTYPE html><html><head><title>Матрица ИГС</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><style>*",
 "{margin:0px;padding:0px;}body{font-family:Arial;font-size:14px;}canvas{float:left;border-left:2px solid;border-bottom:2px solid;",
 "margin-top: 25px;}li{list-style-type: none;}#dim0,#dim1,#dim2,#dim3{margin-bottom: 5px;}.c{margin: 0 auto;width: 1320px;}.active",
 "{color: green;}.graph{float: left;position: relative;height: 380px;}.descr{float: left;width: 80px;}.descr ul li{border-bottom: ",
