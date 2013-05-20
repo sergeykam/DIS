@@ -35,7 +35,7 @@ enum TIMER0_PRC
 /***************************************************
 *  User Settings section
 ***************************************************/
-#define TIMER0_HW_PRC TIMER0_PRC_8
+#define TIMER0_HW_PRC TIMER0_PRC_0
 //#if (TIMER0_HW_PRC == TIMER0_PRC_EXT_F) || (TIMER0_HW_PRC == TIMER0_PRC_EXT_R)
 #define TIMER0_HW_TICK_US ((TIMER0_HW_PRC*1000000)/CPU_CLK)
 #define TIMER0_HW_OVF_TICK_MS ((TIMER0_HW_TICK_US*256)/1000)
