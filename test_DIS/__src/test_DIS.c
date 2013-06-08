@@ -207,7 +207,6 @@ void DIS_cout(void){
 				DIS_status_after_transfer = WAIT;
 				DIS_status_next = WAITING_DATA;
 				DIS_status = BUSY;
-//				ss_low();
 				SPI_transfer (0, DIS_dummy_arr, 1, read_callback);
 			} else {
 				if(DIS_attempt_number){
@@ -215,7 +214,6 @@ void DIS_cout(void){
 					DIS_time = DIS_TIME_BTW_ATTEMPTS;
 					DIS_status_after_transfer = WAIT_DATA_READY;
 					DIS_status = BUSY;
-//					ss_low();
 					SPI_transfer (0, DIS_dummy_arr, 1, read_callback);
 				} else {
 					DIS_time = DIS_TIME_BTW_FAIL;
@@ -224,40 +222,6 @@ void DIS_cout(void){
 					DIS_status_next = SEND_CMD;
 				}
 			}	
-		
-//			switch(DIS_control_byte)
-//			{
-//				case (0xA5):
-//					DIS_time = DIS_TIME_BTW_2_3_PHASE;
-//					DIS_status_after_transfer = WAIT;
-//					DIS_status_next = WAITING_DATA;
-//					DIS_status = BUSY;
-////					ss_low();
-//					SPI_transfer (&DIS_dummy_byte, &DIS_control_byte, 1, read_callback);
-//					break;
-//				case (0xFF):
-//					while(1);
-//					break;
-//				case (0x55):
-//				case (0x5A):
-//				case (0xCC):
-//				case (0xDD):
-////					break;
-//				default:
-//					if(DIS_attempt_number){
-//						DIS_attempt_number--;
-//						DIS_time = DIS_TIME_BTW_ATTEMPTS;
-//						DIS_status_after_transfer = WAIT_DATA_READY;
-//						DIS_status = BUSY;
-////						ss_low();
-//						SPI_transfer (&DIS_dummy_byte, &DIS_control_byte, 1, read_callback);
-//					} else {
-//						DIS_time = DIS_TIME_BTW_ATTEMPTS;
-//						DIS_attempt_number = DIS_ATTEMPTS;
-//						DIS_status = SEND_CMD;
-//					}
-//					break;
-//			}
 			break;
 		case (WAITING_DATA):
 			switch(DIS_control_byte)
@@ -267,7 +231,6 @@ void DIS_cout(void){
 					DIS_status_after_transfer = WAIT;
 					DIS_status_next = WAITING_DATA;
 					DIS_status = BUSY;
-//					ss_low();
 					SPI_transfer (&DIS_dummy_byte, &DIS_control_byte, 1, read_callback);
 					break;
 				default:
@@ -275,7 +238,6 @@ void DIS_cout(void){
 					DIS_status_after_transfer = WAIT;
 					DIS_status_next = GETTING_DATA;
 					DIS_status = BUSY;
-//					ss_low();
 					SPI_transfer (0,read_packet.read_frame, 5, read_callback);
 					break;
 			}

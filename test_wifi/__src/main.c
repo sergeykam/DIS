@@ -153,16 +153,14 @@ void main(void)
 **************************************************/
 void Rx_cb (U8 *buffer, U8 length)
 {
-	if(IDLE == wifi_status){	// если не в режиме ожидания то забиваем на все пакеты
-		if((0 == memcmp(Rx_buffer,Rx_get_site,10)) || (0 == memcmp(&Rx_buffer[1],Rx_get_site,10))){ // запрос на сайт
-			Rx_buffer[0] = 0;	// портим буффер Rx
-			// ставим на ожидание, а потом передачу
+	if(IDLE == wifi_status){	
+		if((0 == memcmp(Rx_buffer,Rx_get_site,10)) || (0 == memcmp(&Rx_buffer[1],Rx_get_site,10))){ 
+			Rx_buffer[0] = 0;
 			wifi_status = WAIT; 
 			wifi_task = SEND_SITE;
 		} else {
 			if(0 == memcmp(Rx_buffer,Rx_get_data,10)){
 				Rx_buffer[0] = 0;
-				// тут передаем данные
 			} else {
 				UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
 			}
@@ -257,7 +255,6 @@ void site_tx_cb(void){
 		memcpy_P((I8*)Tx_buffer, site_end, sizeof(site_end));
 		UART_transmit (Tx_buffer, sizeof(site_end)-1, Tx_cb);
 	}
-	
 }
 /**************************************************
 * Function name		: void error_cb	(I8 *buffer, U8 length, U8 error)
