@@ -40,8 +40,8 @@ enum DIS_state
 	GETTING_DATA,
 };
 
-#define SS_DDR_1  DDRB_Bit2
-#define SS_PORT_1 PORTB_Bit2
+#define SS_DDR_1  DDRB_Bit4
+#define SS_PORT_1 PORTB_Bit4
 
 #define SS_DDR_2  DDRC_Bit0
 #define SS_PORT_2 PORTC_Bit0
@@ -63,8 +63,9 @@ enum DIS_state
 #define DIS_TIME_BTW_1_2_PHASE		4
 #define DIS_TIME_BTW_2_3_PHASE		1
 #define DIS_TIME_BTW_ATTEMPTS		4
+#define DIS_TIME_BTW_FAIL			255
 
-#define DIS_ATTEMPTS				255
+#define DIS_ATTEMPTS				50
 /***************************************************
 *	Function Prototype Section
 ***************************************************/
@@ -159,13 +160,12 @@ void main (void)
 	SS_DDR_2 = HIGH;
 	SS_DDR_3 = HIGH;
 	SS_DDR_4 = HIGH;
-	SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 16);
+	SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, 2);
 	TIMER0_HW_API_init (timer_cb);
 	DIS_status_next = SEND_CMD;
 	DIS_status = SEND_CMD;
 	DIS_number = 0x00;
 	__enable_interrupt();
- 
 	while(1)
 	{
 		DIS_cout();
@@ -207,6 +207,7 @@ void DIS_cout(void){
 				DIS_status_after_transfer = WAIT;
 				DIS_status_next = WAITING_DATA;
 				DIS_status = BUSY;
+//				ss_low();
 				SPI_transfer (0, DIS_dummy_arr, 1, read_callback);
 			} else {
 				if(DIS_attempt_number){
@@ -214,12 +215,13 @@ void DIS_cout(void){
 					DIS_time = DIS_TIME_BTW_ATTEMPTS;
 					DIS_status_after_transfer = WAIT_DATA_READY;
 					DIS_status = BUSY;
-//						ss_low();
+//					ss_low();
 					SPI_transfer (0, DIS_dummy_arr, 1, read_callback);
 				} else {
-					DIS_time = DIS_TIME_BTW_ATTEMPTS;
+					DIS_time = DIS_TIME_BTW_FAIL;
 					DIS_attempt_number = DIS_ATTEMPTS;
-					DIS_status = SEND_CMD;
+					DIS_status = WAIT;
+					DIS_status_next = SEND_CMD;
 				}
 			}	
 		
@@ -279,8 +281,9 @@ void DIS_cout(void){
 			}
 			break;
 		case (GETTING_DATA):
+			ss_high();
 			memcpy(read_packet.read_frame,sensor_union[DIS_number].sensor_data.data.data_buf,4);
-			DIS_time = 4000;
+			DIS_time = 1000;
 			DIS_status_next = SEND_CMD;
 			DIS_status = WAIT;
 			break;
@@ -323,7 +326,6 @@ void ss_low(void)
 	SS_PORT_3 = LOW;
   if(DIS_number == 0x03)
 	SS_PORT_4 = LOW;
-  __delay_cycles(100);
 }
 /**************************************************
 * Function name	: 
@@ -342,7 +344,6 @@ void ss_high(void)
 	SS_PORT_3 = HIGH;
   if(DIS_number == 0x03)
 	SS_PORT_4 = HIGH;
-  __delay_cycles(100);
 }
 /**************************************************
 * Function name	: 
@@ -353,7 +354,7 @@ void ss_high(void)
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
-	ss_high();
+//	ss_high();
 	DIS_status = DIS_status_after_transfer;
 }
 /**************************************************
