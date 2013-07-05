@@ -157,7 +157,7 @@ void get_data_cb(U8 *data)
 		if(attempts_number != DIS_ATTEMPTS_NUMBER){
 			state = DATA;
 		} else {
-			DIS_data[last_active_DIS].data_pos.data_pos.data[0] = 0;
+			DIS_data[last_active_DIS].data_pos.sort_sensor = 0;
 			attempts_number = 0;
 			state = state_next;
 			last_active_DIS++;
@@ -182,7 +182,7 @@ void get_configuration_cb(U8 *data)
 		if(attempts_number != DIS_ATTEMPTS_NUMBER){
 			state = DATA;
 		} else {
-			DIS_data[last_active_DIS].data_pos.sort_sensor = 0;
+			DIS_data[last_active_DIS].data_pos.data[0] = 0;
 			attempts_number = 0;
 			state = state_next;
 			last_active_DIS++;

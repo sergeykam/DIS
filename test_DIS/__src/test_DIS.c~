@@ -53,10 +53,10 @@ enum DIS_state
 #define SS_PORT_4 PORTC_Bit2
 
 #define OK					0x01
-#define ERROR_CONTROL_BYTE			0x02
+#define ERROR_CONTROL_BYTE	0x02
 
-#define CONFIGURATION				0x01
-#define DATA					0x03
+#define CONFIGURATION		0x01
+#define DATA				0x03
 
 // TIMINGS
 #define DIS_NO_TIMER				0

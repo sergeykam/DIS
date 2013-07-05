@@ -88,8 +88,7 @@ const __flash I8 site[SITE_PARTICLES][SITE_PARTICLE_SIZE] = {
 
 const __flash I8 site_end[] = "turn c2;case 2:return c3;case 3:return c4;}};};</script></body></html>\n";
 
-enum 
-{
+enum{
   IDLE = 0,
   WAIT,
   SEND_SITE,
