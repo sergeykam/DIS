@@ -12,11 +12,11 @@
 ***************************************************/
 enum DIS_matrix_state
 {
-	IDLE = 0,
+	BUSY = 0,
 	WAIT,
 	CONFIGURATION,
 	DATA
-}
+};
 
 enum DIS_NUMBER
 {
@@ -24,7 +24,7 @@ enum DIS_NUMBER
 	DIS2,
 	DIS3,
 	DIS4
-}
+};
 
 #define DIS_REQUEST_PERIOD	 5000		// 2 sec
 #define DIS_ATTEMPTS_NUMBER	 3
@@ -75,7 +75,7 @@ void main(void)
 {
 	DIS_init();
 	WIFI_init();
-	WIFI_set_data_ptr (&DIS_data);
+	WIFI_set_data_ptr (DIS_data[0].frame);
 	TIMER0_HW_API_init (timer_cb);
 
 	state = CONFIGURATION;
@@ -132,7 +132,7 @@ void DIS_matrix_while_cout(void)
 void get_data_cb(U8 *data)
 {
 	if(data){
-		memcpy(DIS_data[last_active_DIS].data_pos.data_buf, data, 4);
+		memcpy(DIS_data[last_active_DIS].data_pos.data.data_buf, data, 4);
 		switch (last_active_DIS)
 		{
 			case DIS1:
@@ -157,7 +157,7 @@ void get_data_cb(U8 *data)
 		if(attempts_number != DIS_ATTEMPTS_NUMBER){
 			state = DATA;
 		} else {
-			DIS_data[last_active_DIS].data_pos.data_pos.data[0] = 0;
+			DIS_data[last_active_DIS].data_pos.data.data_buf[0] = 0;
 			attempts_number = 0;
 			state = state_next;
 			last_active_DIS++;

@@ -1991,6 +1991,9 @@
   <group>
     <name>API</name>
     <file>
+      <name>$PROJ_DIR$\..\..\__API\DIS_API.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\__API\SPI_API.c</name>
     </file>
     <file>
@@ -1998,6 +2001,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\__API\UART_API.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\__API\WIFI_API.c</name>
     </file>
   </group>
   <file>

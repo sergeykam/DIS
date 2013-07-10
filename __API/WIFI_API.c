@@ -43,7 +43,7 @@ U8 close[] = "close\n";
 U8 ex[] = "exit\n";
 // statuses
 static U8 status;
-static U16 timer; 
+static U16 time; 
 static U8 task;
 static U8 task_after_tx;
 static U8 site_part_to_tx;
@@ -54,7 +54,6 @@ U8 site_request[] = "GET / HTTP";
 U8 data_request[] = "GET /?a=1";
 U8 http_headers[] = "HTTP/1.1$200$OK\n\n";
 // user's settings
-static void (*data_ready_cb)(U8*);
 static U8* user_data_ptr;
 
 /**************************************************

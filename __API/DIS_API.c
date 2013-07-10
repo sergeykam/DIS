@@ -15,6 +15,12 @@ enum DIS_state
 	WAITING_DATA,
 	GETTING_DATA,
 };
+
+enum SS_STATE
+{
+	LOW = 0,
+	HIGH = 1
+};
 /***************************************************
 *	Function Prototype Section
 ***************************************************/
@@ -212,7 +218,7 @@ U8 DIS_get_data(U8 DIS_num, void (*callback)(U8 *data))
 	}
 
 	ss_low();
-	if(SPI_transfer (write_packet.write_frame, dummy_arr, 7, read_callback))){
+	if(SPI_transfer (write_packet.write_frame, dummy_arr, 7, read_callback)){
 		return 0;
 	} else {
 		return 1;
@@ -249,7 +255,7 @@ U8 DIS_get_configuration(U8 DIS_num, void (*callback)(U8 *configuration))
 	}
 
 	ss_low();
-	if(SPI_transfer (write_packet.write_frame, dummy_arr, 7, read_callback))){
+	if(SPI_transfer (write_packet.write_frame, dummy_arr, 7, read_callback)){
 		return 0;
 	} else {
 		return 1;
@@ -265,7 +271,7 @@ U8 DIS_get_configuration(U8 DIS_num, void (*callback)(U8 *configuration))
 ***************************************************/
 void read_callback(U8 *Rx_buffer, U8 length)
 {
-	DIS_status = DIS_status_after_transfer;
+	status = status_after_transfer;
 }
 
 /**************************************************
