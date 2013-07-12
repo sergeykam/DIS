@@ -5,7 +5,7 @@
 #include "string.h"
 #include <TIMER0_HW_API.h>
 #include <DIS_API.h>
-#include <WIFI_API.h>
+//#include <WIFI_API.h>
 
 /***************************************************
 *	Defines Section
@@ -26,8 +26,8 @@ enum DIS_NUMBER
 	DIS4
 };
 
-#define DIS_REQUEST_PERIOD	 5000		// 2 sec
-#define DIS_ATTEMPTS_NUMBER	 3
+#define DIS_REQUEST_PERIOD	 20000		// DIV 4000 -> sec
+#define DIS_ATTEMPTS_NUMBER	 50
 
 /***************************************************
 *	Function Prototype Section
@@ -74,8 +74,8 @@ static U8 attempts_number;
 void main(void)
 {
 	DIS_init();
-	WIFI_init();
-	WIFI_set_data_ptr (DIS_data[0].frame);
+//	WIFI_init();
+//	WIFI_set_data_ptr (DIS_data[0].frame);
 	TIMER0_HW_API_init (timer_cb);
 
 	state = CONFIGURATION;
@@ -83,7 +83,7 @@ void main(void)
 	__enable_interrupt();
 	
 	while(1){
-		WIFI_while_cout();
+//		WIFI_while_cout();
 		DIS_while_cout();
 		DIS_matrix_while_cout();
 	}
@@ -112,7 +112,7 @@ void DIS_matrix_while_cout(void)
 		case DATA:
 			if(DIS_get_data(last_active_DIS, get_data_cb)){
 				state = BUSY;
-				state_next = CONFIGURATION;
+				state_next = WAIT;
 			}
 			break;
 		default:
@@ -133,34 +133,38 @@ void get_data_cb(U8 *data)
 {
 	if(data){
 		memcpy(DIS_data[last_active_DIS].data_pos.data.data_buf, data, 4);
-		switch (last_active_DIS)
-		{
-			case DIS1:
-			case DIS2:
-			case DIS3:
-				state = state_next;
-				last_active_DIS++;
-				break;
-			case DIS4:
-				state = WAIT;
-				state_next = CONFIGURATION;
-				last_active_DIS = DIS1;
-				time = DIS_REQUEST_PERIOD;
-				break;
-			default:
-				state = CONFIGURATION;
-				last_active_DIS = DIS1;
-				break;
-		}
+		state = state_next;
+//		switch (last_active_DIS)
+//		{
+//			case DIS1:
+//			case DIS2:
+//			case DIS3:
+//				state = state_next;
+//				last_active_DIS++;
+//				break;
+//			case DIS4:
+//				state = WAIT;
+//				state_next = CONFIGURATION;
+//				last_active_DIS = DIS1;
+//				time = DIS_REQUEST_PERIOD;
+//				break;
+//			default:
+//				state = CONFIGURATION;
+//				last_active_DIS = DIS1;
+//				break;
+//		}
 	} else {
 		attempts_number++;
-		if(attempts_number != DIS_ATTEMPTS_NUMBER){
-			state = DATA;
-		} else {
-			DIS_data[last_active_DIS].data_pos.data.data_buf[0] = 0;
-			attempts_number = 0;
+		if(attempts_number == DIS_ATTEMPTS_NUMBER){
 			state = state_next;
-			last_active_DIS++;
+			attempts_number = 0;
+			
+			DIS_data[last_active_DIS].data_pos.data.data_buf[0] = 0;
+			DIS_data[last_active_DIS].data_pos.data.data_buf[1] = 0;
+			DIS_data[last_active_DIS].data_pos.data.data_buf[2] = 0;
+			DIS_data[last_active_DIS].data_pos.data.data_buf[3] = 0;
+		} else {
+			state = DATA;
 		}
 	}
 }
@@ -174,18 +178,17 @@ void get_data_cb(U8 *data)
 ***************************************************/
 void get_configuration_cb(U8 *data)
 {
-	state_next = DATA;
 	if(data){
 		memcpy(&DIS_data[last_active_DIS].data_pos.sort_sensor, data, 4);
+		state = state_next;
 	} else {
 		attempts_number++;
-		if(attempts_number != DIS_ATTEMPTS_NUMBER){
-			state = DATA;
-		} else {
+		if(attempts_number == DIS_ATTEMPTS_NUMBER){
+			state = state_next;
 			DIS_data[last_active_DIS].data_pos.sort_sensor = 0;
 			attempts_number = 0;
-			state = state_next;
-			last_active_DIS++;
+		} else {
+			state = CONFIGURATION;
 		}
 	}
 }
@@ -204,7 +207,7 @@ void DIS_matrix_timer_cout(void)
 		if(time){
 			time--;
 		} else {
-			state = state_next;
+			state = CONFIGURATION;
 		}
 	}
 }
@@ -218,7 +221,7 @@ void DIS_matrix_timer_cout(void)
 ***************************************************/
 void timer_cb(void)
 {
-	WIFI_timer_cout();
+//	WIFI_timer_cout();
 	DIS_timer_cout();
 	DIS_matrix_timer_cout();
 }

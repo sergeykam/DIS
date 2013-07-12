@@ -76,7 +76,7 @@ static U8 DIS_number;
 static U8 control_byte;
 static U8 attempt_number = DIS_ATTEMPTS; 
 static U8 dummy_byte;
-U8 dummy_arr[7];
+static U8 dummy_arr[7];
 
 // user's callback
 static void (*data_ready_cb)(U8*);
@@ -96,6 +96,7 @@ void DIS_init (void)
 	SS_DDR_4 = HIGH;
 
 	ss_high();
+	
 	SPI_init (SPI_MASTER + SPI_IDLE_SCK_LOW + SPI_SAMPLE_SETUP + SPI_MSB, DIS_SPI_PRS);	
 	return;
 }
@@ -133,12 +134,12 @@ void DIS_while_cout(void)
 		case (WAIT):
 			break;
 		case (WAIT_DATA_READY):
-			if(0xA5 == dummy_arr[0]){
-				time = DIS_TIME_BTW_2_3_PHASE;
+			if(0xA5 == dummy_arr[0] || 0xA5 == dummy_arr[1]){
+				time = DIS_TIME_BTW_ATTEMPTS;
 				status_after_transfer = WAIT;
 				status_next = WAITING_DATA;
 				status = BUSY;
-				SPI_transfer (0, dummy_arr, 1, read_callback);
+				SPI_transfer (0, &control_byte, 1, read_callback);
 			} else {
 				if(attempt_number){
 					attempt_number--;
@@ -150,7 +151,6 @@ void DIS_while_cout(void)
 					time = 0;
 					attempt_number = DIS_ATTEMPTS;
 					status = IDLE;
-					status_next = SEND_CMD;
 					data_ready_cb(0);
 				}
 			}	
@@ -166,7 +166,7 @@ void DIS_while_cout(void)
 					SPI_transfer (&dummy_byte, &control_byte, 1, read_callback);
 					break;
 				default:
-					time = DIS_NO_TIMER;
+					time = 0;
 					status_after_transfer = WAIT;
 					status_next = GETTING_DATA;
 					status = BUSY;
@@ -204,10 +204,8 @@ U8 DIS_get_data(U8 DIS_num, void (*callback)(U8 *data))
 	DIS_number = DIS_num;
 	data_ready_cb = callback;
 
-	status_after_transfer = WAIT;
-	status_next = WAIT_DATA_READY;
+	status_after_transfer = WAIT_DATA_READY;
 	status = BUSY;
-	time = DIS_TIME_BTW_1_2_PHASE;
 
 	write_packet.write_pos.start_byte = 0xAA;
 	write_packet.write_pos.cmd_number = 0x01;
@@ -241,10 +239,8 @@ U8 DIS_get_configuration(U8 DIS_num, void (*callback)(U8 *configuration))
 	DIS_number = DIS_num;
 	data_ready_cb = callback;
 
-	status_after_transfer = WAIT;
-	status_next = WAIT_DATA_READY;
+	status_after_transfer = WAIT_DATA_READY;
 	status = BUSY;
-	time = DIS_TIME_BTW_1_2_PHASE;
 
 	write_packet.write_pos.start_byte = 0xAA;
 	write_packet.write_pos.cmd_number = 0x03;

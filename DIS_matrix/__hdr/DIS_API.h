@@ -23,11 +23,8 @@
 #define DIS_SPI_PRS 	2
 
 // TIMINGS
-#define DIS_NO_TIMER				0
-#define DIS_TIME_BTW_1_2_PHASE			4
-#define DIS_TIME_BTW_2_3_PHASE			1
+
 #define DIS_TIME_BTW_ATTEMPTS			4
-#define DIS_TIME_BTW_FAIL			255
 
 // ATTEMPSTS
 #define DIS_ATTEMPTS				50

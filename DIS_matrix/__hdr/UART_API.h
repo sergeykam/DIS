@@ -20,7 +20,7 @@
 /***************************************************
 *  User Settings section
 ***************************************************/
-#define QUARTZ_FREQUENCY 1000000	/* set freq Hz */
+#define QUARTZ_FREQUENCY 8000000	/* set freq Hz */
 //#define UART_INTERNAL_TIMER_ISR
 #define UART_INTERNAL_TIMER_PERIOD	1
 #if !defined (QUARTZ_FREQUENCY)
