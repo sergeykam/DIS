@@ -320,7 +320,7 @@ __interrupt	void UART_Tx_UDRE_ISR (void)
 * Description	: UART transmit	complete ISR
 * Notes			: after transmitting last byte, callback function is called under ISR
 *************************************************************************************/
-#if   defined (__ATmega168__)
+#if   defined (__ATmega168PA__)
 	#pragma	vector = USART_TX_vect
 			__interrupt	void UART_Tx_TXC_ISR (void)
 #elif defined(__ATmega16__)
@@ -373,7 +373,7 @@ U8 UART_receive	(U8	*buffer, U8	length,	U16	timeout, void (*callback)(U8*, U8))
 * Notes				: if receive complete callback function	called under this ISR
 *	if error occured corresponding callback	function called	under this ISR
 ********************************************************************************/
-#if   defined (__ATmega168__)
+#if   defined (__ATmega168PA__)
 	#pragma	vector = USART_RX_vect
 			__interrupt	void UART_Rx_ISR (void)
 #elif defined(__ATmega16__)

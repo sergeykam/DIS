@@ -5,7 +5,7 @@
 #include "string.h"
 #include <TIMER0_HW_API.h>
 #include <DIS_API.h>
-//#include <WIFI_API.h>
+#include <WIFI_API.h>
 
 /***************************************************
 *	Defines Section
@@ -74,8 +74,8 @@ static U8 attempts_number;
 void main(void)
 {
 	DIS_init();
-//	WIFI_init();
-//	WIFI_set_data_ptr (DIS_data[0].frame);
+	WIFI_init();
+	WIFI_set_data_ptr (DIS_data[0].frame);
 	TIMER0_HW_API_init (timer_cb);
 
 	state = CONFIGURATION;
@@ -83,7 +83,7 @@ void main(void)
 	__enable_interrupt();
 	
 	while(1){
-//		WIFI_while_cout();
+		WIFI_while_cout();
 		DIS_while_cout();
 		DIS_matrix_while_cout();
 	}
@@ -221,7 +221,7 @@ void DIS_matrix_timer_cout(void)
 ***************************************************/
 void timer_cb(void)
 {
-//	WIFI_timer_cout();
+	WIFI_timer_cout();
 	DIS_timer_cout();
 	DIS_matrix_timer_cout();
 }
