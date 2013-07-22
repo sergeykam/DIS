@@ -7,14 +7,17 @@
 /***************************************************
 *	Defines Section
 ***************************************************/
-#define WAITING_TIME  32
-#define TIME_BTW_CMDS 1000
-#define WAIT_BEFORE_SEND_CMD 1500
+#define TIME_BTW_CMDS 			1000
+#define WAIT_BEFORE_SEND_CMD 	1000
+#define UART_RX_BUFFER_SIZE 	64
+#define REQUEST_SEARCH_OFFSET 	8
 
 enum WIFI_state
 {
   IDLE = 0,
   WAIT,
+  SEND_HTTP_HEADERS,
+  SEND_404_HEADERS,
   SEND_SITE,
   SEND_DATA,
   CMD,
@@ -69,7 +72,7 @@ const __flash I8 site[SITE_PARTICLES][SITE_PARTICLE_SIZE] = {
 "ById(\"c2\").getContext(\"2d\"),c3=document.getElementById(\"c3\").getContext(\"2d\"),c4=document.getElementById(\"c4\").getContext(\"2d\");",
 "function get(){var xmlhttp;try{xmlhttp = new ActiveXObject(\"Msxml2.XMLHTTP\");}catch(e){try{xmlhttp = new ActiveXObject(\"Microsof",
 "t.XMLHTTP\");}catch(E){xmlhttp = false;}}if(!xmlhttp && typeof XMLHttpRequest != \'undefined\') {xmlhttp = new XMLHttpRequest();}xm",
-"lhttp.open(\'GET\', \'server.php?a=1\', true);xmlhttp.onreadystatechange = function() {if (xmlhttp.readyState == 4) {if (xmlhttp.sta",
+"lhttp.open(\'GET\', \'?a=1\', true);xmlhttp.onreadystatechange = function() {if (xmlhttp.readyState == 4)           {if (xmlhttp.sta",
 "tus == 200) {parseAns();newScale();newGraph();                                                                writeRes(xmlhttp.r",
 "esponseText);}}};xmlhttp.send(null);};function parseAns(o) {};function maximum(arr) {var res = 0;for (var i = 0; i < arr.length ",
 "+ 1; i++) {if (arr[i] > res) {res = arr[i];}}return res;};function newScale() {var max = 0,lvl = 0,curlvl = 0,rest = 0;for (var ",
@@ -100,10 +103,11 @@ static U8 task_after_tx;
 static U8 site_part_to_tx;
 // HTML
 U8 Tx_buffer[SITE_PARTICLE_SIZE];
-U8 Rx_buffer[16];
+U8 Rx_buffer[UART_RX_BUFFER_SIZE];
 U8 site_request[] = "GET / HTTP";
 U8 data_request[] = "GET /?a=1";
-U8 http_headers[] = "HTTP/1.1$200$OK\n\n";
+U8 http_OK_headers[] = "HTTP/1.1$200$OK\r\nServer:$Atmega16\r\nConnection:$close\r\n\n\n";
+U8 http_404_headers[] = "HTTP/1.1$400$Not$Found\r\nServer:$Atmega16\r\nConnection:$close\r\n\n\n";
 // user's settings
 static U8* user_data_ptr;
 
@@ -134,17 +138,19 @@ void WIFI_init (void)
 void Rx_cb (U8 *buffer, U8 length)
 {
 	if(IDLE == status){	
-		if((0 == memcmp(Rx_buffer,site_request,10)) || (0 == memcmp(&Rx_buffer[1],site_request,10))){ 
-			Rx_buffer[0] = 0;
-			status = SEND_SITE;
-		} else {
-			if(0 == memcmp(Rx_buffer,data_request,9)){
-				Rx_buffer[0] = 0;
-				status = SEND_DATA;
-			} else {
-				UART_receive (Rx_buffer, sizeof(Rx_buffer), 10000, Rx_cb);
+		for(U8 i = 0; i < REQUEST_SEARCH_OFFSET; i++){
+			if(0 == memcmp(&Rx_buffer[i],site_request,10)){
+				status = SEND_HTTP_HEADERS;
+				task_after_tx = SEND_SITE;
+				return;
+			} else if(0 == memcmp(&Rx_buffer[i],data_request,9)){
+				status = SEND_HTTP_HEADERS;
+				task_after_tx = SEND_DATA;
+				return;
 			}
 		}
+		status = SEND_404_HEADERS;
+		task_after_tx = IDLE;
 	}
 }
 
@@ -191,13 +197,25 @@ void WIFI_while_cout(void)
 	{
 		case BUSY:
   		case IDLE:
+		case WAIT:
+			break;
+		case SEND_HTTP_HEADERS:
+			status = BUSY;
+			UART_transmit (http_OK_headers, sizeof(http_OK_headers)-1, Tx_cb);
+			break;
+		case SEND_404_HEADERS:
+			status = BUSY;
+			task = CMD;
+			task_after_tx = WAIT;
+			time = WAIT_BEFORE_SEND_CMD;
+			UART_transmit (http_404_headers, sizeof(http_404_headers)-1, Tx_cb);
 			break;
 		case SEND_SITE:
 			status = BUSY;
 			task = CMD;
 			task_after_tx = WAIT;
 			time = WAIT_BEFORE_SEND_CMD;
-			UART_transmit (http_headers, sizeof(http_headers)-1, site_tx_cb);
+			site_tx_cb();
 			break;
 		case SEND_DATA:
 			status = BUSY;
@@ -224,7 +242,7 @@ void WIFI_while_cout(void)
 			status = IDLE;
 			task_after_tx = IDLE;
 			task = IDLE;
-    			UART_transmit (ex, 6, exit_cb);
+    		UART_transmit (ex, 6, exit_cb);
 			break;
 		default:
 			status = IDLE;

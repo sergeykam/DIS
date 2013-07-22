@@ -141,13 +141,14 @@ void DIS_while_cout(void)
 				status = BUSY;
 				SPI_transfer (0, &control_byte, 1, read_callback);
 			} else {
-				if(attempt_number){
+				if((0xFF != dummy_arr[0]) && attempt_number){
 					attempt_number--;
 					time = DIS_TIME_BTW_ATTEMPTS;
 					status_after_transfer = WAIT_DATA_READY;
 					status = BUSY;
 					SPI_transfer (0, dummy_arr, 1, read_callback);
-				} else {
+				}
+				 else {
 					time = 0;
 					attempt_number = DIS_ATTEMPTS;
 					status = IDLE;

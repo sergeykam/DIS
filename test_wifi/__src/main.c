@@ -38,6 +38,9 @@ void site_tx_cb(void);
 #define TIME_BTW_CMDS 255
 #define WAIT_BEFORE_SEND_CMD 255
 
+#define SITE_PARTICLES 41
+#define SITE_PARTICLE_SIZE 128
+
 /***************************************************
 * CONSTS
 ***************************************************/
