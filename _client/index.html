@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Матрица ИГС</title>
+		<title>DIS Matrix</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<style>
 			*{
@@ -26,7 +26,7 @@
 			}
 			.c{
 				margin: 0 auto;
-				width: 1320px;
+				width: 1300px;
 			}
 			.active{
 				color: green;
@@ -65,6 +65,7 @@
 		</style>
 	</head>
 	<body>
+            <button onclick="get(); return false;">Get data</button><div id="data"></div>
 		<div class="c">
 			<div class="graph">
 				<div class="y">
@@ -83,14 +84,14 @@
 						<li class="ylvl">0</li>
 					</ul>
 				</div>
-				<canvas id="c1" width="500" height="300">Ваш браузер не поддерживается</canvas>
+				<canvas id="c1" width="500" height="300"></canvas>
 				<div class="descr">
 					<ul>
 						<li>H<sub>2</sub>S</li>
-						<li>5 Вольт</li>
+						<li>5 V</li>
 						<li>01/04/2013</li>
-						<li>Серия</li>
-						<li class="active">Активен</li>
+						<li></li>
+						<li class="active">Active</li>
 					</ul>
 				</div>
 				<div class="x">t, с</div>
@@ -116,10 +117,10 @@
 				<div class="descr">
 					<ul>
 						<li>H<sub>2</sub>S</li>
-						<li>5 Вольт</li>
+						<li>5 V</li>
 						<li>01/04/2013</li>
-						<li>Серия</li>
-						<li class="active">Активен</li>
+						<li></li>
+						<li class="active">Active</li>
 					</ul>
 				</div>
 				<div class="x">t, с</div>
@@ -145,10 +146,10 @@
 				<div class="descr">
 					<ul>
 						<li>H<sub>2</sub>S</li>
-						<li>5 Вольт</li>
+						<li>5 V</li>
 						<li>01/04/2013</li>
-						<li>Серия</li>
-						<li class="active">Активен</li>
+						<li></li>
+						<li class="active">Active</li>
 					</ul>
 				</div>
 				<div class="x">t, с</div>
@@ -174,17 +175,16 @@
 				<div class="descr">
 					<ul>
 						<li>H<sub>2</sub>S</li>
-						<li>5 Вольт</li>
+						<li>5 V</li>
 						<li>01/04/2013</li>
-						<li>Серия</li>
-						<li class="active">Активен</li>
+						<li></li>
+						<li class="active">Active</li>
 					</ul>
 				</div>
 				<div class="x">t, с</div>
 			</div>
 		</div>
 		<script>
-			window.onload = function() {
 				var xPts=50,
 						yPts=10,
 						ch=300,
@@ -214,10 +214,10 @@
 					xmlhttp.onreadystatechange = function() {
 						if (xmlhttp.readyState == 4) {
 							if (xmlhttp.status == 200) {
-								console.log(JSON.parse(xmlhttp.responseText));
-								parseAns(JSON.parse(xmlhttp.responseText));
+								parseAns();
 								newScale();
 								newGraph();
+                                                                writeRes(xmlhttp.responseText);
 							}
 						}
 					};
@@ -226,18 +226,6 @@
 				;
 
 				function parseAns(o) {
-					descr = o.s;
-					for (var i = 0; i < 4; i++) {
-						if (data[i].length >= xPts) {
-							for (var j = 0; j < xPts; j++) {
-								data[i][j] = data[i][j + 1];
-							}
-							data[i][data[i].length - 1] = o[i];
-						} else {
-							data[i][data[i].length] = o[i];
-						}
-
-					}
 				}
 				;
 
@@ -312,7 +300,10 @@
 						}
 				}
 				;
-			};
+                                
+                                function writeRes(d){
+                                       document.getElementById("data").innerHTML = d;
+                                }
 		</script>
 	</body>
 </html>
