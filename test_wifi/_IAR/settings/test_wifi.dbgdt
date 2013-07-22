@@ -19,7 +19,7 @@
           
           
           
-        <Column0>381</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>124</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       <PreferedWindows><Position>1</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></Workspace>
       <Disassembly>
         <PreferedWindows>
@@ -44,7 +44,7 @@
         <expressions>
           
           
-        <item>Rx_buffer</item><item></item></expressions>
+        <item>Rx_buffer</item><item>wifi_status</item><item></item></expressions>
         <col-names>
           
           
@@ -63,7 +63,7 @@
       
       
       
-    <Wnd2>
+    <Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-14411-20915</Identity>
@@ -79,20 +79,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-8004-29728</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd4><Tabs><Tab><Identity>TabID-8004-29728</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-9478-10127</Identity><TabName>Workspace</TabName><Factory>Workspace</Factory><Session><NodeDict><ExpandedNode>test_wifi</ExpandedNode></NodeDict></Session></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>117</YPos><SelStart>7936</SelStart><SelEnd>7936</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\TIMER0_HW_API.h</Filename><XPos>0</XPos><YPos>6</YPos><SelStart>1187</SelStart><SelEnd>1187</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DIS_matrix\__hdr\device.h</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>560</SelStart><SelEnd>560</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DIS_matrix\__hdr\TIMER0_HW_API.h</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>944</SelStart><SelEnd>944</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\DIS_matrix\__src\DIS_matrix.c</Filename><XPos>0</XPos><YPos>169</YPos><SelStart>1515</SelStart><SelEnd>1515</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\WIFI_API.c</Filename><XPos>0</XPos><YPos>192</YPos><SelStart>9193</SelStart><SelEnd>9193</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\TIMER0_HW_API.c</Filename><XPos>0</XPos><YPos>78</YPos><SelStart>3038</SelStart><SelEnd>3038</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\SPI_API.c</Filename><XPos>0</XPos><YPos>203</YPos><SelStart>7819</SelStart><SelEnd>7819</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__API\DIS_API.c</Filename><XPos>0</XPos><YPos>98</YPos><SelStart>2020</SelStart><SelEnd>2020</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\__hdr\device.h</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\test_wifi\__src\main.c</Filename><XPos>0</XPos><YPos>144</YPos><SelStart>9027</SelStart><SelEnd>9027</SelEnd></Tab><ActiveTab>8</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-00ac2978><key>iaridepm.enu1</key></Toolbar-00ac2978></Sizes></Row0><Row1><Sizes><Toolbar-09355eb0><key>debuggergui.enu1</key></Toolbar-09355eb0></Sizes></Row1></Top><Left><Row0><Sizes/></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>583</Bottom><Right>412</Right><x>-2</x><y>-2</y><xscreen>833</xscreen><yscreen>208</yscreen><sizeHorzCX>520625</sizeHorzCX><sizeHorzCY>251208</sizeHorzCY><sizeVertCX>258750</sizeVertCX><sizeVertCY>706522</sizeVertCY></Rect></Wnd3></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>176</Bottom><Right>1602</Right><x>-2</x><y>-2</y><xscreen>1604</xscreen><yscreen>178</yscreen><sizeHorzCX>1002500</sizeHorzCX><sizeHorzCY>214976</sizeHorzCY><sizeVertCX>5456875</sizeVertCX><sizeVertCY>214976</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-02892978><key>iaridepm.enu1</key></Toolbar-02892978></Sizes></Row0><Row1><Sizes><Toolbar-03cabba8><key>debuggergui.enu1</key></Toolbar-03cabba8></Sizes></Row1></Top><Left><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>571</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>125000</sizeHorzCX><sizeHorzCY>241546</sizeHorzCY><sizeVertCX>125000</sizeVertCX><sizeVertCY>692029</sizeVertCY></Rect></Wnd5></Sizes></Row0></Left><Right><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>571</Bottom><Right>325</Right><x>-2</x><y>-2</y><xscreen>7080</xscreen><yscreen>220</yscreen><sizeHorzCX>4425000</sizeHorzCX><sizeHorzCY>265700</sizeHorzCY><sizeVertCX>204375</sizeVertCX><sizeVertCY>692029</sizeVertCY></Rect></Wnd4></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>188</Bottom><Right>1602</Right><x>-2</x><y>-2</y><xscreen>1604</xscreen><yscreen>190</yscreen><sizeHorzCX>1002500</sizeHorzCX><sizeHorzCY>229469</sizeHorzCY><sizeVertCX>46381250</sizeVertCX><sizeVertCY>229469</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

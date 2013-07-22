@@ -2,7 +2,7 @@
 
 <workspace>
   <project>
-    <path>$WS_DIR$\..\test\_IAR\DIS_SPI_test.ewp</path>
+    <path>$WS_DIR$\..\DIS_matrix\_IAR\DIS_matrix.ewp</path>
   </project>
   <project>
     <path>$WS_DIR$\..\test_DIS\_IAR\test_DIS.ewp</path>

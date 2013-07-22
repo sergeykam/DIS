@@ -215,7 +215,6 @@ U8 SPI_transfer (U8 *Tx_buffer, U8 *Rx_buffer, U8 length, void (*callback)(U8 *R
 #pragma vector = SPI_STC_vect
   __interrupt void SPI_STC_ISR (void)
 {
-  __delay_cycles(100);
 	if (SPI_Rx_buffer)					//if receive is enabled
 	{
 		*SPI_Rx_buffer = SPDR;			//write received byte in receive-data buffer

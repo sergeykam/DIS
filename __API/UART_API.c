@@ -36,14 +36,6 @@
 			__interrupt	void UART_Tx_UDRE_ISR (void);	//USART Data Register Empty interrupt
 	#pragma	vector = USART_RXC_vect
 			__interrupt	void UART_Rx_ISR (void);		//USART Rx Complete interrupt
-			
-#elif   defined (__ATmega16__)
-	#pragma	vector = USART_TXC_vect
-			__interrupt	void UART_Tx_TXC_ISR (void);	//USART Tx Complete interrupt
-	#pragma	vector = USART_UDRE_vect
-			__interrupt	void UART_Tx_UDRE_ISR (void);	//USART Data Register Empty interrupt
-	#pragma	vector = USART_RXC_vect
-			__interrupt	void UART_Rx_ISR (void);		//USART Rx Complete interrupt
 
 #elif   defined (__ATmega128__)
 	#pragma	vector = USART0_TXC_vect
@@ -53,7 +45,7 @@
 	#pragma	vector = USART0_RXC_vect
 			__interrupt	void UART_Rx_ISR (void);		//USART Rx Complete interrupt
 			
-#elif   defined (__ATmega48__)||defined(__ATmega168PA__)||defined(__ATmega328P__)
+#elif   defined (__ATmega48__)||defined(__ATmega168PA__)||defined(__ATmega328P__)||defined(__ATmega168P__)
 	#pragma	vector = USART_TX_vect
 			__interrupt	void UART_Tx_TXC_ISR (void);	//USART Tx Complete interrupt
 	#pragma	vector = USART_UDRE_vect
@@ -161,69 +153,69 @@ void UART_init (U32	baudrate, U8 mode)
 	UCSRC =	0;			//clean previous settings (URSEL is 0, enter in UBRRH)
 
 	//set baudrate
-//	switch (baudrate)	//set baudrate
-//	{
-//		case 2400:
-//			UBRRH =	(UART_BPS2400 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS2400 & 0xFF;
-//			break;
-//		case 4800:
-//			UBRRH =	(UART_BPS4800 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS4800 & 0xFF;
-//			break;
-//		case 9600:
+	switch (baudrate)	//set baudrate
+	{
+		case 2400:
+			UBRRH =	(UART_BPS2400 >> 8) & 0x0F;
+			UBRRL =	UART_BPS2400 & 0xFF;
+			break;
+		case 4800:
+			UBRRH =	(UART_BPS4800 >> 8) & 0x0F;
+			UBRRL =	UART_BPS4800 & 0xFF;
+			break;
+		case 9600:
 			UBRRH =	(UART_BPS9600 >> 8) & 0x0F;
 			UBRRL =	UART_BPS9600 & 0xFF;
-//			break;
-//		case 14400:
-//			UBRRH =	(UART_BPS14400 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS14400 & 0xFF;
-//			break;
-//		case 19200:
-//			UBRRH =	(UART_BPS19200 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS19200 & 0xFF;
-//			break;
-//		case 28800:
-//			UBRRH =	(UART_BPS28800 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS28800 & 0xFF;
-//			break;
-//		case 38400:
-//			UBRRH =	(UART_BPS38400 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS38400 & 0xFF;
-//			break;
-//		case 57600:
-//			UBRRH =	(UART_BPS57600 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS57600 & 0xFF;
-//			break;
-//		case 76800:
-//			UBRRH =	(UART_BPS76800 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS76800 & 0xFF;
-//			break;
-//		case 115200:
-//			UBRRH =	(UART_BPS115200 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS115200 & 0xFF;
-//			break;
-//		case 230400:
-//			UBRRH =	(UART_BPS230400 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS230400 & 0xFF;
-//			break;
-//		case 250000:
-//			UBRRH =	(UART_BPS250000 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS250000 & 0xFF;
-//			break;
-//		case 500000:
-//			UBRRH =	(UART_BPS500000 >> 8) & 0x0F;
-//			UBRRL =	UART_BPS500000 & 0xFF;
-//			break;
-//		case 1000000:
-//			UBRRH =	(UART_BPS1000000 >>	8) & 0x0F;
-//			UBRRL =	UART_BPS1000000 & 0xFF;
-//			break;
-//		default:
-//			UBRRH =	((QUARTZ_FREQUENCY/(8 *	baudrate))	- 1)>>8;
-//			UBRRL =	(QUARTZ_FREQUENCY/(8 *	baudrate)) - 1;
-//			break;		
-//	}//end of switch
+			break;
+		case 14400:
+			UBRRH =	(UART_BPS14400 >> 8) & 0x0F;
+			UBRRL =	UART_BPS14400 & 0xFF;
+			break;
+		case 19200:
+			UBRRH =	(UART_BPS19200 >> 8) & 0x0F;
+			UBRRL =	UART_BPS19200 & 0xFF;
+			break;
+		case 28800:
+			UBRRH =	(UART_BPS28800 >> 8) & 0x0F;
+			UBRRL =	UART_BPS28800 & 0xFF;
+			break;
+		case 38400:
+			UBRRH =	(UART_BPS38400 >> 8) & 0x0F;
+			UBRRL =	UART_BPS38400 & 0xFF;
+			break;
+		case 57600:
+			UBRRH =	(UART_BPS57600 >> 8) & 0x0F;
+			UBRRL =	UART_BPS57600 & 0xFF;
+			break;
+		case 76800:
+			UBRRH =	(UART_BPS76800 >> 8) & 0x0F;
+			UBRRL =	UART_BPS76800 & 0xFF;
+			break;
+		case 115200:
+			UBRRH =	(UART_BPS115200 >> 8) & 0x0F;
+			UBRRL =	UART_BPS115200 & 0xFF;
+			break;
+		case 230400:
+			UBRRH =	(UART_BPS230400 >> 8) & 0x0F;
+			UBRRL =	UART_BPS230400 & 0xFF;
+			break;
+		case 250000:
+			UBRRH =	(UART_BPS250000 >> 8) & 0x0F;
+			UBRRL =	UART_BPS250000 & 0xFF;
+			break;
+		case 500000:
+			UBRRH =	(UART_BPS500000 >> 8) & 0x0F;
+			UBRRL =	UART_BPS500000 & 0xFF;
+			break;
+		case 1000000:
+			UBRRH =	(UART_BPS1000000 >>	8) & 0x0F;
+			UBRRL =	UART_BPS1000000 & 0xFF;
+			break;
+		default:
+			UBRRH =	((QUARTZ_FREQUENCY/(8 *	baudrate))	- 1)>>8;
+			UBRRL =	(QUARTZ_FREQUENCY/(8 *	baudrate)) - 1;
+			break;		
+	}//end of switch
 	UCSRA =	(1 << U2X);				//double speed
 
 #if defined (__IOM128_H)||defined (__ATmega48__)||defined(__ATmega168PA__)||defined(__ATmega328P__)
@@ -305,7 +297,7 @@ U8 UART_Tx_query (void)
 * Notes			: after placing last byte to transmit buffer, ISR is switched to Tx Complete
 ********************************************************************************************/
 #pragma	vector = USART_UDRE_vect
-			__interrupt	void UART_Tx_UDRE_ISR (void)
+__interrupt	void UART_Tx_UDRE_ISR (void)
 {
 	UCSRA |= (1	<< TXC);				//clear Tx complete interrupt flag
 
@@ -328,8 +320,13 @@ U8 UART_Tx_query (void)
 * Description	: UART transmit	complete ISR
 * Notes			: after transmitting last byte, callback function is called under ISR
 *************************************************************************************/
-#pragma	vector = USART_TX_vect
+#if   defined (__ATmega168PA__)
+	#pragma	vector = USART_TX_vect
 			__interrupt	void UART_Tx_TXC_ISR (void)
+#elif defined(__ATmega16__)
+	#pragma	vector = USART_TXC_vect
+			__interrupt	void UART_Tx_TXC_ISR (void)
+#endif
 {
 	UART_Tx_cnt	= 0;
 	UCSRB &= ~((1 << TXEN)|(1 << TXCIE));	//disable Tx and Tx Complete IRq
@@ -376,8 +373,13 @@ U8 UART_receive	(U8	*buffer, U8	length,	U16	timeout, void (*callback)(U8*, U8))
 * Notes				: if receive complete callback function	called under this ISR
 *	if error occured corresponding callback	function called	under this ISR
 ********************************************************************************/
-#pragma	vector = USART_RX_vect
+#if   defined (__ATmega168PA__)
+	#pragma	vector = USART_RX_vect
 			__interrupt	void UART_Rx_ISR (void)
+#elif defined(__ATmega16__)
+	#pragma	vector = USART_RXC_vect
+			__interrupt	void UART_Rx_ISR (void)
+#endif
 {
 	if (UCSRA &	((1<<FE)|(1<<DOR)|(1<<PE)))
 	{
