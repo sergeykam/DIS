@@ -29,6 +29,8 @@ enum DIS_NUMBER
 #define DIS_REQUEST_PERIOD	 20000		// DIV 4000 -> sec
 #define DIS_ATTEMPTS_NUMBER	 50
 
+#define OUTPUT_DATA_SIZE	 48
+
 /***************************************************
 *	Function Prototype Section
 ***************************************************/
@@ -55,7 +57,7 @@ union
 		} data;
 	} data_pos;
 	
-	U8 frame[32];
+	U8 frame[12];
 } DIS_data[4];
 
 static U8 state;
@@ -63,6 +65,7 @@ static U8 state_next;
 static U16 time;
 static U8 last_active_DIS;
 static U8 attempts_number;
+static U8 output_data[OUTPUT_DATA_SIZE];
 
 /**************************************************
 * Function name	: 
@@ -75,7 +78,7 @@ void main(void)
 {
 	DIS_init();
 	WIFI_init();
-	WIFI_set_data_ptr (DIS_data[0].frame);
+	WIFI_set_data_ptr (output_data);
 	TIMER0_HW_API_init (timer_cb);
 
 	state = CONFIGURATION;
@@ -210,6 +213,20 @@ void DIS_matrix_timer_cout(void)
 			state = CONFIGURATION;
 		}
 	}
+}
+
+/**************************************************
+* Function name	: 
+* Created by	: 
+* Date created	: 
+
+* Description	: prepares data in json format 
+			{"1":{"s":1,"g":1,"u":1,"v":30,"d":20},"2":{"s":1,"g":1,"u":1,"v":30,"d":20},"3":{"s":1,"g":1,"u":1,"v":30,"d":20},"4":{"s":1,"g":1,"u":1,"v":30,"d":20}}
+* Notes		: 
+***************************************************/
+void DIS_prepare_data(void)
+{
+	
 }
 
 /**************************************************

@@ -11,6 +11,7 @@
 #define WAIT_BEFORE_SEND_CMD 	1000
 #define UART_RX_BUFFER_SIZE 	64
 #define REQUEST_SEARCH_OFFSET 	8
+#define SENSOR_DATA_SIZE	48
 
 enum WIFI_state
 {
@@ -222,7 +223,7 @@ void WIFI_while_cout(void)
 			task = CMD;
 			task_after_tx = WAIT;
 			time = WAIT_BEFORE_SEND_CMD;
-			UART_transmit (user_data_ptr, 32, Tx_cb);
+			UART_transmit (user_data_ptr, SENSOR_DATA_SIZE, Tx_cb);
 			break;
   		case CMD:
 			status = BUSY;
