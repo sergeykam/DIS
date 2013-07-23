@@ -24,5 +24,11 @@ foreach ($array as $value) {
     $result .= sprintf("\"%s\",\n\r", addslashes($value));
 }
 
-file_put_contents('compressed.txt', $result);
+if(file_put_contents('/home/sergey/diplom/_client/compressed.txt', $result)){
+    echo 'Done!';
+    echo PHP_EOL;
+} else {
+    echo 'Failed to write file compressed.txt';
+    echo PHP_EOL;
+}
 ?>

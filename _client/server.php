@@ -1,50 +1,44 @@
 <?php
-$arr = array (
-//	rand(1, 12344),
-//	23534,
-//	rand(1, 2235),
-//	rand(1, 5735),
-//	rand(1, 1033),
-        13000,
-        72000,
-        0,
-        206000,
-	's' => array(
-		array(
-			'gas' => 1,
-			'sensor' => 1,
-			'dim' => 1,
-			'volt' => 1,
-			'status' => 1,
-			),
-		array(
-			'gas' => 2,
-			'sensor' => 2,
-			'dim' => 2,
-			'volt' => 2,
-			'status' => 2,
-			),
-		array(
-			'gas' => 3,
-			'sensor' => 3,
-			'dim' => 3,
-			'volt' => 3,
-			'status' => 3,
-			),
-		array(
-			'gas' => 4,
-			'sensor' => 4,
-			'dim' => 4,
-			'volt' => 4,
-			'status' => 4,
-			),
-	)	
+
+$dis_data = array(
+    1 => array(
+        's' => 1,
+        'g' => 1,
+        'u' => 1,
+        'v' => 30,
+        'd' => 20
+    ),
+    2 => array(
+        's' => 1,
+        'g' => 1,
+        'u' => 1,
+        'v' => 30,
+        'd' => 20
+    ),
+    3 => array(
+        's' => 1,
+        'g' => 1,
+        'u' => 1,
+        'v' => 30,
+        'd' => 20
+    ),
+    4 => array(
+        's' => 1,
+        'g' => 1,
+        'u' => 1,
+        'v' => 30,
+        'd' => 20
+    )
 );
 
 if(!empty($_GET['a']) && isset($_GET['a'])){
-	echo json_encode($arr, true);
+	echo json_encode($dis_data, true);
 	
 }else{
 	print_r($_GET);
 }
+
+echo '<pre>';
+echo json_encode($dis_data, true);
+echo '</pre>';
 ?>
