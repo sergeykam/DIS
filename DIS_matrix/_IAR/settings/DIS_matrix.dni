@@ -17,10 +17,6 @@ Checksum=290607824
 ShowArgs=0
 [Disassembly]
 MixedMode=1
-[Breakpoints]
-Bp0=_ "STD_CODE" "{$PROJ_DIR$\..\..\test_wifi\__src\main.c}.156.1" 0 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\..\..\__API\WIFI_API.c}.140.2" 1 0 0 0 "" 0 ""
-Count=2
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -28,6 +24,10 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
+[Breakpoints]
+Bp0=_ "STD_CODE" "{$PROJ_DIR$\..\..\test_wifi\__src\main.c}.156.1" 0 0 0 0 "" 0 ""
+Bp1=_ "STD_CODE" "{$PROJ_DIR$\..\..\__API\WIFI_API.c}.140.2" 1 0 0 0 "" 0 ""
+Count=2
 [Aliases]
 Count=0
 SuppressDialog=0
