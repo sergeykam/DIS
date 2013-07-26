@@ -221,7 +221,6 @@ void DIS_matrix_timer_cout(void)
 * Date created	: 
 
 * Description	: prepares data in json format 
-			{"1":{"s":1,"g":1,"u":1,"v":30,"d":20},"2":{"s":1,"g":1,"u":1,"v":30,"d":20},"3":{"s":1,"g":1,"u":1,"v":30,"d":20},"4":{"s":1,"g":1,"u":1,"v":30,"d":20}}
 * Notes		: 
 ***************************************************/
 void DIS_prepare_data(void)
