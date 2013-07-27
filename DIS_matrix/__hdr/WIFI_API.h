@@ -8,6 +8,7 @@
 ***************************************************/
 #define SITE_PARTICLES 41
 #define SITE_PARTICLE_SIZE 128
+#define SENSOR_DATA_SIZE	23
 
 #define WIFI_UART_RATE	9600
 

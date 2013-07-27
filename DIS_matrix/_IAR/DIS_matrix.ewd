@@ -29,7 +29,7 @@
         </option>
         <option>
           <name>DDFile</name>
-          <state></state>
+          <state>$TOOLKIT_DIR$\Config\iom168pa.ddf</state>
         </option>
         <option>
           <name>CInput</name>
@@ -73,7 +73,7 @@
         </option>
         <option>
           <name>CDynDriver</name>
-          <state>SIMAVR</state>
+          <state>DRAGONAVR</state>
         </option>
         <option>
           <name>DebuggerUseUbrofResetVector</name>

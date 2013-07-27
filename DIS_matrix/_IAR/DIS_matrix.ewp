@@ -17,12 +17,12 @@
         <debug>0</debug>
         <option>
           <name>GGEnhancedCore</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>Variant Memory</name>
           <version>0</version>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>ExePath</name>
@@ -55,15 +55,15 @@
         </option>
         <option>
           <name>LCEnableBitDefs</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>LCHeapSize</name>
-          <state>0x10</state>
+          <state>0</state>
         </option>
         <option>
           <name>SCCStackSize</name>
-          <state>0x20</state>
+          <state>0xFF</state>
         </option>
         <option>
           <name>SCExtCStack</name>
@@ -71,7 +71,7 @@
         </option>
         <option>
           <name>SCRStackSize</name>
-          <state>16</state>
+          <state>36</state>
         </option>
         <option>
           <name>SCExtRStack</name>
@@ -119,11 +119,11 @@
         </option>
         <option>
           <name>GGEepromUtil</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>GGEepromUtilSize</name>
-          <state>0</state>
+          <state>512</state>
         </option>
         <option>
           <name>GRuntimeLibSelect</name>
@@ -140,16 +140,16 @@
         </option>
         <option>
           <name>RTLibraryPath</name>
-          <state>$TOOLKIT_DIR$\LIB\CLIB\cl0t.r90</state>
+          <state>$TOOLKIT_DIR$\LIB\CLIB\cl3s-ec_mul-sf.r90</state>
         </option>
         <option>
           <name>Input variant</name>
           <version>36</version>
-          <state>3</state>
+          <state>0</state>
         </option>
         <option>
           <name>Input description</name>
-          <state>Full formatting.</state>
+          <state>Automatic choice of formatter.</state>
         </option>
         <option>
           <name>Output variant</name>
@@ -213,7 +213,7 @@
         </option>
         <option>
           <name>GenDeviceSelectMenu</name>
-          <state>0	-v0, Max 256 byte data, 8 Kbyte code</state>
+          <state>m168pa	ATmega168PA</state>
         </option>
       </data>
     </settings>
@@ -397,7 +397,7 @@
         </option>
         <option>
           <name>newCCIncludePaths</name>
-          <state></state>
+          <state>$PROJ_DIR$\..\__hdr</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -658,7 +658,7 @@
         </option>
         <option>
           <name>ANewIncludes</name>
-          <state>###Uninitialized###</state>
+          <state></state>
         </option>
         <option>
           <name>AsmMultiByteSupport</name>
@@ -674,7 +674,7 @@
         </option>
         <option>
           <name>AsmOutputFile</name>
-          <state></state>
+          <state>$FILE_BNAME$.r90</state>
         </option>
         <option>
           <name>AStdIncCheck</name>
@@ -716,12 +716,12 @@
         </option>
         <option>
           <name>OutputFile</name>
-          <state>templproj.a90</state>
+          <state>DIS_matrix.a90</state>
         </option>
         <option>
           <name>OutputFormat</name>
           <version>11</version>
-          <state>25</state>
+          <state>22</state>
         </option>
         <option>
           <name>FormatVariant</name>
@@ -750,7 +750,7 @@
         </option>
         <option>
           <name>XList</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>SegmentMap</name>
@@ -782,7 +782,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>$TOOLKIT_DIR$\src\template\lnk0t.xcl</state>
+          <state>$TOOLKIT_DIR$\src\template\cfgm168pa.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
@@ -862,11 +862,11 @@
         </option>
         <option>
           <name>IncludeSuppressed</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>ModuleSummary</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>xcProgramEntryLabel</name>
@@ -898,7 +898,7 @@
         </option>
         <option>
           <name>ExtraOutputFile</name>
-          <state>templproj.a90</state>
+          <state>DIS_matrix.a90</state>
         </option>
         <option>
           <name>ExtraOutputFormat</name>
@@ -920,7 +920,7 @@
         </option>
         <option>
           <name>ListOutputFormat</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>BufferedTermOutput</name>
@@ -940,7 +940,7 @@
         </option>
         <option>
           <name>OverlaySystemMap</name>
-          <state>0</state>
+          <state>1</state>
         </option>
         <option>
           <name>RawBinaryFile</name>
@@ -2049,7 +2049,7 @@
         </option>
         <option>
           <name>SCCStackSize</name>
-          <state>0x20</state>
+          <state>0xFF</state>
         </option>
         <option>
           <name>SCExtCStack</name>
@@ -2057,7 +2057,7 @@
         </option>
         <option>
           <name>SCRStackSize</name>
-          <state>16</state>
+          <state>36</state>
         </option>
         <option>
           <name>SCExtRStack</name>
@@ -2310,7 +2310,7 @@
         <option>
           <name>CCAllowList</name>
           <version>3</version>
-          <state>000000</state>
+          <state>101010</state>
         </option>
         <option>
           <name>CCCrossCallPassesList</name>
@@ -2474,11 +2474,11 @@
         </option>
         <option>
           <name>CCOptLevel</name>
-          <state>1</state>
+          <state>2</state>
         </option>
         <option>
           <name>CCOptLevelSlave</name>
-          <state>1</state>
+          <state>2</state>
         </option>
       </data>
     </settings>

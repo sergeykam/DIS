@@ -138,6 +138,7 @@ void DIS_while_cout(void)
 				time = DIS_TIME_BTW_ATTEMPTS;
 				status_after_transfer = WAIT;
 				status_next = WAITING_DATA;
+				attempt_number = DIS_ATTEMPTS;
 				status = BUSY;
 				SPI_transfer (0, &control_byte, 1, read_callback);
 			} else {
@@ -147,8 +148,7 @@ void DIS_while_cout(void)
 					status_after_transfer = WAIT_DATA_READY;
 					status = BUSY;
 					SPI_transfer (0, dummy_arr, 1, read_callback);
-				}
-				 else {
+				} else {
 					time = 0;
 					attempt_number = DIS_ATTEMPTS;
 					status = IDLE;
@@ -209,7 +209,7 @@ U8 DIS_get_data(U8 DIS_num, void (*callback)(U8 *data))
 	status = BUSY;
 
 	write_packet.write_pos.start_byte = 0xAA;
-	write_packet.write_pos.cmd_number = 0x01;
+	write_packet.write_pos.cmd_number = 0x02;
 	write_packet.write_pos.CRC = Crc8(write_packet.write_frame, 6);
 	for(U8 i = 0; i < 4; i++)
 	{
@@ -244,7 +244,7 @@ U8 DIS_get_configuration(U8 DIS_num, void (*callback)(U8 *configuration))
 	status = BUSY;
 
 	write_packet.write_pos.start_byte = 0xAA;
-	write_packet.write_pos.cmd_number = 0x03;
+	write_packet.write_pos.cmd_number = 0x01;
 	write_packet.write_pos.CRC = Crc8(write_packet.write_frame, 6);
 	for(U8 i = 0; i < 4; i++)
 	{

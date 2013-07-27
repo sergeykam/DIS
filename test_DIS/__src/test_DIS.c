@@ -40,14 +40,14 @@ enum DIS_state
 	GETTING_DATA,
 };
 
-#define SS_DDR_1  DDRB_Bit4
-#define SS_PORT_1 PORTB_Bit4
+#define SS_DDR_1  DDRC_Bit1
+#define SS_PORT_1 PORTC_Bit1
 
 #define SS_DDR_2  DDRC_Bit0
 #define SS_PORT_2 PORTC_Bit0
 
-#define SS_DDR_3  DDRC_Bit1
-#define SS_PORT_3 PORTC_Bit1
+#define SS_DDR_3  DDRB_Bit2
+#define SS_PORT_3 PORTB_Bit2
 
 #define SS_DDR_4  DDRC_Bit2
 #define SS_PORT_4 PORTC_Bit2

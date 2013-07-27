@@ -3,6 +3,7 @@
 ***************************************************/
 #include <device.h>
 #include "string.h"
+#include "stdio.h"
 #include <TIMER0_HW_API.h>
 #include <DIS_API.h>
 #include <WIFI_API.h>
@@ -26,10 +27,8 @@ enum DIS_NUMBER
 	DIS4
 };
 
-#define DIS_REQUEST_PERIOD	 20000		// DIV 4000 -> sec
+#define DIS_REQUEST_PERIOD	 (20000*4)		// DIV 4000 -> ~5 sec
 #define DIS_ATTEMPTS_NUMBER	 50
-
-#define OUTPUT_DATA_SIZE	 48
 
 /***************************************************
 *	Function Prototype Section
@@ -39,33 +38,47 @@ void DIS_matrix_while_cout(void);
 void DIS_matrix_timer_cout(void);
 void get_data_cb(U8 *data);
 void get_configuration_cb(U8 *data);
+void DIS_prepare_data(void);
+//void switch_DIS(void);
 /***************************************************
 *	Static Variables Section
 ***************************************************/
 union
 {
-	struct 
-	{
-		U8 sort_sensor;
-		U8 sort_gas;	
-		U8 unit;
-		U8 voltage;
-		union
-		{
-			float data_var;
-			U8 data_buf[4];
-		} data;
-	} data_pos;
-	
-	U8 frame[12];
+	float data_var;
+	U8 data_buf[4];
 } DIS_data[4];
+
+static U8 DIS_conf[4][4];
 
 static U8 state;
 static U8 state_next;
 static U16 time;
 static U8 last_active_DIS;
 static U8 attempts_number;
-static U8 output_data[OUTPUT_DATA_SIZE];
+
+//static I8 out_str_format[] = "[%s,%s,%s,%s,%s]";
+static I8 out_conf_str_format[] = "[%d,%d,%.2d,%d,%.2d,%f]";
+//static I8 out_data_str_format[] = "%.3f";
+//static I8 out_data_com_str_format[] = "%*6s,%*6s,%*6s,%*6s";
+
+//static I8 output_conf_string[10] = 
+//{
+//	"0,00,0,00",
+//	"0,00,0,00",
+//	"0,00,0,00",
+//	"0,00,0,00"
+//};
+//static I8 output_data_string[4][4] = 
+//{
+//	"000",
+//	"000",
+//	"000",
+//	"000"
+//};
+
+//static I8 output_all_data_string[] = "000,000,000,000";
+I8 output_data[] = "[1,0,00,0,00,00000000]";
 
 /**************************************************
 * Function name	: 
@@ -78,7 +91,7 @@ void main(void)
 {
 	DIS_init();
 	WIFI_init();
-	WIFI_set_data_ptr (output_data);
+	WIFI_set_data_ptr ((U8 *)output_data);
 	TIMER0_HW_API_init (timer_cb);
 
 	state = CONFIGURATION;
@@ -134,42 +147,26 @@ void DIS_matrix_while_cout(void)
 ***************************************************/
 void get_data_cb(U8 *data)
 {
-	if(data){
-		memcpy(DIS_data[last_active_DIS].data_pos.data.data_buf, data, 4);
-		state = state_next;
-//		switch (last_active_DIS)
-//		{
-//			case DIS1:
-//			case DIS2:
-//			case DIS3:
-//				state = state_next;
-//				last_active_DIS++;
-//				break;
-//			case DIS4:
-//				state = WAIT;
-//				state_next = CONFIGURATION;
-//				last_active_DIS = DIS1;
-//				time = DIS_REQUEST_PERIOD;
-//				break;
-//			default:
-//				state = CONFIGURATION;
-//				last_active_DIS = DIS1;
-//				break;
-//		}
-	} else {
+	if(!data && (attempts_number != DIS_ATTEMPTS_NUMBER)){
 		attempts_number++;
-		if(attempts_number == DIS_ATTEMPTS_NUMBER){
-			state = state_next;
-			attempts_number = 0;
-			
-			DIS_data[last_active_DIS].data_pos.data.data_buf[0] = 0;
-			DIS_data[last_active_DIS].data_pos.data.data_buf[1] = 0;
-			DIS_data[last_active_DIS].data_pos.data.data_buf[2] = 0;
-			DIS_data[last_active_DIS].data_pos.data.data_buf[3] = 0;
-		} else {
-			state = DATA;
-		}
+		state = DATA;
+		return;
 	}
+	
+	if(!data && (attempts_number == DIS_ATTEMPTS_NUMBER)){
+		DIS_data[last_active_DIS].data_buf[0] = 0;
+		DIS_data[last_active_DIS].data_buf[1] = 0;
+		DIS_data[last_active_DIS].data_buf[2] = 0;
+		DIS_data[last_active_DIS].data_buf[3] = 0;
+	} else if(data) {
+		memcpy(DIS_data[last_active_DIS].data_buf, data, 4);
+	}
+	
+	state = state_next;
+	attempts_number = 0;
+	
+	DIS_prepare_data();
+//	switch_DIS();
 }
 
 /**************************************************
@@ -181,19 +178,45 @@ void get_data_cb(U8 *data)
 ***************************************************/
 void get_configuration_cb(U8 *data)
 {
-	if(data){
-		memcpy(&DIS_data[last_active_DIS].data_pos.sort_sensor, data, 4);
-		state = state_next;
-	} else {
+	if(!data && (attempts_number != DIS_ATTEMPTS_NUMBER)){
 		attempts_number++;
-		if(attempts_number == DIS_ATTEMPTS_NUMBER){
-			state = state_next;
-			DIS_data[last_active_DIS].data_pos.sort_sensor = 0;
-			attempts_number = 0;
-		} else {
-			state = CONFIGURATION;
-		}
+		state = CONFIGURATION;
+		return;
 	}
+	
+	if(!data && (attempts_number == DIS_ATTEMPTS_NUMBER)){
+		DIS_conf[last_active_DIS][0] = 0;
+		DIS_conf[last_active_DIS][1] = 0;
+		DIS_conf[last_active_DIS][2] = 0;
+		DIS_conf[last_active_DIS][3] = 0;
+	} else if(data) {
+		memcpy(DIS_conf[last_active_DIS], data, 4);
+		DIS_conf[last_active_DIS][0] = DIS_conf[last_active_DIS][0] & 0x7F;
+	}
+	
+	state = state_next;
+	attempts_number = 0;
+	
+	DIS_prepare_data();
+}
+
+/**************************************************
+* Function name	: 
+* Created by	: 
+* Date created	: 
+* Description	:
+* Notes		: 
+***************************************************/
+void DIS_prepare_data(void)
+{ 
+	sprintf(output_data,
+				out_conf_str_format,
+				last_active_DIS,
+				DIS_conf[last_active_DIS][0],
+				DIS_conf[last_active_DIS][1],
+				DIS_conf[last_active_DIS][2],
+				DIS_conf[last_active_DIS][3],
+				DIS_data[last_active_DIS].data_var);
 }
 
 /**************************************************
@@ -220,13 +243,31 @@ void DIS_matrix_timer_cout(void)
 * Created by	: 
 * Date created	: 
 
-* Description	: prepares data in json format 
+* Description	: 
 * Notes		: 
 ***************************************************/
-void DIS_prepare_data(void)
-{
-	
-}
+//void switch_DIS(void)
+//{
+//	switch (last_active_DIS)
+//	{
+//		case DIS1:
+//		case DIS2:
+//		case DIS3:
+//			state = state_next;
+//			last_active_DIS++;
+//			break;
+//		case DIS4:
+//			state = WAIT;
+//			state_next = CONFIGURATION;
+//			last_active_DIS = DIS1;
+//			time = DIS_REQUEST_PERIOD;
+//			break;
+//		default:
+//			state = CONFIGURATION;
+//			last_active_DIS = DIS1;
+//			break;
+//	}
+//}
 
 /**************************************************
 * Function name	: 

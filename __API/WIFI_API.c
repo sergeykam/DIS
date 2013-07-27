@@ -9,9 +9,8 @@
 ***************************************************/
 #define TIME_BTW_CMDS 			1000
 #define WAIT_BEFORE_SEND_CMD 	1000
-#define UART_RX_BUFFER_SIZE 	64
+#define UART_RX_BUFFER_SIZE 	32
 #define REQUEST_SEARCH_OFFSET 	8
-#define SENSOR_DATA_SIZE	48
 
 enum WIFI_state
 {
@@ -107,8 +106,8 @@ U8 Tx_buffer[SITE_PARTICLE_SIZE];
 U8 Rx_buffer[UART_RX_BUFFER_SIZE];
 U8 site_request[] = "GET / HTTP";
 U8 data_request[] = "GET /?a=1";
-U8 http_OK_headers[] = "HTTP/1.1$200$OK\r\nServer:$Atmega16\r\nConnection:$close\r\n\n\n";
-U8 http_404_headers[] = "HTTP/1.1$400$Not$Found\r\nServer:$Atmega16\r\nConnection:$close\r\n\n\n";
+U8 http_OK_headers[] = "HTTP/1.1$200$OK\r\nConnection:$close\r\n\n\n";
+U8 http_404_headers[] = "HTTP/1.1$400$Not$Found\r\nConnection:$close\r\n\n\n";
 // user's settings
 static U8* user_data_ptr;
 
