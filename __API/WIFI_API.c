@@ -8,7 +8,7 @@
 *	Defines Section
 ***************************************************/
 #define TIME_BTW_CMDS 			1000
-#define WAIT_BEFORE_SEND_CMD 	1000
+#define WAIT_BEFORE_SEND_CMD 	1500
 #define UART_RX_BUFFER_SIZE 	32
 #define REQUEST_SEARCH_OFFSET 	8
 
@@ -120,8 +120,6 @@ static U8* user_data_ptr;
 ***************************************************/
 void WIFI_init (void)
 {
-	DDRD = 0xFF;
-	PORTD = 0xFF;
 	UART_init (WIFI_UART_RATE, DATABIT8 + STOPBIT1 + NOPARITY);
 	UART_set_Rx_tout_cb (timeout_cb);
 	UART_set_Rx_error_cb (error_cb);

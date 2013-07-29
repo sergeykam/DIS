@@ -27,7 +27,7 @@
 #define DIS_TIME_BTW_ATTEMPTS			4
 
 // ATTEMPSTS
-#define DIS_ATTEMPTS				50
+#define DIS_ATTEMPTS				40
 /***************************************************
 *	API Function Prototype Section
 ***************************************************/

@@ -27,8 +27,26 @@ enum DIS_NUMBER
 	DIS4
 };
 
-#define DIS_REQUEST_PERIOD	 (20000*4)		// DIV 4000 -> ~5 sec
-#define DIS_ATTEMPTS_NUMBER	 50
+enum PORT_STATE
+{
+	LOW = 0,
+	HIGH = 1
+};
+
+#define LED1_DDR	DDRC_Bit3
+#define LED1_PORT	PORTC_Bit3
+
+#define LED2_DDR	DDRC_Bit5
+#define LED2_PORT	PORTC_Bit5
+
+#define LED3_DDR	DDRD_Bit7
+#define LED3_PORT	PORTD_Bit7
+
+#define LED4_DDR	DDRC_Bit4
+#define LED4_PORT	PORTC_Bit4
+
+#define DIS_REQUEST_PERIOD	 (4000)		// DIV 4000 -> ~ sec
+#define DIS_ATTEMPTS_NUMBER	 30
 
 /***************************************************
 *	Function Prototype Section
@@ -89,6 +107,21 @@ I8 output_data[] = "[1,0,00,0,00,00000000]";
 ***************************************************/
 void main(void)
 {
+	DDRD = 0xFF;
+	PORTD_Bit1 = HIGH;
+	
+	LED1_DDR = HIGH;
+	LED1_PORT = LOW;
+	
+	LED2_DDR = HIGH;
+	LED2_PORT = LOW;
+	
+	LED3_DDR = HIGH;
+	LED3_PORT = LOW;
+	
+	LED4_DDR = HIGH;
+	LED4_PORT = LOW;
+	
 	DIS_init();
 	WIFI_init();
 	WIFI_set_data_ptr ((U8 *)output_data);
@@ -123,12 +156,15 @@ void DIS_matrix_while_cout(void)
 			if(DIS_get_configuration(last_active_DIS, get_configuration_cb)){
 				state = BUSY;
 				state_next = DATA;	
+				LED1_PORT = HIGH;
 			}
 			break;
 		case DATA:
 			if(DIS_get_data(last_active_DIS, get_data_cb)){
 				state = BUSY;
 				state_next = WAIT;
+				LED2_PORT = HIGH;
+				time = DIS_REQUEST_PERIOD;
 			}
 			break;
 		default:
@@ -147,6 +183,8 @@ void DIS_matrix_while_cout(void)
 ***************************************************/
 void get_data_cb(U8 *data)
 {
+	LED2_PORT = LOW;
+	
 	if(!data && (attempts_number != DIS_ATTEMPTS_NUMBER)){
 		attempts_number++;
 		state = DATA;
@@ -178,6 +216,8 @@ void get_data_cb(U8 *data)
 ***************************************************/
 void get_configuration_cb(U8 *data)
 {
+	LED1_PORT = LOW;
+	
 	if(!data && (attempts_number != DIS_ATTEMPTS_NUMBER)){
 		attempts_number++;
 		state = CONFIGURATION;

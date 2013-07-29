@@ -152,6 +152,7 @@ void DIS_while_cout(void)
 					time = 0;
 					attempt_number = DIS_ATTEMPTS;
 					status = IDLE;
+					ss_high();
 					data_ready_cb(0);
 				}
 			}	
