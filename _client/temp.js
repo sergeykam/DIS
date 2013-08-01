@@ -1,0 +1,1 @@
+G[ad].fillRect(j*9, Math.ceil((ch-(ch*parseFloat(y[ad][j])/max))),5,5);  // рисуем квадратик
