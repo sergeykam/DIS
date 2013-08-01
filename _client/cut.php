@@ -21,7 +21,7 @@ $string = str_replace("\t", "", $string);
 $array = str_split_unicode($string, 128);
 
 foreach ($array as $value) {
-    $result .= sprintf("\"%s\",\n", addslashes($value));
+    $result .= sprintf("\"%s\",\r", addslashes($value));
 }
 
 if(file_put_contents('compressed.txt', $result)){
