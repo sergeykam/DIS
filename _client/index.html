@@ -3,10 +3,17 @@
 <head>
 	<title>DIS Matrix</title>
 	<style>
-	*{margin:0px;padding:0px;}
-	canvas{float:left;border-left:2px solid;border-bottom:2px solid;margin-top:25px;}
-	li{list-style-type:none;}
-	#dim0,#dim1,#dim2,#dim3{margin-bottom:5px;}
+	*{margin:0px;
+	padding:0px;}
+	canvas{
+	    float:left;border-left:2px solid;border-bottom:2px solid;margin-top:25px;
+	}
+	li{
+	    list-style-type:none;
+	}
+	#dim0,#dim1,#dim2,#dim3{
+	    margin-bottom:5px;
+	}
 	.c{
 		margin:0 auto; 
 		width:1300px;
@@ -23,7 +30,7 @@
 		float:left;
 		width:80px;
 	}
-	.descrulli{
+	.descr ul li{
 		border-bottom:1px solid #ccc;
 		padding:5px 0px;
 	}
@@ -41,8 +48,8 @@
 		float:left;
 		width:58px;
 	}
-	ul.ylvlli{
-		margin:14px 9px;
+	ul.ylvl li{
+		margin:10px 9px;
 		text-align:right;
 	}
 	</style>
@@ -222,14 +229,14 @@
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
 			d = reg.exec(xmlhttp.responseText);
-
+			gById("data", d[0]);
 			if (d === null)
 				return;
 
 			ad = d[1];
 			dd = d[6];
 
-			gById("data", d[0]);
+			
 			gById("d" + ad + "1", dt[d[2]]);
 			gById("d" + ad + "2", gas[d[3]]);
 			gById("dim" + ad, 'C, ' + dim[d[4]]);
