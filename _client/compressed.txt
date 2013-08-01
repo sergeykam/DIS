@@ -1,84 +1,39 @@
-"<!DOCTYPE html><html>    <head>        <title>DIS Matrix</title>        <style>            *{                margin:0px;        ",
-"        padding:0px;            }            body{                font-family:Arial;                font-size:14px;            }",
-"            canvas{                float:left;                border-left:2px solid;                border-bottom:2px solid;    ",
-"            margin-top: 25px;                width: 500px;                height: 300px;            }            li{            ",
-"    list-style-type: none;            }            #dim0,#dim1,#dim2,#dim3{                margin-bottom: 5px;            }     ",
-"       .c{                margin: 0 auto;                width: 1300px;            }            .active{                color: g",
-"reen;            }            .graph{                float: left;                position: relative;                height: 380p",
-"x;            }            .descr{                float: left;                width: 80px;            }            .descr ul li{",
-"                border-bottom: 1px solid #ccc;                padding: 5px 0px;            }            .cl{                clea",
-"r:both;            }            .x{                width: 20px;                height: 18px;                position: absolute; ",
-"               right: 55px;                bottom: 32px;            }            .y{                float: left;                ",
-"width: 58px;            }            ul.ylvl li{                margin: 14px 9px;                text-align: right;            }",
-"        </style>    </head>    <body>        <select id=\"time\">            <option value=\"0\">No</option>            <option valu",
-"e=\"3\">3 sec</option>            <option value=\"5\">5 sec</option>        </select>        <input type=\"button\" onclick=\"get();\" v",
-"alue=\"Get\" />        <div id=\"data\"></div>        <div class=\"c\">            <div class=\"graph\">                <div class=\"y\"> ",
-"                   <span id=\"dim0\"></span>                    <ul class=\"ylvl\">                        <li id=\"max0\"></li>      ",
-"                  <li id=\"y08\"></li>                        <li id=\"y07\"></li>                        <li id=\"y06\"></li>        ",
-"                <li id=\"y05\"></li>                        <li id=\"y04\"></li>                        <li id=\"y03\"></li>          ",
-"              <li id=\"y02\"></li>                        <li id=\"y01\"></li>                        <li id=\"y00\"></li>            ",
-"            <li>0</li>                    </ul>                </div>                <canvas id=\"c1\" width=\"500\" height=\"300\"></",
-"canvas>                <div class=\"descr\">                    <ul>                        <li id=\"d01\"></li>                    ",
-"    <li id=\"d02\"></li>                        <li id=\"d03\"></li>                        <li id=\"d04\"></li>                    </",
-"ul>                </div>                <div class=\"x\">t,c</div>            </div>            <div class=\"graph\">              ",
-"  <div class=\"y\">                    <span id=\"dim1\"></span>                    <ul class=\"ylvl\">                        <li id=",
-"\"max1\"></li>                        <li id=\"y18\"></li>                        <li id=\"y17\"></li>                        <li id=\"",
-"y16\"></li>                        <li id=\"y15\"></li>                        <li id=\"y14\"></li>                        <li id=\"y1",
-"3\"></li>                        <li id=\"y12\"></li>                        <li id=\"y11\"></li>                        <li id=\"y10\"",
-"></li>                        <li>0</li>                    </ul>                </div>                <canvas id=\"c2\" width=\"50",
-"0\" height=\"300\"></canvas>                <div class=\"descr\">                    <ul>                        <li id=\"d11\"></li>  ",
-"                      <li id=\"d12\"></li>                        <li id=\"d13\"></li>                        <li id=\"d14\"></li>    ",
-"                </ul>                </div>                <div class=\"x\">t,c</div>            </div>            <div class=\"gra",
-"ph\">                <div class=\"y\">                    <span id=\"dim2\"></span>                    <ul class=\"ylvl\">             ",
-"           <li id=\"max2\"></li>                        <li id=\"y28\"></li>                        <li id=\"y27\"></li>              ",
-"          <li id=\"y26\"></li>                        <li id=\"y25\"></li>                        <li id=\"y24\"></li>                ",
-"        <li id=\"y23\"></li>                        <li id=\"y22\"></li>                        <li id=\"y21\"></li>                  ",
-"      <li id=\"y20\"></li>                        <li>0</li>                    </ul>                </div>                <canvas",
-" id=\"c3\" width=\"500\" height=\"300\"></canvas>                <div class=\"descr\">                    <ul>                        <l",
-"i id=\"d21\"></li>                        <li id=\"d22\"></li>                        <li id=\"d23\"></li>                        <li ",
-"id=\"d24\"></li>                    </ul>                </div>                <div class=\"x\">t,c</div>            </div>         ",
-"   <div class=\"graph\">                <div class=\"y\">                    <span id=\"dim3\"></span>                    <ul class=\"y",
-"lvl\">                        <li id=\"max3\"></li>                        <li id=\"y38\"></li>                        <li id=\"y37\"><",
-"/li>                        <li id=\"y36\"></li>                        <li id=\"y35\"></li>                        <li id=\"y34\"></l",
-"i>                        <li id=\"y33\"></li>                        <li id=\"y32\"></li>                        <li id=\"y31\"></li>",
-"                        <li id=\"y30\"></li>                        <li>0</li>                    </ul>                </div>     ",
-"           <canvas id=\"c4\" width=\"500\" height=\"300\"></canvas>                <div class=\"descr\">                    <ul>        ",
-"                <li id=\"d31\"></li>                        <li id=\"d32\"></li>                        <li id=\"d33\"></li>          ",
-"              <li id=\"d34\"></li>                    </ul>                </div>                <div class=\"x\">t,c</div>         ",
-"   </div>        </div>        <script>            var xPts=50,                    yPts=10,                    reg= /^\\[(\\d),(\\d",
-"{1,}),(\\d{1,}),(\\d{1,}),(\\d{1,}),(\\d{1,}.\\d{1,})\\]/,                    n=\'N/A\',                    ch=300,                    c",
-"w=500,                    d,                    y=[[],[],[],[]],                    ad,                    dd,                  ",
-"  G={                        0:document.getElementById(\"c1\").getContext(\"2d\"),                        1:document.getElementById(",
-"\"c2\").getContext(\"2d\"),                        2:document.getElementById(\"c3\").getContext(\"2d\"),                        3:docume",
-"nt.getElementById(\"c4\").getContext(\"2d\")                    },                    gas={                            0:n,         ",
-"                   1:\'O2\',                            2:\'H2\',                            3:\'CH4\',                            14:",
-"\'NO2\'                        },                    dt={0:n,1:\'Elektrohim\',2:\'Termokat\'},                    v={0:n,30:\'3 B\',50:\'",
-"5 B\'},                    s={1:\'Active\',2:\'No Data\',3:\'Not connected\'},                    dim={0:n,1:\'ppm\',3:\'%\'};             ",
-"           function gById(id,v){                document.getElementById(id).innerHTML=v;            }                           ",
-"         function get(){                var xmlhttp;                try{                    xmlhttp=new ActiveXObject(\"Msxml2.XM",
-"LHTTP\");                }catch(e){                    try{                        xmlhttp=new ActiveXObject(\"Microsoft.XMLHTTP\")",
-";                    }catch(E){                        xmlhttp=false;                    }                }                if(!x",
-"mlhttp&&typeof XMLHttpRequest!=\'undefined\'){                    xmlhttp=new XMLHttpRequest();                }                xm",
-"lhttp.open(\'GET\',\'server.php?a=1\',true);                xmlhttp.onreadystatechange=function(){                    if(xmlhttp.rea",
-"dyState==4){                        if(xmlhttp.status==200){                            d = reg.exec(xmlhttp.responseText);     ",
-"                                                   if(d===null)return;                                                        ad",
-"=d[1];                            dd=d[6];                                                        gById(\"data\",d[0]);           ",
-"                 gById(\"d\"+ad+\"1\",dt[d[2]]);                            gById(\"d\"+ad+\"2\",gas[d[3]]);                            ",
-"gById(\"dim\"+ad,\'C, \'+dim[d[4]]);                            gById(\"d\"+ad+\"3\",v[d[5]]);                            gById(\"d\"+ad+\"",
-"4\",(dd)?s[1]:s[2]);                                                        if(y[ad].length>=xPts){                              ",
-"  for(var i=0;i<xPts-1;i++)                                    y[ad][i]=y[ad][i+1];                                y[ad][xPts-1]",
-"=dd;                            }else{                                y[ad].push(dd);                            }              ",
-"              newGraph();                            var sel = document.getElementById(\"time\");                            var t",
-" = sel.options[sel.selectedIndex].value;                            if(t!=0)setTimeout(get,t*1000);                        }    ",
-"                }                };                xmlhttp.send(null);            }            ;            function MAX(a) {   ",
-"             var r = 0;                for(var i=0;i<a.length+1;i++)if(a[i]>r)r=a[i];                return r;            };    ",
-"                    function newGraph() {                var max = 0,                        lvl = 0,                        cur",
-"lvl = 0,                        rest = 0;                if(d[4]===\'3\'){                    max=100;                }else{      ",
-"              max = MAX(y[ad]);                    rest = max % 1000;                    max = max + (1000 - rest);             ",
-"   }                lvl = max / yPts;                gById(\'max\'+ad,max);                for(var j=0;j<yPts-1;j++){             ",
-"       curlvl += lvl;                    gById(\'y\'+ad+j,curlvl);                }                curlvl = 0;                    ",
-"            G[ad].fillStyle = \"#fff\";                G[ad].fillRect(0, 0, cw, ch);                G[ad].fillStyle =\"#000\";      ",
-"                          for(var j=0;j<y[ad].length;j++){                    G[ad].beginPath();                    G[ad].arc(j*",
-"9,Math.ceil((ch-(ch*parseFloat(y[ad][j])/max))),2,0,2*Math.PI);                    G[ad].fill();                    G[ad].stroke",
-"();                }            };        </script>    </body></html>",
-
+"<!DOCTYPE html><html><head><title>DIS Matrix</title><style>*{margin:0px;padding:0px;}canvas{float:left;border-left:2px solid;bor",
+"der-bottom:2px solid;margin-top:25px;}li{list-style-type:none;}#dim0,#dim1,#dim2,#dim3{margin-bottom:5px;}.c{margin:0 auto; widt",
+"h:1300px;}.active{color:green;}.graph{float:left;position:relative;height:380px;}.descr{float:left;width:80px;}.descrulli{border",
+"-bottom:1px solid #ccc;padding:5px 0px;}.cl{clear:both;}.x{width:20px;height:18px;position:absolute;right:55px;bottom:32px;}.y{f",
+"loat:left;width:58px;}ul.ylvlli{margin:14px 9px;text-align:right;}</style></head><body><select id=\"time\"><option value=\"0\">No</o",
+"ption><option value=\"3\">3 sec</option><option value=\"5\">5 sec</option></select><input type=\"button\" onclick=\"get();\" value=\"Get\"",
+" /><div id=\"data\"></div><div class=\"c\"><div class=\"graph\"><div class=\"y\"><span id=\"dim0\"></span><ul class=\"ylvl\"><li id=\"max0\"><",
+"/li><li id=\"y08\"></li><li id=\"y07\"></li><li id=\"y06\"></li><li id=\"y05\"></li><li id=\"y04\"></li><li id=\"y03\"></li><li id=\"y02\"></l",
+"i><li id=\"y01\"></li><li id=\"y00\"></li><li>0</li></ul></div><canvas id=\"c1\" width=\"500\" height=\"300\"></canvas><div class=\"descr\">",
+"<ul><li id=\"d01\"></li><li id=\"d02\"></li><li id=\"d03\"></li><li id=\"d04\"></li></ul></div><div class=\"x\">t,c</div></div><div class=",
+"\"graph\"><div class=\"y\"><span id=\"dim1\"></span><ul class=\"ylvl\"><li id=\"max1\"></li><li id=\"y18\"></li><li id=\"y17\"></li><li id=\"y1",
+"6\"></li><li id=\"y15\"></li><li id=\"y14\"></li><li id=\"y13\"></li><li id=\"y12\"></li><li id=\"y11\"></li><li id=\"y10\"></li><li>0</li></",
+"ul></div><canvas id=\"c2\" width=\"500\" height=\"300\"></canvas><div class=\"descr\"><ul><li id=\"d11\"></li><li id=\"d12\"></li><li id=\"d1",
+"3\"></li><li id=\"d14\"></li></ul></div><div class=\"x\">t,c</div></div><div class=\"graph\"><div class=\"y\"><span id=\"dim2\"></span><ul ",
+"class=\"ylvl\"><li id=\"max2\"></li><li id=\"y28\"></li><li id=\"y27\"></li><li id=\"y26\"></li><li id=\"y25\"></li><li id=\"y24\"></li><li id",
+"=\"y23\"></li><li id=\"y22\"></li><li id=\"y21\"></li><li id=\"y20\"></li><li>0</li></ul></div><canvas id=\"c3\" width=\"500\" height=\"300\">",
+"</canvas><div class=\"descr\"><ul><li id=\"d21\"></li><li id=\"d22\"></li><li id=\"d23\"></li><li id=\"d24\"></li></ul></div><div class=\"x",
+"\">t,c</div></div><div class=\"graph\"><div class=\"y\"><span id=\"dim3\"></span><ul class=\"ylvl\"><li id=\"max3\"></li><li id=\"y38\"></li>",
+"<li id=\"y37\"></li><li id=\"y36\"></li><li id=\"y35\"></li><li id=\"y34\"></li><li id=\"y33\"></li><li id=\"y32\"></li><li id=\"y31\"></li><l",
+"i id=\"y30\"></li><li>0</li></ul></div><canvas id=\"c4\" width=\"500\" height=\"300\"></canvas><div class=\"descr\"><ul><li id=\"d31\"></li>",
+"<li id=\"d32\"></li><li id=\"d33\"></li><li id=\"d34\"></li></ul></div><div class=\"x\">t,c</div></div></div><script>var xPts = 50,yPts ",
+"= 10,reg = /^\\[(\\d),(\\d{1,}),(\\d{1,}),(\\d{1,}),(\\d{1,}),(\\d{1,}.\\d{1,})\\]/,n = \'N/A\',ch = 300,cw = 500,d,y = [[], [], [], []],ad",
+",dd,G = {0: document.getElementById(\"c1\").getContext(\"2d\"),1: document.getElementById(\"c2\").getContext(\"2d\"),2: document.getElem",
+"entById(\"c3\").getContext(\"2d\"),3: document.getElementById(\"c4\").getContext(\"2d\")},gas = {0: n,1: \'O2\',2: \'H2\',3: \'CH4\',14: \'NO2\'",
+"},dt = {0: n, 1: \'Elektrohim\', 2: \'Termokat\'},v = {0: n, 30: \'3 B\', 50: \'5 B\'},s = {1: \'Active\', 2: \'No Data\', 3: \'Not connected",
+"\'},dim = {0: n, 1: \'ppm\', 3: \'%\'};function gById(id, v) {document.getElementById(id).innerHTML = v;}function get() {var xmlhttp;",
+"try {xmlhttp = new ActiveXObject(\"Msxml2.XMLHTTP\");} catch (e) {try {xmlhttp = new ActiveXObject(\"Microsoft.XMLHTTP\");} catch (E",
+") {xmlhttp = false;}}if (!xmlhttp && typeof XMLHttpRequest != \'undefined\') {xmlhttp = new XMLHttpRequest();}xmlhttp.open(\'GET\', ",
+"\'server.php?a=1\', true);xmlhttp.onreadystatechange = function() {if (xmlhttp.readyState == 4) {if (xmlhttp.status == 200) {d = r",
+"eg.exec(xmlhttp.responseText);if (d === null)return;ad = d[1];dd = d[6];gById(\"data\", d[0]);gById(\"d\" + ad + \"1\", dt[d[2]]);gByI",
+"d(\"d\" + ad + \"2\", gas[d[3]]);gById(\"dim\" + ad, \'C, \' + dim[d[4]]);gById(\"d\" + ad + \"3\", v[d[5]]);gById(\"d\" + ad + \"4\", (dd) ? s[",
+"1] : s[2]);if (y[ad].length >= xPts) {for (var i = 0; i < xPts - 1; i++)y[ad][i] = y[ad][i + 1];y[ad][xPts - 1] = dd;} else {y[a",
+"d].push(dd);}newGraph();var sel = document.getElementById(\"time\");var t = sel.options[sel.selectedIndex].value;if (t != 0)setTim",
+"eout(get, t * 1000);}}};xmlhttp.send(null);};function MAX(a) {var r = 0;for (var i = 0; i < a.length + 1; i++)if (a[i] > r)r = a",
+"[i];return r;};function newGraph() {var max = 0,lvl = 0,curlvl = 0,rest = 0;if (d[4] === \'3\') {max = 100;} else {max = MAX(y[ad]",
+");rest = max % 1000;max = max + (1000 - rest);}lvl = max / yPts;gById(\'max\' + ad, max);for (var j = 0; j < yPts - 1; j++) {curlv",
+"l += lvl;gById(\'y\' + ad + j, curlvl);}curlvl = 0;G[ad].fillStyle = \"#fff\";G[ad].fillRect(0, 0, cw, ch);G[ad].fillStyle = \"#000\";",
+"for (var j = 0; j < y[ad].length; j++) {G[ad].beginPath();G[ad].arc(j * 9, Math.ceil((ch - (ch * parseFloat(y[ad][j]) / max))), ",
+"2, 0, 2 * Math.PI);G[ad].fill();G[ad].stroke();}};</script></body></html>",
