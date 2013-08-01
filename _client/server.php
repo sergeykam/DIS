@@ -1,35 +1,6 @@
 <?php
 
-$dis_data = array(
-    1 => array(
-        's' => 1,
-        'g' => 1,
-        'u' => 1,
-        'v' => 30,
-        'd' => 20
-    ),
-    2 => array(
-        's' => 1,
-        'g' => 1,
-        'u' => 1,
-        'v' => 30,
-        'd' => 20
-    ),
-    3 => array(
-        's' => 1,
-        'g' => 1,
-        'u' => 1,
-        'v' => 30,
-        'd' => 20
-    ),
-    4 => array(
-        's' => 1,
-        'g' => 1,
-        'u' => 1,
-        'v' => 30,
-        'd' => 20
-    )
-);
+$dis_data = array(rand(0, 3),1,1,3,30, floatval(20 . '.' . rand(0, 50000)));
 
 if(!empty($_GET['a']) && isset($_GET['a'])){
 	echo json_encode($dis_data, true);
@@ -37,8 +8,4 @@ if(!empty($_GET['a']) && isset($_GET['a'])){
 }else{
 	print_r($_GET);
 }
-
-echo '<pre>';
-echo json_encode($dis_data, true);
-echo '</pre>';
 ?>
