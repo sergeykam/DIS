@@ -230,8 +230,13 @@
 			if (xmlhttp.status == 200) {
 			d = reg.exec(xmlhttp.responseText);
 			gById("data",xmlhttp.responseText);
-			if (d === null)
-				return;
+			if (d == null)
+			{
+			    gById("data","reg_err");
+			    return;
+			} else {
+			    gById("data","reg_ok");
+			}
 
 			ad = d[1];
 			dd = d[6];
