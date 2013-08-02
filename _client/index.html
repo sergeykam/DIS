@@ -62,6 +62,7 @@
 	</select>
 	<input type="button" onclick="get();" value="Get" />
 	<div id="data"></div>
+	<div id="status"></div>
 	<div class="c">
 	<div class="graph">
 		<div class="y">
@@ -232,10 +233,10 @@
 			gById("data",xmlhttp.responseText);
 			if (d == null)
 			{
-			    gById("data","reg_err");
+			    gById("status","reg_err");
 			    return;
 			} else {
-			    gById("data","reg_ok");
+			    gById("status","reg_ok");
 			}
 
 			ad = d[1];
