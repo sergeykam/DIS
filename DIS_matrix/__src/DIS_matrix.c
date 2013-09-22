@@ -57,7 +57,7 @@ void DIS_matrix_timer_cout(void);
 void get_data_cb(U8 *data);
 void get_configuration_cb(U8 *data);
 void DIS_prepare_data(void);
-//void switch_DIS(void);
+void switch_DIS(void);
 /***************************************************
 *	Static Variables Section
 ***************************************************/
@@ -75,27 +75,8 @@ static U16 time;
 static U8 last_active_DIS;
 static U8 attempts_number;
 
-//static I8 out_str_format[] = "[%s,%s,%s,%s,%s]";
 static I8 out_conf_str_format[] = "[%d,%d,%.2d,%d,%.2d,%f]";
-//static I8 out_data_str_format[] = "%.3f";
-//static I8 out_data_com_str_format[] = "%*6s,%*6s,%*6s,%*6s";
 
-//static I8 output_conf_string[10] = 
-//{
-//	"0,00,0,00",
-//	"0,00,0,00",
-//	"0,00,0,00",
-//	"0,00,0,00"
-//};
-//static I8 output_data_string[4][4] = 
-//{
-//	"000",
-//	"000",
-//	"000",
-//	"000"
-//};
-
-//static I8 output_all_data_string[] = "000,000,000,000";
 I8 output_data[] = "[1,0,00,0,00,00000000]";
 
 /**************************************************
@@ -204,7 +185,7 @@ void get_data_cb(U8 *data)
 	attempts_number = 0;
 	
 	DIS_prepare_data();
-//	switch_DIS();
+	switch_DIS();
 }
 
 /**************************************************
@@ -286,28 +267,23 @@ void DIS_matrix_timer_cout(void)
 * Description	: 
 * Notes		: 
 ***************************************************/
-//void switch_DIS(void)
-//{
-//	switch (last_active_DIS)
-//	{
-//		case DIS1:
-//		case DIS2:
-//		case DIS3:
-//			state = state_next;
-//			last_active_DIS++;
-//			break;
-//		case DIS4:
-//			state = WAIT;
-//			state_next = CONFIGURATION;
-//			last_active_DIS = DIS1;
-//			time = DIS_REQUEST_PERIOD;
-//			break;
-//		default:
-//			state = CONFIGURATION;
-//			last_active_DIS = DIS1;
-//			break;
-//	}
-//}
+void switch_DIS(void)
+{
+	switch (last_active_DIS)
+	{
+		case DIS1:
+		case DIS2:
+		case DIS3:
+			last_active_DIS++;
+			break;
+		case DIS4:
+			last_active_DIS = DIS1;
+			break;
+		default:
+			last_active_DIS = DIS1;
+			break;
+	}
+}
 
 /**************************************************
 * Function name	: 
