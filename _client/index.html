@@ -209,7 +209,7 @@ D,
 t,
 G={0:document.getElementById("c0").getContext("2d"),1:document.getElementById("c1").getContext("2d"),2:document.getElementById("c2").getContext("2d"),3:document.getElementById("c3").getContext("2d")},
 gas={0:n,1:'O<sub>2</sub>',2:'H<sub>2</sub>',3:'CH<sub>4</sub>',14:'NO<sub>2</sub>'},
-dt={0:n,1:'Elektrohim',2:'Termokat'},
+dt={0:n,1:'Elektrohim',2:'Termokat',3:'Semicond'},
 v={0:n,30:'3 B',50:'5 B'},
 s={1:'Active',2:'No Data',3:'Not connected'},
 dim={0:n,1:'ppm',3:'%'};
@@ -234,41 +234,42 @@ function get(){
 	if(xmlhttp.readyState==4){
 	    if(xmlhttp.status==200){
 		d=reg.exec(xmlhttp.responseText);
-		gById("data", xmlhttp.responseText);
+		gById("data",xmlhttp.responseText);
 
 		if(d==null){
-		    gById("status", "err");
+		    gById("status","err");
 		    return;
 		}else{
-		    gById("status", "ok");
+		    gById("status","ok");
 		}
 
-		ad = d[1];
-		dd = d[6];
+		ad=d[1];
+		dd=d[6];
 		if(dd==0){
-		    gById("dt" + ad, dt[d[2]]);
-		    gById("g" + ad, gas[d[3]]);
-		    gById("v" + ad, v[d[5]]);
-		    gById("s" + ad, s[2]);
+		    gById("dt"+ad,dt[d[2]]);
+		    gById("g"+ad,gas[d[3]]);
+		    gById("v"+ad,v[d[5]]);
+		    gById("s"+ad,s[2]);
+		    return;
 		}else{
-		    gById("dt" + ad, dt[d[2]]);
-		    gById("g" + ad,gas[parseInt(d[3])]);
-		    gById("dim" + ad, 'C, ' + dim[d[4]]);
-		    gById("v" + ad, v[d[5]]);
-		    gById("s" + ad, (dd) ? s[1] : s[2]);
+		    gById("dt"+ad,dt[d[2]]);
+		    gById("g"+ad,gas[parseInt(d[3])]);
+		    gById("dim"+ad,'C, '+dim[d[4]]);
+		    gById("v"+ad,v[d[5]]);
+		    gById("s"+ad,(dd)?s[1]:s[2]);
 		    gById("z"+ad,0);
 		}
 
-		D = new Date(),
-		t = D.getHours()+':'+((D.getMinutes()<10)?'0'+D.getMinutes():D.getMinutes());
+		D=new Date(),
+		t=D.getHours()+':'+((D.getMinutes()<10)?'0'+D.getMinutes():D.getMinutes());
 
 		if(y[ad].length >= xPts){
-		    for(var i = 0; i < xPts - 1; i++){
-			y[ad][i] = y[ad][i + 1];
-			x[ad][i] = x[ad][i + 1];
+		    for(var i=0;i<xPts-1;i++){
+			y[ad][i]=y[ad][i+1];
+			x[ad][i]=x[ad][i+1];
 		    }
-		    x[ad][xPts - 1] = t;
-		    y[ad][xPts - 1] = dd;
+		    x[ad][xPts-1]=t;
+		    y[ad][xPts-1]=dd;
 		}else{
 		    x[ad].push(t);
 		    y[ad].push(dd);
@@ -276,10 +277,10 @@ function get(){
 
 		newGraph();
 
-		var sel = document.getElementById("time");
-		var z = sel.options[sel.selectedIndex].value;
-		if(z != 0)
-		    setTimeout(get, z * 1000);
+		var sel=document.getElementById("time");
+		var z=sel.options[sel.selectedIndex].value;
+		if(z!=0)
+		    setTimeout(get,z*1000);
 	    }
 	}
     };
@@ -287,8 +288,7 @@ function get(){
 }
 ;
 
-function gById(id, v){document.getElementById(id).innerHTML=v;}
-
+function gById(id,v){document.getElementById(id).innerHTML=v;};
 function MAX(a){var r=0;for(var i=0;i<a.length;i++)if(parseInt(a[i])>r)r=a[i];return r;};
 
 function newGraph(){
