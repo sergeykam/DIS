@@ -11,7 +11,7 @@ ul{list-style-type:none;display:inline;}
 .y{width:60px;position:absolute;left:150px;text-align:right;}
 .y ul li{height:30px;}
 .x{width:520px;height:20px;position:absolute;bottom:0px;right:0px;}
-.x ul li{display:inline-block;width:43px;}
+.x ul li{display:inline-block;width:47px;}
 </style>
 </head>
 <body>
@@ -252,7 +252,7 @@ function get(){
 		    gById("s" + ad, s[2]);
 		}else{
 		    gById("dt" + ad, dt[d[2]]);
-		    gById("g" + ad, gas[d[3]]);
+		    gById("g" + ad,gas[parseInt(d[3])]);
 		    gById("dim" + ad, 'C, ' + dim[d[4]]);
 		    gById("v" + ad, v[d[5]]);
 		    gById("s" + ad, (dd) ? s[1] : s[2]);
@@ -260,7 +260,7 @@ function get(){
 		}
 
 		D = new Date(),
-		t = D.getHours()+':'+D.getMinutes();
+		t = D.getHours()+':'+((D.getMinutes()<10)?'0'+D.getMinutes():D.getMinutes());
 
 		if(y[ad].length >= xPts){
 		    for(var i = 0; i < xPts - 1; i++){
