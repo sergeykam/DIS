@@ -11,7 +11,7 @@ ul{list-style-type:none;display:inline;}
 .y{width:60px;position:absolute;left:90px;text-align:right;}
 .y ul li{height:25.5px;}
 .x{width:498px;height:20px;position:absolute;bottom:0px;right:0px;}
-.x ul li{display:inline-block;width:38px;}
+.x ul li{display:inline-block;width:42px;}
 #ld{position:absolute;top:50%;left:43%}
 </style>
 </head>
@@ -197,7 +197,7 @@ ul{list-style-type:none;display:inline;}
 </div>
 <script>
 	
-window.onload = function(){os(0);os(1);os(2);os(3);gById("ld","");}
+window.onload = function(){os(0);os(1);os(2);os(3);gById("ld","");};
 	
 var xPts=10,
 yPts=10,
@@ -245,9 +245,9 @@ function get(){
 			gById("status","err");
 			go();
 			return;
-		}else{
-			gById("status","ok");
 		}
+		
+		gById("status","ok");
 
 		ad=d[1];
 		dd=d[6];

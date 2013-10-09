@@ -18,6 +18,8 @@ $string = file_get_contents('index.html');
 $string = str_replace("\n", "", $string);
 $string = str_replace("\t", "", $string);
 
+file_put_contents('htmltest.html', $string);
+
 $array = str_split_unicode($string, 128);
 
 foreach ($array as $value) {
