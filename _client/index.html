@@ -11,7 +11,7 @@ ul{list-style-type:none;display:inline;}
 .y{width:60px;position:absolute;left:90px;text-align:right;}
 .y ul li{height:25.5px;}
 .x{width:498px;height:20px;position:absolute;bottom:0px;right:0px;}
-.x ul li{display:inline-block;width:42px;}
+.x ul li{display:inline-block;width:38px;}
 #ld{position:absolute;top:50%;left:43%}
 </style>
 </head>
@@ -197,7 +197,7 @@ ul{list-style-type:none;display:inline;}
 </div>
 <script>
 	
-window.onload = function(){os(0);os(1);os(2);os(3);gById("ld","");};
+window.onload = function(){aos();gById("ld","");};
 	
 var xPts=10,
 yPts=10,
@@ -213,7 +213,7 @@ dd,
 D,
 t,
 G={0:document.getElementById("c0").getContext("2d"),1:document.getElementById("c1").getContext("2d"),2:document.getElementById("c2").getContext("2d"),3:document.getElementById("c3").getContext("2d")},
-gas={0:n,1:'O<sub>2</sub>',2:'H<sub>2</sub>',3:'CH<sub>4</sub>',14:'NO<sub>2</sub>'},
+gas={0:n,1:'O<sub>2</sub>',2:'H<sub>2</sub>S',3:'CH<sub>4</sub>',14:'NO<sub>2</sub>'},
 dt={0:n,1:'Elektrohim',2:'Termokat',3:'Semicond'},
 v={0:n,30:'3 B',50:'5 B'},
 s={1:'Active',2:'No Data',3:'Not connected'},
@@ -307,6 +307,8 @@ function go(){var sel=document.getElementById("time"),
 			z=sel.options[sel.selectedIndex].value;
 		if(z!=0)setTimeout(get,z*1000);
 		};
+		
+function aos(){os(0);os(1);os(2);os(3);};
 
 function newGraph(){
 	var max = 0,
@@ -320,7 +322,7 @@ function newGraph(){
 	}else if(d[4] === '1'){
 	max = MAX(y[ad]);
 	if(max<8000){
-		shag = 100;
+		shag = 10;
 	}
 	rest = max % shag;
 	max = parseFloat(max) + shag - rest;
@@ -336,22 +338,25 @@ function newGraph(){
 	gById('y'+ad+j,curlvl-rest);
 	}
 	curlvl=0;
+	
+	G[ad].fillStyle = "#fff";
+	G[ad].fillRect(0, 0, cw, ch);
+	G[ad].fillStyle = "#000";
+	aos();
 
 	for(var j=0;j<xPts;j++){
 	if(x[ad][j])
 		gById('x'+ad+j,x[ad][j]);
 	}
 
-	G[ad].fillStyle = "#fff";
-	G[ad].fillRect(0, 0, cw, ch);
-	G[ad].fillStyle = "#000";
-
-	os(ad);
-
 	for(var j=0;j<y[ad].length;j++){
 	G[ad].beginPath();
 	G[ad].arc(j*(cw-30)/xPts+20,Math.ceil((ch-(ch*parseFloat(y[ad][j])/max)))+11,2,0,2*Math.PI);
 	G[ad].fill();
+	G[ad].stroke();
+	G[ad].beginPath();
+	G[ad].moveTo((j-1)*(cw-30)/xPts+20,Math.ceil((ch-(ch*parseFloat(y[ad][j-1])/max)))+11);
+	G[ad].lineTo(j*(cw-30)/xPts+20,Math.ceil((ch-(ch*parseFloat(y[ad][j])/max)))+11);
 	G[ad].stroke();
 	}
 };
